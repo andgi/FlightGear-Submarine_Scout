@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!-- $Id$ -->
+<!--
+  Submarine Scout class airship.
+
+  Copyright (C) 2007  Anders Gidenstam  (anders(at)gidenstam.org)
+  This file is licensed under the GPL license.
+-->
+<PropertyList>
+
+ <fx>
+
+  <crank>
+   <name>crank</name>
+   <path>Sounds/coughing.wav</path>
+   <mode>looped</mode>
+   <condition>
+    <property>/engines/engine/cranking</property>
+    <not>
+     <property>/engines/engine/running</property>
+    </not>
+   </condition>
+   <position>
+    <!-- x/y/z == back/left/up -->
+    <x>  5.0 </x>
+    <y>  0.0 </y>
+    <z>  1.0 </z>
+   </position>
+   <volume>
+    <offset>0.4</offset>
+   </volume>
+  </crank>
+
+  <engine>
+   <name>engine</name>
+   <path>Sounds/wasp.wav</path>
+   <mode>looped</mode>
+   <property>/engines/engine/running</property>
+   <position>
+    <!-- x/y/z == back/left/up -->
+    <x>  5.0 </x>
+    <y>  0.0 </y>
+    <z>  1.0 </z>
+   </position>
+   <volume>
+    <property>/engines/engine/mp-osi</property>
+    <factor>0.005</factor>
+    <min>0.10</min>
+    <max>0.4</max>
+    <offset>0.15</offset>
+   </volume>
+   <pitch>
+    <property>/engines/engine/rpm</property>
+    <factor>0.0010</factor>
+    <min>.3</min>
+    <max>5.0</max>
+    <offset>0.3</offset>
+   </pitch>
+  </engine>
+
+ </fx>
+
+</PropertyList>

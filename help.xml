@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<!-- $Id$ -->
+<!--
+  Submarine Scout class airship.
+
+  Copyright (C) 2007 - 2008  Anders Gidenstam  (anders(at)gidenstam.org)
+  This file is licensed under the GPL license version 2 or later.
+-->
+
+<PropertyList>
+
+ <title>Submarine Scout Airship</title>
+ <!-- Specific keys -->
+<!--
+ <key>
+  <name>q</name>
+  <desc>Change static trim towards nose heavy.</desc>
+ </key>
+ <key>
+  <name>Q</name>
+  <desc>Change static trim towards tail heavy.</desc>
+ </key>
+-->
+ <key>
+  <name>d</name>
+  <desc>Drop ballast in 0.1% decrements.</desc>
+ </key>
+ <key>
+  <name>D</name>
+  <desc>Drop ballast in 1% decrements.</desc>
+ </key>
+ <key>
+  <name>W</name>
+  <desc>Weigh-off to 10% of current weight by dropping ballast. (Takes about 10 seconds and only works on ground.)</desc>
+ </key>
+ <key>
+  <name>w</name>
+  <desc>Show current on-ground weight.</desc>
+ </key>
+ <key>
+  <name>F</name>
+  <desc>Open gas valve.</desc>
+ </key>
+ <key>
+  <name>f</name>
+  <desc>Close gas valve.</desc>
+ </key>
+ <key>
+  <name>Q/q</name>
+  <desc>Open/close fore ballonet valve (closed = nose heavy).</desc>
+ </key>
+ <key>
+  <name>A/a</name>
+  <desc>Open/close aft ballonet valve (closed = tail heavy).</desc>
+ </key>
+ <key>
+  <name>U</name>
+  <desc>Request ground crew to prepare for landing.</desc>
+ </key>
+ <key>
+  <name>Y</name>
+  <desc>Tell ground crew to let go.</desc>
+ </key>
+ <key>
+  <name>R</name>
+  <desc>Pull the rip cord. Do NOT use in midair.</desc>
+ </key>
+
+ <!-- Handling instructions. -->
+ <line>Take-off</line>
+ <line></line>
+ <line>1. Weigh-off (W) a couple of times until weight on ground (w) is less than 10 lbs.</line>
+ <line>   Small non-rigid airships often take-off slightly heavy.</line>
+ <line>2. Tell the ground crew to let go (Y).</line>
+ <line>3. Adjust static trim and envelope pressure if needed (q/Q, a/A).</line>
+ <line>   During take-off the trim should be neutral while in flight the airship should be trimmed slightly nose heavy</line>
+ <line>   for pitch stability at high speed (i.e. above 30 mph).</line>
+ <line>4. Start the engine (magnetos on + s).</line>
+ <line>5. Take-off is done at full throttle. Use some elevator to</line>
+ <line>   keep the nose high.</line>
+ <line>6. Stay in control by careful use of elevator and rudder.</line>
+ <line>   The rudder needs constant attention since airships are unstable in yaw.</line>
+ <line>7. Remember that the secondary effect of elevators and rudder are quite strong.</line>
+ <line>   Full elevator up might push the whole airship down at low speed.</line>
+ <line></line>
+ <line>Landing</line>
+ <line>1. Check static condition: slightly heavy is better than light.</line>
+ <line>2. Prepare the ground crew (U).</line>
+ <line>3. Approach is against the wind, low (~150ft) and slow.</line>
+ <line>4. Aim to arrive between the handling parties, below 100ft and with very low speed.</line>
+ <line>5. The ground crew uses the handling guys to secure the ship.</line>
+
+</PropertyList>

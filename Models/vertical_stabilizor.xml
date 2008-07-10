@@ -1,0 +1,42 @@
+<!-- $Id$ -->
+<!--
+  Submarine Scout class airship.
+
+  Copyright (C) 2008  Anders Gidenstam  (anders(at)gidenstam.org)
+  This file is licensed under the GPL license version 2 or later.
+-->
+<PropertyList>
+
+ <path>vertical_stabilizor.ac</path>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>rudder</object-name>
+  <property>surface-positions/rudder-pos-norm</property>
+  <interpolation>
+   <entry>
+    <ind>-1.0</ind>
+    <dep>-35</dep>
+   </entry>
+   <entry>
+    <ind>0</ind>
+    <dep>0</dep>
+   </entry>
+   <entry>
+    <ind>1.0</ind>
+    <dep>35</dep>
+   </entry>
+  </interpolation>
+  <center>
+   <x-m>  0.0 </x-m>
+   <y-m>  0.0 </y-m>
+   <z-m>  0.0 </z-m>
+  </center>
+  <axis>
+   <x> 0.0 </x>
+   <y> 0.0 </y>
+   <z> 1.0 </z>
+  </axis>
+ </animation>
+
+</PropertyList>

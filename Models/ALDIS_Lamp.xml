@@ -1,0 +1,131 @@
+<!-- $Id$ -->
+<!--
+  ALDIS signalling lamp.
+
+  Copyright (C) 2008  Anders Gidenstam  (anders(at)gidenstam.org)
+  This file is licensed under the GPL license version 2 or later.
+-->
+<PropertyList>
+
+ <path>ALDIS_Lamp.ac</path>
+
+ <offsets>
+  <!-- x/y/z == back/right/up -->
+  <x-m>-0.32 </x-m>
+  <y-m> 0.00 </y-m>
+  <z-m>-0.07 </z-m>
+ </offsets>
+
+ <!-- animation>
+  <name>Lamp</name>
+  <object-name>lamp_housing</object-name>
+  <object-name>Sight</object-name>
+  <object-name>Handle</object-name>
+ </animation -->
+
+ <animation>
+  <type>rotate</type>
+  <property>sim/multiplay/generic/float[2]</property>
+  <factor>1.0</factor>
+  <center>
+   <x-m>  0.32 </x-m>
+   <y-m>  0.00 </y-m>
+   <z-m>  0.07 </z-m>
+  </center>
+  <axis>
+   <x> 0.0 </x>
+   <y> 1.0 </y>
+   <z> 0.0 </z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <property>sim/multiplay/generic/float[1]</property>
+  <factor>1.0</factor>
+  <center>
+   <x-m>  0.32 </x-m>
+   <y-m>  0.00 </y-m>
+   <z-m>  0.07 </z-m>
+  </center>
+  <axis>
+   <x> 0.0 </x>
+   <y> 0.0 </y>
+   <z> 1.0 </z>
+  </axis>
+ </animation>
+
+ <!-- Translations for W/T Operator view. -->
+ <animation>
+  <type>translate</type>
+  <property>instrumentation/aldis/x-offset-m</property>
+  <axis>
+   <x>1</x>
+   <y>0</y>
+   <z>0</z>
+  </axis>
+  <factor>1.0</factor>
+ </animation>
+ <animation>
+  <type>translate</type>
+  <property>instrumentation/aldis/y-offset-m</property>
+  <axis>
+   <x>0</x>
+   <y>1</y>
+   <z>0</z>
+  </axis>
+  <factor>1.0</factor>
+ </animation>
+ <animation>
+  <type>translate</type>
+  <property>instrumentation/aldis/z-offset-m</property>
+  <axis>
+   <x>0</x>
+   <y>0</y>
+   <z>1</z>
+  </axis>
+  <factor>1.0</factor>
+ </animation>
+
+ <animation>
+  <type>select</type>
+  <object-name>WhiteFlash</object-name>
+  <object-name>WhiteLight</object-name>
+  <condition>
+   <property>sim/multiplay/generic/int[2]</property>
+  </condition>
+ </animation>
+
+ <animation>
+  <type>flash</type>
+  <object-name>WhiteFlash</object-name>
+  <center>
+   <x-m>0.0</x-m>
+   <y-m>0.0</y-m>
+   <z-m>0.0</z-m>
+  </center>
+  <axis>
+   <x>-1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+  <power>15</power>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>Handle</object-name>
+  <action>
+   <button>0</button>
+   <repeatable>false</repeatable>
+   <binding>
+    <command>nasal</command>
+    <script>
+      SubmarineScout.ALDIS_lamp.
+          reset(!SubmarineScout.ALDIS_lamp.active);
+    </script>
+   </binding>
+  </action>
+ </animation>
+
+</PropertyList>

@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!-- $Id$ -->
+<!--
+  Submarine Scout class airship.
+
+  Copyright (C) 2008  Anders Gidenstam  (anders(at)gidenstam.org)
+  This file is licensed under the GPL license version 2 or later.
+-->
+<PropertyList>
+
+ <submodel>
+  <name>bomb-left</name>
+  <model>Aircraft/Submarine_Scout/Models/65lb_bomb.ac</model>
+  <trigger>controls/armament/station[0]/release-all</trigger>
+  <speed>0</speed>
+  <repeat>false</repeat>
+  <count>-1</count>
+  <x-offset> -10.83 </x-offset>
+  <y-offset>  -1.87 </y-offset>
+  <z-offset>  -1.64 </z-offset>
+  <yaw-offset>0</yaw-offset>
+  <pitch-offset>0</pitch-offset>
+  <wind>false</wind>
+  <eda>3.68</eda>
+  <weight>65</weight>
+  <cd>0.05</cd>
+  <impact>true</impact>
+  <impact-reports>sim/ai/aircraft/impact/bomb</impact-reports>
+ </submodel>
+
+ <submodel>
+  <name>bomb-right</name>
+  <model>Aircraft/Submarine_Scout/Models/65lb_bomb.ac</model>
+  <trigger>controls/armament/station[1]/release-all</trigger>
+  <speed>0</speed>
+  <repeat>false</repeat>
+  <count>-1</count>
+  <x-offset> -10.83 </x-offset>
+  <y-offset>   1.87 </y-offset>
+  <z-offset>  -1.64 </z-offset>
+  <yaw-offset>0</yaw-offset>
+  <pitch-offset>0</pitch-offset>
+  <wind>false</wind>
+  <eda>3.68</eda>
+  <weight>65</weight>
+  <cd>0.05</cd>
+  <impact>true</impact>
+  <impact-reports>sim/ai/aircraft/impact/bomb</impact-reports>
+ </submodel>
+
+</PropertyList>

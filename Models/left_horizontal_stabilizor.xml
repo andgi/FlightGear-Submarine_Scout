@@ -1,0 +1,77 @@
+<!-- $Id$ -->
+<!--
+  Submarine Scout class airship.
+
+  Copyright (C) 2008  Anders Gidenstam  (anders(at)gidenstam.org)
+  This file is licensed under the GPL license version 2 or later.
+-->
+<PropertyList>
+
+ <path>left_horizontal_stabilizor.ac</path>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>left_horizontal_fin</object-name>
+  <object-name>left_elevator</object-name>
+  <property>sim/multiplay/generic/float[0]</property>
+  <interpolation>
+   <entry>
+    <ind>0.0</ind>
+    <dep>70.0</dep>
+   </entry>
+   <entry>
+    <ind>0.3</ind>
+    <dep>15.0</dep>
+   </entry>
+   <entry>
+    <ind>0.8</ind>
+    <dep>0.0</dep>
+   </entry>
+   <entry>
+    <ind>1.0</ind>
+    <dep>0.0</dep>
+   </entry>
+  </interpolation>
+  <center>
+   <x-m>  0.0 </x-m>
+   <y-m>  0.0 </y-m>
+   <z-m>  0.0 </z-m>
+  </center>
+  <axis>
+   <x> 1.0 </x>
+   <y> 0.0 </y>
+   <z> 0.0 </z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>left_elevator</object-name>
+  <property>surface-positions/elevator-pos-norm</property>
+  <interpolation>
+   <entry>
+    <ind>-1.0</ind>
+    <dep>-35</dep>
+   </entry>
+   <entry>
+    <ind>0</ind>
+    <dep>0</dep>
+   </entry>
+   <entry>
+    <ind>1.0</ind>
+    <dep>35</dep>
+   </entry>
+  </interpolation>
+  <center>
+   <x-m>  0.0 </x-m>
+   <y-m>  0.0 </y-m>
+   <z-m>  0.0 </z-m>
+  </center>
+  <axis>
+   <x> 0.0 </x>
+   <y> 1.0 </y>
+   <z> 0.0 </z>
+  </axis>
+ </animation>
+
+</PropertyList>

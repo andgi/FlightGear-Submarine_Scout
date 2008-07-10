@@ -1,0 +1,634 @@
+<!-- $Id$ -->
+<!--
+  Submarine Scout class airship.
+
+  Copyright (C) 2007 - 2008  Anders Gidenstam  (anders(at)gidenstam.org)
+  This file is licensed under the GPL license version 2 or later.
+-->
+<PropertyList>
+
+ <path>car.ac</path>
+
+ <offsets>
+  <!-- x/y/z == back/right/up -->
+  <x-m> 0.00 </x-m>
+  <y-m> 0.00 </y-m>
+  <z-m> 0.00 </z-m>
+ </offsets>
+
+ <!-- The envelope -->
+ <model>
+  <name>Envelope</name>
+  <path>Aircraft/Submarine_Scout/Models/envelope.ac</path>
+  <offsets>
+   <x-m> -13.70 </x-m>
+   <y-m>   0.00 </y-m>
+   <z-m>   6.85 </z-m>
+  </offsets>
+ </model>
+
+ <!-- The horizontal stabilizors -->
+ <model>
+  <name>Left stabilizor</name>
+  <path>Aircraft/Submarine_Scout/Models/left_horizontal_stabilizor.xml</path>
+  <offsets>
+   <x-m>  21.90 </x-m>
+   <y-m>  -2.90 </y-m>
+   <z-m>   6.85 </z-m>
+   <heading-deg> 7.50 </heading-deg>
+  </offsets>
+ </model>
+ <model>
+  <name>Right stabilizor</name>
+  <path>Aircraft/Submarine_Scout/Models/right_horizontal_stabilizor.xml</path>
+  <offsets>
+   <x-m>  21.90 </x-m>
+   <y-m>   2.90 </y-m>
+   <z-m>   6.85 </z-m>
+   <heading-deg> -7.50 </heading-deg>
+  </offsets>
+ </model>
+
+ <!-- The vertical stabilizor -->
+ <model>
+  <name>Vertical stabilizor</name>
+  <path>Aircraft/Submarine_Scout/Models/vertical_stabilizor.xml</path>
+  <offsets>
+   <x-m>   21.90 </x-m>
+   <y-m>    0.00 </y-m>
+   <z-m>    3.95 </z-m>
+   <pitch-deg> -6.00 </pitch-deg>
+  </offsets>
+ </model>
+
+ <model>
+  <name>Engine</name>
+  <path>Aircraft/Submarine_Scout/Models/engine.ac</path>
+  <offsets>
+   <x-m>   5.40 </x-m>
+   <y-m>   0.00 </y-m>
+   <z-m>   0.75 </z-m>
+   <heading-deg> 180.0 </heading-deg>
+  </offsets>
+ </model>
+
+ <!--
+  The propeller. Models and animations based on the Vickers Vimy
+  by Emmanuel BARANGER.
+ -->
+ <model>
+  <name>Propeller_</name>
+  <path>Aircraft/Submarine_Scout/Models/propeller.ac</path>
+  <offsets>
+   <heading-deg>180</heading-deg>
+   <x-m>  5.53 </x-m>
+   <y-m>  0.0  </y-m>
+   <z-m>  0.75 </z-m>
+  </offsets>
+ </model>
+
+ <!--
+  Bombs.
+ -->
+ <model>
+  <name>Bomb1</name>
+  <path>Aircraft/Submarine_Scout/Models/65lb_bomb.ac</path>
+  <offsets>
+   <roll-deg>45</roll-deg>
+   <x-m>  3.30 </x-m>
+   <y-m> -0.58 </y-m>
+   <z-m> -0.50 </z-m>
+  </offsets>
+ </model>
+ <model>
+  <name>Bomb2</name>
+  <path>Aircraft/Submarine_Scout/Models/65lb_bomb.ac</path>
+  <offsets>
+   <roll-deg>45</roll-deg>
+   <x-m>  3.30 </x-m>
+   <y-m>  0.58 </y-m>
+   <z-m> -0.50 </z-m>
+  </offsets>
+ </model>
+
+ <!-- Navigation lights -->
+<!--
+ <model>
+  <path>Aircraft/Spitfire/Models/light-white.xml</path>
+  <name>Forward-light</name>
+  <offsets>
+   <x-m>-13.75</x-m>
+   <y-m>0.0</y-m>
+   <z-m>6.85</z-m>
+   <pitch-deg>0</pitch-deg>
+  </offsets>
+ </model>
+ <model>
+  <path>Aircraft/Spitfire/Models/light-white.xml</path>
+  <name>Astern-light</name>
+  <offsets>
+   <x-m>30.05</x-m>
+   <y-m>0.0</y-m>
+   <z-m>6.85</z-m>
+   <pitch-deg>0</pitch-deg>
+  </offsets>
+ </model>
+ <model>
+  <path>Aircraft/Spitfire/Models/light-green.xml</path>
+  <name>Starboard-light</name>
+  <offsets>
+   <x-m>-4.20</x-m>
+   <y-m>4.55</y-m>
+   <z-m>6.85</z-m>
+   <pitch-deg>0</pitch-deg>
+  </offsets>
+ </model>
+ <model>
+  <path>Aircraft/Spitfire/Models/light-red.xml</path>
+  <name>Port-light</name>
+  <offsets>
+   <x-m>-4.20</x-m>
+   <y-m>-4.55</y-m>
+   <z-m>6.85</z-m>
+   <pitch-deg>0</pitch-deg>
+  </offsets>
+ </model>
+-->
+ <!-- Anti-collision lights -->
+
+ <!-- Pilot's instruments -->
+ <model>
+  <name>Pilot Watch</name>
+  <path>Aircraft/sopwithCamel/Models/MkV30hrWatch.xml</path>
+  <offsets>
+   <!-- x/y/z == back/right/up -->
+   <x-m> 2.250 </x-m>
+   <y-m> 0.100 </y-m>
+   <z-m> 0.010 </z-m>
+  </offsets>
+ </model>
+
+ <model>
+  <name>Pilot Altimeter</name>
+  <path>Aircraft/Submarine_Scout/Models/markVAaltimeter.xml</path>
+  <offsets>
+   <x-m> 2.250 </x-m>
+   <y-m> 0.150 </y-m>
+   <z-m> 0.160 </z-m>
+  </offsets>
+ </model>
+
+ <model>
+  <name>Pilot Airspeed</name>
+  <path>Aircraft/sopwithCamel/Models/asi.xml</path>
+  <offsets>
+   <x-m>  2.240 </x-m>
+   <y-m> -0.150 </y-m>
+   <z-m>  0.140 </z-m>
+  </offsets>
+ </model>
+
+ <model>
+  <name>Pilot Tacho</name>
+  <path>Aircraft/sopwithCamel/Models/tacho.xml</path>
+  <offsets>
+   <!-- x/y/z == back/right/up -->
+   <x-m>  2.240 </x-m>
+   <y-m> -0.250 </y-m>
+   <z-m>  0.030 </z-m>
+  </offsets>
+ </model>
+
+ <model>
+  <name>Pilot Compass</name>
+  <path>Aircraft/sopwithCamel/Models/type259compass.xml</path>
+  <offsets>
+   <x-m> 2.260 </x-m>
+   <y-m> 0.000 </y-m>
+   <z-m> 0.170 </z-m>
+  </offsets>
+ </model>
+
+ <model>
+  <name>Pilot Inclinometer</name>
+  <path>Aircraft/Submarine_Scout/Models/inclinometer.xml</path>
+  <offsets>
+   <heading-deg> -90 </heading-deg>
+   <x-m>  2.500 </x-m>
+   <y-m>  0.380 </y-m>
+   <z-m> -0.010 </z-m>
+  </offsets>
+ </model>
+
+ <model>
+  <name>Fore Ballonet Manometer</name>
+  <path>Aircraft/Submarine_Scout/Models/ballonet_manometer-1.xml</path>
+  <offsets>
+   <x-m>  2.260 </x-m>
+   <y-m>  0.210 </y-m>
+   <z-m>  0.050 </z-m>
+  </offsets>
+ </model>
+ <model>
+  <name>Gas Manometer</name>
+  <path>Aircraft/Submarine_Scout/Models/gas_manometer.xml</path>
+  <offsets>
+   <x-m>  2.260 </x-m>
+   <y-m>  0.250 </y-m>
+   <z-m>  0.050 </z-m>
+  </offsets>
+ </model>
+ <model>
+  <name>Aft Ballonet Manometer</name>
+  <path>Aircraft/Submarine_Scout/Models/ballonet_manometer-2.xml</path>
+  <offsets>
+   <x-m>  2.260 </x-m>
+   <y-m>  0.290 </y-m>
+   <z-m>  0.050 </z-m>
+  </offsets>
+ </model>
+
+ <model>
+  <name>Mag1</name>
+  <path>Aircraft/sopwithCamel/Models/mag_switch_1.xml</path>
+  <offsets>
+   <heading-deg>0</heading-deg>
+   <!-- x/y/z == back/right/up -->
+   <x-m>  2.250 </x-m>
+   <y-m> -0.100 </y-m>
+   <z-m>  0.000 </z-m>
+  </offsets>
+ </model>
+
+ <model>
+  <name>Mag2</name>
+  <path>Aircraft/sopwithCamel/Models/mag_switch_2.xml</path>
+  <offsets>
+   <heading-deg>0</heading-deg>
+   <!-- x/y/z == back/right/up -->
+   <x-m>  2.250 </x-m>
+   <y-m> -0.020 </y-m>
+   <z-m>  0.000 </z-m>
+  </offsets>
+ </model>
+
+<!--
+ <model>
+  <path>Aircraft/sopwithCamel/Models/pulsometer.xml</path>
+  <offsets>
+   <heading-deg>180</heading-deg>
+   <x-m>  4.050 </x-m>
+   <y-m> -0.150 </y-m>
+   <z-m>  0.150 </z-m>
+  </offsets>
+ </model>
+-->
+
+ <!-- Observer's instruments -->
+ <model>
+  <name>ALDIS Lamp</name>
+  <path>Aircraft/Submarine_Scout/Models/ALDIS_Lamp.xml</path>
+  <offsets>
+   <x-m>  1.400 </x-m>
+   <y-m>  0.050 </y-m>
+   <z-m>  0.400 </z-m>
+  </offsets>
+  <!-- offsets>
+   <x-m>  1.000 </x-m>
+   <y-m>  0.300 </y-m>
+   <z-m> -0.100 </z-m>
+   <pitch-deg>-80</pitch-deg>
+  </offsets -->
+ </model>
+
+
+ <!-- Crew. The pilot model is borrowed from Vivian Meazza's Spitfire. -->
+
+ <!-- Mechanic -->
+ <model>
+  <name>Mechanic</name>
+  <path>Aircraft/Submarine_Scout/Models/spitfire-pilot.ac</path>
+  <offsets>
+   <heading-deg>180</heading-deg>
+   <!-- x/y/z == back/right/up -->
+   <x-m>  3.52 </x-m>
+   <y-m>  0.00 </y-m>
+   <z-m> -0.45 </z-m>
+  </offsets>
+ </model>
+ <!-- Pilot -->
+ <model>
+  <name>Commander</name>
+  <path>Aircraft/Submarine_Scout/Models/spitfire-pilot.ac</path>
+  <offsets>
+   <!-- x/y/z == back/right/up -->
+   <x-m>  2.66 </x-m>
+   <y-m>  0.00 </y-m>
+   <z-m> -0.45 </z-m>
+  </offsets>
+ </model>
+ <!-- W/T Operator -->
+ <model>
+  <name>WTOperator</name>
+  <path>Aircraft/Submarine_Scout/Models/spitfire-pilot.ac</path>
+  <offsets>
+   <!-- x/y/z == back/right/up -->
+   <x-m>  1.37 </x-m>
+   <y-m>  0.00 </y-m>
+   <z-m> -0.45 </z-m>
+  </offsets>
+ </model>
+
+ <animation>
+  <name>CockpitDetails</name>
+  <object-name>Pilot Watch</object-name>
+  <object-name>Pilot Altimeter</object-name>
+  <object-name>Pilot Airspeed</object-name>
+  <object-name>Pilot Tacho</object-name>
+  <object-name>Pilot Compass</object-name>
+  <object-name>Pilot Clinometer</object-name>
+  <object-name>Pilot Inclinometer</object-name>
+  <object-name>Gas Manometer</object-name>
+  <object-name>Fore Ballonet Manometer</object-name>
+  <object-name>Aft Ballonet Manometer</object-name>
+  <object-name>Mag1</object-name>
+  <object-name>Mag2</object-name>
+ </animation>
+
+ <!-- LOD for the model as a whole -->
+<!--
+ <animation>
+  <type>range</type>
+  <min-m>0</min-m>
+  <max-m>10000</max-m>
+ </animation>
+-->
+
+ <animation>
+  <type>range</type>
+  <object-name>CockpitDetails</object-name>
+  <min-m>0</min-m>
+  <max-m>50</max-m>
+ </animation>
+
+ <!-- Hide crew. -->
+ <animation>
+  <type>select</type>
+  <object-name>Commander</object-name>
+  <condition>
+   <not>
+    <equals>
+     <property>sim/current-view/name</property>
+     <value>Pilot</value>
+    </equals>
+   </not>
+  </condition>
+ </animation>
+ <animation>
+  <type>select</type>
+  <object-name>WTOperator</object-name>
+  <condition>
+   <not>
+    <equals>
+     <property>sim/current-view/name</property>
+     <value>W/T operator</value>
+    </equals>
+   </not>
+  </condition>
+ </animation>
+ <animation>
+  <type>select</type>
+  <object-name>Mechanic</object-name>
+  <condition>
+   <not>
+    <equals>
+     <property>sim/current-view/name</property>
+     <value>Mechanic</value>
+    </equals>
+   </not>
+  </condition>
+ </animation>
+
+ <!-- Flight Controls -->
+ <animation>
+  <type>rotate</type>
+  <object-name>elevator_wheel</object-name>
+  <property>surface-positions/elevator-pos-norm</property>
+  <interpolation>
+   <entry>
+    <ind>-1.0</ind>
+    <dep> 360</dep>
+   </entry>
+   <entry>
+    <ind>0</ind>
+    <dep>0</dep>
+   </entry>
+   <entry>
+    <ind>1.0</ind>
+    <dep>-360</dep>
+   </entry>
+  </interpolation>
+  <center>
+   <x-m>  2.50 </x-m>
+   <y-m>  0.00 </y-m>
+   <z-m> -0.55 </z-m>
+  </center>
+  <axis>
+   <x> 0.0 </x>
+   <y> 1.0 </y>
+   <z> 0.0 </z>
+  </axis>
+ </animation>
+
+ <!-- Propeller -->
+ <animation>
+  <type>select</type>
+  <object-name>PropDisc</object-name>
+  <condition>
+   <greater-than>
+    <property>engines/engine[0]/rpm</property>
+    <value>1000</value>
+   </greater-than>
+  </condition>
+ </animation>
+ <animation>
+  <type>select</type>
+  <object-name>PropBlur</object-name>
+  <condition>
+   <and>
+    <greater-than>
+     <property>engines/engine[0]/rpm</property>
+     <value>400.000</value>
+    </greater-than>
+    <less-than>
+     <property>engines/engine[0]/rpm</property>
+     <value>1000.001</value>
+    </less-than>
+   </and>
+  </condition>
+ </animation>
+
+ <animation>
+  <type>spin</type>
+  <object-name>Propeller</object-name>
+  <property>engines/engine[0]/rpm</property>
+  <factor>1</factor>
+  <center>
+   <x-m> 0.0 </x-m>
+   <y-m> 0.0 </y-m>
+   <z-m> 0.0 </z-m>
+  </center>
+  <axis>
+   <x> 1.0 </x>
+   <y> 0.0 </y>
+   <z> 0.0 </z>
+  </axis>
+ </animation>
+ <animation>
+  <type>spin</type>
+  <object-name>PropBlur</object-name>
+  <property>engines/engine[0]/rpm</property>
+  <factor>-0.001</factor>
+  <center>
+   <x-m> 0.0 </x-m>
+   <y-m> 0.0 </y-m>
+   <z-m> 0.0 </z-m>
+  </center>
+  <axis>
+   <x> 1.0 </x>
+   <y> 0.0 </y>
+   <z> 0.0 </z>
+  </axis>
+ </animation>
+
+ <!-- Armament -->
+ <animation>
+  <type>select</type>
+  <object-name>Bomb1</object-name>
+  <condition>
+   <property>controls/armament/station[0]/present</property>
+  </condition>
+ </animation>
+ <animation>
+  <type>select</type>
+  <object-name>Bomb2</object-name>
+  <condition>
+   <property>controls/armament/station[1]/present</property>
+  </condition>
+ </animation>
+
+ <!-- Shaders -->
+ <animation>
+  <type>shader</type>
+  <shader>chrome</shader>
+  <texture>chrome2.png</texture>
+  <object-name>engine_body</object-name>
+  <object-name>carburetor.1</object-name>
+  <object-name>carburetor.2</object-name>
+  <object-name>exhaust.1</object-name>
+  <object-name>exhaust.2</object-name>
+ </animation>
+ <animation>
+  <type>shader</type>
+  <shader>chrome</shader>
+  <texture>brass.png</texture>
+  <object-name>cam_shaft</object-name>
+  <object-name>radiator_frame</object-name>
+ </animation>
+ <animation>
+  <type>shader</type>
+  <shader>chrome</shader>
+  <texture>copper.png</texture>
+  <object-name>intake.1</object-name>
+  <object-name>intake.2</object-name>
+ </animation>
+
+ <nasal>
+  <load>
+##############################################################################
+# The on-load Nasal is not executed when this file is loaded as the user
+# aircraft.
+##############################################################################
+var rplayer = cmdarg();
+print("LOAD Submarine_Scout", rplayer.getPath());
+
+# Set aircraft type property.
+rplayer.getNode("sim/model/ac-type", 1).setValue("Submarine_Scout");
+
+var bomb1_mpp = "sim/multiplay/generic/int[0]";
+var bomb2_mpp = "sim/multiplay/generic/int[1]";
+var bomb1_rp  = "controls/armament/station[0]/present";
+var bomb2_rp  = "controls/armament/station[1]/present";
+
+############################################################
+# For backwards compatibility.
+var load_nasal = func (p, n) {
+  if (contains(io, "load_nasal")) {
+    io.load_nasal(p, n);
+  } else {
+    debug.load_nasal(p, n);
+  }
+}
+
+############################################################
+# Load the needed modules if it hasn't been done yet.
+if (!contains(globals, "mp_broadcast")) {
+  load_nasal(getprop("/sim/fg-root") ~
+             "/Aircraft/Submarine_Scout/Models/mp_broadcast.nas",
+             "mp_broadcast");
+}
+if (!contains(globals, "DualControlTools")) {
+  load_nasal(getprop("/sim/fg-root") ~
+             "/Aircraft/Submarine_Scout/Models/dual-control-tools.nas",
+             "DualControlTools");
+}
+if (!contains(globals, "SubmarineScout")) {
+  load_nasal(getprop("/sim/fg-root") ~
+             "/Aircraft/Submarine_Scout/Systems/scenario-network.nas",
+             "SubmarineScout");
+  # Use the minimal remote_ground_crew instead of ground_crew.
+  SubmarineScout.ground_crew = SubmarineScout.remote_ground_crew;
+  # Initialize scenario network as observer.
+  SubmarineScout.scenario_network_init(0);
+}
+
+# Set up MP data processing.
+var loopid = 1;
+var process_data =
+  [DualControlTools.Translator.new(rplayer.getNode(bomb1_mpp, 1),
+                                   rplayer.getNode(bomb1_rp, 1)),
+   DualControlTools.Translator.new(rplayer.getNode(bomb2_mpp, 1),
+                                   rplayer.getNode(bomb2_rp, 1))
+  ];
+
+var loop = func (id) {
+  if (id != loopid) return;
+
+  foreach (w; process_data) {
+    w.update();
+  }
+  settimer(func { loop(id); }, 0);
+}
+
+settimer(func { loop(loopid); }, 0);
+##############################################################################
+  </load>
+  <unload>
+##############################################################################
+var rplayer = cmdarg();
+print("UNLOAD Submarine_Scout ", rplayer.getPath());
+# Unset aircraft type property.
+rplayer.getNode("sim/model/ac-type", 1).setValue("");
+rplayer.getNode("sim/model/ac-type", 1).remove();
+
+# This is done automatically. However, the the module should be shut down
+# if this was its last user.
+#SubmarineScout.ground_crew.remove_remote_ground_crew(rplayer.getPath());
+
+loopid += 1;
+
+##############################################################################
+  </unload>
+ </nasal>
+
+</PropertyList>
