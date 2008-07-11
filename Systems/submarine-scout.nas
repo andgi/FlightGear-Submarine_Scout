@@ -64,6 +64,12 @@ setlistener("/sim/signals/fdm-initialized", func {
         if (!reinit.getValue()) {
             setprop(static_trim_p, 0.65);
             initial_weighoff();
+            settimer(func {
+                ground_crew.place_ground_crew
+                    (geo.aircraft_position(),
+                     getprop("/orientation/heading-deg"));
+                ground_crew.activate();
+            }, 0.5);
         }
     });
 
@@ -308,6 +314,15 @@ setlistener("/sim/signals/fdm-initialized", func {
     ground_crew.init();
     ground_crew.place_ground_crew(geo.aircraft_position(),
                                   getprop("/orientation/heading-deg"));
+
+    setlistener("/sim/signals/click", func {
+        var click_pos = geo.click_position();
+        if (__kbd.alt.getBoolValue()) {
+            SubmarineScout.ground_crew.place_ground_crew(click_pos,
+                                                         nil,
+                                                         click_pos.alt());
+        }
+    });
 });
 
 ###############################################################################
