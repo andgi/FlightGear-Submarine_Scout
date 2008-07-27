@@ -47,7 +47,8 @@ Translator.update = func () {
   if (num(v) != nil) {
     me.dest.setValue(me.factor * v + me.offset);
   } else {
-    me.dest.setValue(v);
+    if (typeof(v) == "scalar")
+      me.dest.setValue(v);
   }
 }
 
