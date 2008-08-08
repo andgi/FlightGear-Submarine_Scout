@@ -32,8 +32,9 @@
   <email>anders at gidenstam dot org</email>
 
   <description>JSBSim model of a Submarine Scout Zero class airship.</description>
-  <license licenseName="GPL"
-           licenseURL="http://www.gnu.org/licenses/gpl.html"/>
+  <license>
+   <licenseName>GPL</licenseName>
+  </license>
   <filecreationdate>2007-02-11</filecreationdate>
   <version>$Id$</version>
 
@@ -41,10 +42,6 @@
              author="Hugh B. Freeman"
              title="Force Measurements on a 1/40-scale Model of the U.S. Airship ``Akron'';  NACA Report #432"
              date="1932"/>  
-  <reference refID="Mowthrope:1998:Battlebags"
-             author="Ces Mowthorpe"
-             title="Battlebags  British Airships of the First World War"
-             date="1998"/>  
   <reference refID="VentryKo:1982:AS"
              author="Lord Ventry and Eugene M. Kolesnik"
              title="Airship Saga;  ISBN 0 7137 1001 2"
@@ -101,7 +98,7 @@
     Car                     boat-shaped, streamlined,length 17 feet 6 inches
     Engine                  75 hp Rolls Royce
     Propeller               Four-bladed 9 feet diameter
-    Petrol tanks            (two) capacity ;120 (UK?) gallons total
+    Petrol tanks            (two) capacity ;120 gallons total
     Water ballast           capacity 26 gallons
     Gross lift              2.2 tons
     Disposable lift         0.6 tons
@@ -143,24 +140,18 @@
  </metrics>
 
  <!--
- ==== External environment properties ======================================
- -->
- <system name="Externam environment properties">
-  <property> fcs/sun-angle-rad </property>
-  <property> fcs/sun-radiation-norm </property>
- </system>
-
- <!--
  ==== Mass balance =========================================================
  -->
 
  <mass_balance>
 
   <documentation>
+
    According to [VentryKo:1982:AS] the SS Zero class had a useful lift
    of 1344lbs (~610kg). Considering that the lift of 1 m^3 hydrogen
    approximately is 1 kg that leaves 1370kg of lift for the structure
    itself.
+
   </documentation>
 
   <emptywt unit="KG"> 300 </emptywt>
@@ -238,7 +229,7 @@
   </pointmass>
 
   <!--
-       Ballast tanks for fine tuning the CG.
+       Ballast tanks for trim, since the ballonets are not implemented.
        These are controlled by the FCS.
    --> 
   <!-- Forward ballast -->
@@ -321,7 +312,7 @@
   -->
 
   <pointmass name="Crew 1 Observer">
-   <weight unit="KG"> 85.0 </weight>
+   <weight unit="KG"> 75.0 </weight>
    <location name="POINTMASS" unit="M">
     <x> 14.9  </x>
     <y>  0.0  </y>
@@ -329,7 +320,7 @@
    </location>
   </pointmass>
   <pointmass name="Crew 2 Pilot">
-   <weight unit="KG"> 85.0 </weight>
+   <weight unit="KG"> 75.0 </weight>
    <location name="POINTMASS" unit="M">
     <x> 16.17 </x>
     <y>  0.0  </y>
@@ -337,7 +328,7 @@
    </location>
   </pointmass>
   <pointmass name="Crew 3 Mechanic">
-   <weight unit="KG"> 85.0 </weight>
+   <weight unit="KG"> 75.0 </weight>
    <location name="POINTMASS" unit="M">
     <x> 17.22 </x>
     <y>  0.0  </y>
@@ -364,7 +355,9 @@
  <buoyant_forces>
 
   <documentation>
-   NOTE: The cell is placed based on the envelope centroid location
+   NOTE: The for a blimp so necessary ballonets to keep the envelope
+         at the right pressure are not yet modelled.
+	 The cell is placed based on the envelope centroid location
          as computed by BRLCAD.
 
          The maximum overpressure is estimated from the normal pressure
@@ -384,12 +377,7 @@
       - Top valve is manual only
     (")
   </documentation>
-  <documentation>
-   Envelope and ballonet volumes according to [Mowthrope:1998:Battlebags]:
-    - Envelope    70,000 feet^3
-    - 2 Ballonets 9,800 feet^3 each
-  </documentation>
-
+  
   <gas_cell type="HYDROGEN">
    <location unit="M">
     <x> 18.8 </x>
@@ -400,12 +388,12 @@
    <y_radius unit="M">  4.55 </y_radius>
    <z_radius unit="M">  4.55 </z_radius>
    <max_overpressure unit="PA"> 340.0 </max_overpressure> 
-   <valve_coefficient unit="M4*SEC/KG"> 0.0075 </valve_coefficient>
+   <valve_coefficient unit="M4*SEC/KG"> 0.015 </valve_coefficient>
    <fullness>0.90</fullness>
 
    <!-- heat exchange with the environment. [lb ft / sec] -->
    <!-- Note: The surface area of an ellipsiod is approximately
-              4*pi*((a^p*b^p + a^p*c^p + b^p*c^p)/3)^(1/p)
+              4*pi*((a^p*b^p + a^p*c^p + b^p*c^p)/3)^1/p
               where p=1.6075
    -->
    <heat>
@@ -438,26 +426,15 @@
       </difference>
      </product>
     </function>
-    <!-- Heat gain due to solar radiation. Pure guess work. -->
-    <function name="buoyant_forces/gas-cell/dU_sun">
-     <product>
-      <value>   7.2330 </value> <!-- Conversion to [lb ft / s] -->
-      <value>   326.80 </value> <!-- Estimated projected surface area [m2] -->
-      <value>  1300.00 </value> <!-- Solar energy flow [W/m2] -->
-      <value>     0.01 </value> <!-- Guess -->
-      <property> fcs/sun-radiation-norm </property>
-      <max>
-       <value> 0.0 </value>
-       <difference>
-        <value> 1.5708 </value>
-        <property> fcs/sun-angle-rad </property>
-       </difference>
-      </max>
-     </product>
-    </function>    
 
    </heat>
 
+   <limitation>
+    The ballonet air feed from the air-scoop in the propeller slip stream
+    is not modelled yet. Each ballonet receives a constant 15 cubic feet
+    per second air flow instead. The outflow valves needs to be set to
+    bleed the right amount of air for the desired pressure and trim.
+   </limitation>
    <!-- Forward ballonet -->
    <ballonet type="AIR">
     <location unit="M">
@@ -713,19 +690,18 @@
         on the S.S.P's."
       What axis? Photos indicate one on each side of the envelope
       roughly above the engine.
-      - Capacity? S.S. B.E.2C: 60 (UK?) gallons.
-      - 2 tanks. Total capacity 120 (UK?) gallons [AHT, www.aht.ndirect.co.uk].
-      - 2, 4 or 6 tanks for S.S.Zero [Mowthrope:1998:Battlebags] (a 60 gal UK?)
+      - Capacity? S.S. B.E.2C: 60 gallons.
+      - 2 tanks. Total capacity 120 gallons [AHT, www.aht.ndirect.co.uk].
   </documentation>
 
   <documentation>  
     According to [VentryKo:1982:AS] the engine was a 75h.p.
     Rolls Royce engine.
   </documentation>
-  <!--
+  <limitation>
        NOTE: This engine is too powerful! I don't have enough
              data on the real one.
-  -->
+  </limitation>
 
   <!-- Engine -->
   <engine file="eng_io320">
@@ -764,8 +740,7 @@
     <y> -4.50 </y>
     <z>  0.0 </z>
    </location>
-   <!-- 196.39 kg for 60 UK gallon at AVGAS density 0.72 kg/liter. -->
-   <capacity unit="KG"> 196.39 </capacity>
+   <capacity unit="KG"> 200 </capacity> <!-- Should be 163.5 kg. -->
    <contents unit="KG"> 163.5 </contents>
   </tank>
   <tank type="FUEL">
@@ -774,8 +749,7 @@
     <y>  4.50 </y>
     <z>  0.0  </z>
    </location>
-   <!-- 196.39 kg for 60 UK gallon at AVGAS density 0.72 kg/liter. -->
-   <capacity unit="KG"> 196.39 </capacity>
+   <capacity unit="KG"> 200 </capacity> <!-- Should be 163.5 kg. -->
    <contents unit="KG"> 163.5 </contents>
   </tank>
 
@@ -844,36 +818,14 @@
  </system>
 
  <!--
- ==== Animation control =====================================================
- -->
- <system name="Animation">
-
-  <channel name="Envelope">
-
-   <fcs_function name="animation/envelope-shape-norm">
-    <function>
-     <max>
-      <value> 0.0 </value>
-      <min>
-       <value> 1.0 </value>
-       <quotient>
-        <property> instrumentation/gas-pressure-psf </property>
-        <value> 5.12 </value> <!-- about 25mm water. -->
-       </quotient>
-      </min>
-     </max>
-    </function>
-    <output> /sim/multiplay/generic/float[0] </output>
-   </fcs_function>
-
-  </channel>
-
- </system>
-
- <!--
  ==== Flight control system =================================================
  -->
- <autopilot file="Submarine_Scout_crew_ap"/>
+ <autopilot file="Submarine_Scout_crew_ap">
+  <limitation>
+   The autopilot is only minimally tuned.
+  </limitation>
+ </autopilot>
+
  <flight_control name="FGFCS">
 
   <!--
@@ -926,7 +878,6 @@
 
    <summer name="fcs/yaw-trim-sum">
     <input>fcs/rudder-cmd-norm</input>
-    <input>-fcs/aileron-cmd-norm</input>
     <input>fcs/yaw-trim-cmd-norm</input>
     <input>ap/rudder-cmd-norm</input>
     <clipto>
@@ -972,7 +923,8 @@
 
   <channel name="StaticTrim">
    <!--
-    This is a temoprary replacement for triming by using the ballonets.
+    This is for fine-tuning the CoG.
+    In-flight pitch trim was mainly handled by the ballonets.
    -->
 
    <summer name="fcs/static-trim-norm">
@@ -1020,317 +972,7 @@
 
   </channel>
 
-  <!--
-  === Auxiliary functions ====================================
-  -->
-  <channel name="Aux">
-
-   <summer name="fcs/superheat-R">
-    <input> buoyant_forces/gas-cell/temp-R </input>
-    <input>-atmosphere/T-R </input>
-   </summer>
-
-  </channel>
-
  </flight_control>
-
- <!--
- ==== Initial static condition weigh-off ====================================
- -->
-
- <system name="Weigh_Off">
-  <channel name="Initial_Static_Weigh_Off">
-   <!-- This system ensures that the ship starts slightly heavy. -->
-   <!-- The weight of inertia/pointmass-weight-lbs[3] is set from Nasal. -->
-
-   <summer name="static-condition/net-lift-lbs">
-    <input> buoyant_forces/gas-cell[0]/buoyancy-lbs </input>
-    <input> -inertia/weight-lbs </input>
-   </summer>
-
-  </channel>
- </system>
-
- <!--
- ==== External reactions ====================================================
- -->
-
- <external_reactions>
-
-  <!-- Note: these forces are applied to the wrong location. -->
-  <force name="guy-wire-north" frame="LOCAL">
-   <location unit="M">
-    <x> 0.0 </x>
-    <y> 0.0 </y>
-    <z> 0.0 </z>
-   </location>
-   <direction>
-    <x> 1.0 </x>
-    <y> 0.0 </y>
-    <z> 0.0 </z>
-   </direction>
-  </force>
-  <force name="guy-wire-east" frame="LOCAL">
-   <location unit="M">
-    <x> 0.0 </x>
-    <y> 0.0 </y>
-    <z> 0.0 </z>
-   </location>
-   <direction>
-    <x> 0.0 </x>
-    <y> 1.0 </y>
-    <z> 0.0 </z>
-   </direction>
-  </force>
-  <force name="guy-wire-down" frame="LOCAL">
-   <location unit="M">
-    <x> 0.0 </x>
-    <y> 0.0 </y>
-    <z> 0.0 </z>
-   </location>
-   <direction>
-    <x> 0.0 </x>
-    <y> 0.0 </y>
-    <z> 1.0 </z>
-   </direction>
-  </force>
-
- </external_reactions>
-
- <!--
- ==== Mooring force calculation =============================================
- -->
-
- <!-- system file="fgfs4jsbsim"/ -->
-
- <system name="landing-party">
-
-  <!-- INTERFACE PROPERTIES -->
-  <!--  Ground crew actions -->
-  <property value="0.0"> landing-party/wire-connected[0] </property>
-  <property value="0.0"> landing-party/wire-connected[1] </property>
-  <property value="70.0"> landing-party/wire-length-ft </property>
-  <!--  Handling party locations -->
-  <property value="0.0"> landing-party/latitude-deg[0]  </property>
-  <property value="0.0"> landing-party/longitude-deg[0] </property>
-  <property value="0.0"> landing-party/altitude-ft[0] </property>
-  <property value="0.0"> landing-party/latitude-deg[1]  </property>
-  <property value="0.0"> landing-party/longitude-deg[1] </property>
-  <property value="0.0"> landing-party/altitude-ft[1] </property>
-
-  <!-- Constants -->
-  <!--  Wire -->
-  <property value="10.0"> landing-party/wire-spring-coeff </property>
-  <property value="500.0"> landing-party/max-wire-force-lbs </property>
-
-  <channel name="Guy Wire Forces">
-
-   <fcs_function name="landing-party/latitude-diff-ft[0]">
-    <function>
-     <product>
-      <value> -364560.0 </value>
-      <difference>
-       <property> /position/latitude-deg </property>
-       <property> landing-party/latitude-deg[0] </property>
-      </difference>
-     </product>
-    </function>
-   </fcs_function>
-   <fcs_function name="landing-party/latitude-diff-ft[1]">
-    <function>
-     <product>
-      <value> -364560.0 </value>
-      <difference>
-       <property> /position/latitude-deg </property>
-       <property> landing-party/latitude-deg[1] </property>
-      </difference>
-     </product>
-    </function>
-   </fcs_function>
-
-   <fcs_function name="landing-party/longitude-diff-ft[0]">
-    <function>
-     <product>
-      <value> -364560.0 </value> <!-- Bougus conversion factor. -->
-      <difference>
-       <property> /position/longitude-deg </property>
-       <property> landing-party/longitude-deg[0] </property>
-      </difference>
-     </product>
-    </function>
-   </fcs_function>
-   <fcs_function name="landing-party/longitude-diff-ft[1]">
-    <function>
-     <product>
-      <value> -364560.0 </value> <!-- Bougus conversion factor. -->
-      <difference>
-       <property> /position/longitude-deg </property>
-       <property> landing-party/longitude-deg[1] </property>
-      </difference>
-     </product>
-    </function>
-   </fcs_function>
-
-   <summer name="landing-party/altitude-diff-ft[0]">
-    <input> /position/altitude-ft </input>
-    <input> -landing-party/altitude-ft[0] </input>
-   </summer>
-   <summer name="landing-party/altitude-diff-ft[1]">
-    <input> /position/altitude-ft </input>
-    <input> -landing-party/altitude-ft[1] </input>
-   </summer>
-
-   <fcs_function name="landing-party/total-distance-ft[0]">
-    <function>
-     <pow>
-      <sum>
-       <pow>
-        <property> landing-party/latitude-diff-ft[0] </property>
-        <value> 2.0 </value>
-       </pow>
-       <pow>
-        <property> landing-party/longitude-diff-ft[0] </property>
-        <value> 2.0 </value>
-       </pow>
-       <pow>
-        <property> landing-party/altitude-diff-ft[0] </property>
-        <value> 2.0 </value>
-       </pow>
-      </sum>
-      <value> 0.5 </value>
-     </pow>
-    </function>
-   </fcs_function>
-   <fcs_function name="landing-party/total-distance-ft[1]">
-    <function>
-     <pow>
-      <sum>
-       <pow>
-        <property> landing-party/latitude-diff-ft[1] </property>
-        <value> 2.0 </value>
-       </pow>
-       <pow>
-        <property> landing-party/longitude-diff-ft[1] </property>
-        <value> 2.0 </value>
-       </pow>
-       <pow>
-        <property> landing-party/altitude-diff-ft[1] </property>
-        <value> 2.0 </value>
-       </pow>
-      </sum>
-      <value> 0.5 </value>
-     </pow>
-    </function>
-   </fcs_function>
-
-   <fcs_function name="landing-party/wire-force-lbs[0]">
-    <function>
-     <product>
-      <property> landing-party/wire-connected[0] </property>
-      <property> landing-party/wire-spring-coeff </property>
-      <max>
-       <difference>
-        <property> landing-party/total-distance-ft[0] </property>
-        <property> landing-party/wire-length-ft </property>
-       </difference>
-       <value> 0.0 </value>
-      </max>
-     </product>
-    </function>
-    <clipto>
-     <min> 0.0 </min>
-     <max> landing-party/max-wire-force-lbs </max>
-    </clipto>
-   </fcs_function>
-   <fcs_function name="landing-party/wire-force-lbs[1]">
-    <function>
-     <product>
-      <property> landing-party/wire-connected[1] </property>
-      <property> landing-party/wire-spring-coeff </property>
-      <max>
-       <difference>
-        <property> landing-party/total-distance-ft[1] </property>
-        <property> landing-party/wire-length-ft </property>
-       </difference>
-       <value> 0.0 </value>
-      </max>
-     </product>
-    </function>
-    <clipto>
-     <min> 0.0 </min>
-     <max> landing-party/max-wire-force-lbs </max>
-    </clipto>
-   </fcs_function>
-
-   <fcs_function name="landing-party/force-north-lbs">
-    <function>
-     <sum>
-      <product>
-       <property> landing-party/wire-force-lbs[0] </property>
-       <quotient>
-        <property> landing-party/latitude-diff-ft[0] </property>
-        <property> landing-party/total-distance-ft[0] </property>
-       </quotient>
-      </product>
-      <product>
-       <property> landing-party/wire-force-lbs[1] </property>
-       <quotient>
-        <property> landing-party/latitude-diff-ft[1] </property>
-        <property> landing-party/total-distance-ft[1] </property>
-       </quotient>
-      </product>
-     </sum>
-    </function>
-    <output> external_reactions/guy-wire-north/magnitude </output>
-   </fcs_function>
-
-   <fcs_function name="landing-party/force-east-lbs">
-    <function>
-     <sum>
-      <product>
-       <property> landing-party/wire-force-lbs[0] </property>
-       <quotient>
-        <property> landing-party/longitude-diff-ft[0] </property>
-        <property> landing-party/total-distance-ft[0] </property>
-       </quotient>
-      </product>
-      <product>
-       <property> landing-party/wire-force-lbs[1] </property>
-       <quotient>
-        <property> landing-party/longitude-diff-ft[1] </property>
-        <property> landing-party/total-distance-ft[1] </property>
-       </quotient>
-      </product>
-     </sum>
-    </function>
-    <output> external_reactions/guy-wire-east/magnitude </output>
-   </fcs_function>
-
-   <fcs_function name="landing-party/force-down-lbs">
-    <function>
-     <sum>
-      <product>
-       <property> landing-party/wire-force-lbs[0] </property>
-       <quotient>
-        <property> landing-party/altitude-diff-ft[0] </property>
-        <property> landing-party/total-distance-ft[0] </property>
-       </quotient>
-      </product>
-      <product>
-       <property> landing-party/wire-force-lbs[1] </property>
-       <quotient>
-        <property> landing-party/altitude-diff-ft[1] </property>
-        <property> landing-party/total-distance-ft[1] </property>
-       </quotient>
-      </product>
-     </sum>
-    </function>
-    <output> external_reactions/guy-wire-down/magnitude </output>
-   </fcs_function>
-
-  </channel>  
-
- </system>
 
  <!--
  ==== Aerodynamics ==========================================================
@@ -2197,7 +1839,7 @@
   </axis>
 
  </aerodynamics>
-<!--
+
  <output name="datalog.csv" type="CSV" rate="2">
 
   <rates> ON </rates>
@@ -2232,5 +1874,5 @@
   <property> buoyant_forces/gas-cell/ballonet[1]/valve_open </property>
 
  </output>
--->
+
 </fdm_config>
