@@ -145,7 +145,7 @@
  <!--
  ==== External environment properties ======================================
  -->
- <system name="Externam environment properties">
+ <system name="External environment properties">
   <property> fcs/sun-angle-rad </property>
   <property> fcs/sun-radiation-norm </property>
  </system>
@@ -389,6 +389,12 @@
     - Envelope    70,000 feet^3
     - 2 Ballonets 9,800 feet^3 each
   </documentation>
+  <limitation>
+   The ballonet air feed from the air-scoop in the propeller slip stream
+   is not modelled yet. Each ballonet receives a constant 15 cubic feet
+   per second air flow instead. The outflow valves needs to be set to
+   bleed the right amount of air for the desired pressure and trim.
+  </limitation>
 
   <gas_cell type="HYDROGEN">
    <location unit="M">
@@ -722,13 +728,9 @@
     According to [VentryKo:1982:AS] the engine was a 75h.p.
     Rolls Royce engine.
   </documentation>
-  <!--
-       NOTE: This engine is too powerful! I don't have enough
-             data on the real one.
-  -->
 
   <!-- Engine -->
-  <engine file="eng_io320">
+  <engine file="eng_RRhawk">
    <location unit="M">
     <x> 19.2 </x>
     <y>  0.0 </y>
@@ -741,7 +743,7 @@
    </orient>
    <feed>0</feed>
    <feed>1</feed>
-   <thruster file="prop_75in2f">
+   <thruster file="prop_SSZ">
     <location unit="M">
      <x> 19.2 </x>
      <y>  0.0 </y>
@@ -873,7 +875,12 @@
  <!--
  ==== Flight control system =================================================
  -->
- <autopilot file="Submarine_Scout_crew_ap"/>
+ <autopilot file="Submarine_Scout_crew_ap">
+  <limitation>
+   The autopilot is only minimally tuned.
+  </limitation>
+ </autopilot>
+
  <flight_control name="FGFCS">
 
   <!--
@@ -972,7 +979,8 @@
 
   <channel name="StaticTrim">
    <!--
-    This is a temoprary replacement for triming by using the ballonets.
+    This is for fine-tuning the CoG.
+    In-flight pitch trim was mainly handled by the ballonets.
    -->
 
    <summer name="fcs/static-trim-norm">
@@ -1092,6 +1100,93 @@
     <x> 0.0 </x>
     <y> 0.0 </y>
     <z> 1.0 </z>
+   </direction>
+  </force>
+
+  <force name="added-mass-bx" frame="BODY">
+   <location unit="M">
+    <x> 20.0 </x>
+    <y>  0.0 </y>
+    <z>  0.0 </z>
+   </location>
+   <direction>
+    <x> 1.0 </x>
+    <y> 0.0 </y>
+    <z> 0.0 </z>
+   </direction>
+  </force>
+  <force name="added-mass-by" frame="BODY">
+   <location unit="M">
+    <x> 20.0 </x>
+    <y>  0.0 </y>
+    <z>  0.0 </z>
+   </location>
+   <direction>
+    <x> 0.0 </x>
+    <y> 1.0 </y>
+    <z> 0.0 </z>
+   </direction>
+  </force>
+  <force name="added-mass-bz" frame="BODY">
+   <location unit="M">
+    <x> 20.0 </x>
+    <y>  0.0 </y>
+    <z>  0.0 </z>
+   </location>
+   <direction>
+    <x> 0.0 </x>
+    <y> 0.0 </y>
+    <z> 1.0 </z>
+   </direction>
+  </force>
+
+  <force name="added-mass-pitch[0]" frame="BODY">
+   <location unit="M">
+    <x> 20.0 </x>
+    <y>  0.0 </y>
+    <z> -0.3048 </z>
+   </location>
+   <direction>
+    <x> 1.0 </x>
+    <y> 0.0 </y>
+    <z> 0.0 </z>
+   </direction>
+  </force>
+  <force name="added-mass-pitch[1]" frame="BODY">
+   <location unit="M">
+    <x> 20.0 </x>
+    <y>  0.0 </y>
+    <z>  0.3048 </z>
+   </location>
+   <direction>
+    <x> 1.0 </x>
+    <y> 0.0 </y>
+    <z> 0.0 </z>
+   </direction>
+  </force>
+
+  <force name="added-mass-yaw[0]" frame="BODY">
+   <location unit="M">
+    <x> 20.0 </x>
+    <y> -0.3048 </y>
+    <z>  0.0 </z>
+   </location>
+   <direction>
+    <x> 1.0 </x>
+    <y> 0.0 </y>
+    <z> 0.0 </z>
+   </direction>
+  </force>
+  <force name="added-mass-yaw[1]" frame="BODY">
+   <location unit="M">
+    <x> 20.0 </x>
+    <y>  0.3048 </y>
+    <z>  0.0 </z>
+   </location>
+   <direction>
+    <x> 1.0 </x>
+    <y> 0.0 </y>
+    <z> 0.0 </z>
    </direction>
   </force>
 
@@ -1336,12 +1431,31 @@
  ==== Aerodynamics ==========================================================
  -->
 
+ <system name="constants">
+
+  <!-- Aerodynamic constants. -->
+  <property value="143.42"> aero/constants/length-ft </property>
+  <property value="30.0"> aero/constants/diameter-ft </property>
+  <property value="21469.3"> aero/constants/length-diameter-ft2 </property>
+  <property value="70000"> aero/constants/volume-ft3 </property>
+  <property value="1698.5"> aero/constants/volume-ft3_2_3 </property>
+
+  <!-- Added mass constants. -->
+  <property value="-0.06"> aero/constants/added-mass/k-axial </property>
+  <property value="-0.89"> aero/constants/added-mass/k-traverse </property>
+  <property value="-0.69"> aero/constants/added-mass/k-rotational </property>
+  <property value="0.75"> aero/constants/added-mass/tweak-factor </property>
+
+ </system>
+
+ <system file="airship_added_mass"/>
+
  <aerodynamics>
 
   <!-- The envelope can be rigged at an angle to the car. -->
   <function name="aero/envelope-alpha-deg">
    <sum>
-    <value> 1.25 </value> <!-- Envelope pitch offset w.r.t. car. -->
+    <value> 1.00 </value> <!-- Envelope pitch offset w.r.t. car. -->
     <property>aero/alpha-deg</property>
    </sum>
   </function>
@@ -1364,7 +1478,7 @@
     -->
     <product>
      <property>aero/qbar-psf</property>
-     <value> 1698.5 </value>
+     <property>aero/constants/volume-ft3_2_3</property>
      <!-- Start CD -->
      <table>  
       <independentVar lookup="row">aero/envelope-alpha-deg</independentVar>
@@ -1413,7 +1527,7 @@
     -->
     <product>
      <property>aero/qbar-psf</property>
-     <value> 1698.5 </value>
+     <property>aero/constants/volume-ft3_2_3</property>
      <!-- Start CD -->
      <table>  
       <independentVar lookup="row">aero/envelope-alpha-deg</independentVar>
@@ -1462,7 +1576,7 @@
     -->
     <product>
      <property>aero/qbar-psf</property>
-     <value> 1698.5 </value>
+     <property>aero/constants/volume-ft3_2_3</property>
      <!-- Start CD -->
      <value> 1.0 </value>
      <table>
@@ -1488,7 +1602,7 @@
     -->
     <product>
      <property>aero/qbar-psf</property>
-     <value> 1698.5 </value>
+     <property>aero/constants/volume-ft3_2_3</property>
      <!-- Start CD -->
      <table>  
       <independentVar lookup="row">aero/beta-deg</independentVar>
@@ -1537,7 +1651,7 @@
     -->
     <product>
      <property>aero/qbar-psf</property>
-     <value> 1698.5 </value>
+     <property>aero/constants/volume-ft3_2_3</property>
      <!-- Start CD -->
      <value> 0.5 </value>  <!-- There is only one vertical fin as opposed to
                                 two horizontal ones.
@@ -1589,7 +1703,7 @@
     -->
     <product>
      <property>aero/qbar-psf</property>
-     <value> 1698.5 </value>
+     <property>aero/constants/volume-ft3_2_3</property>
      <!-- Start CD -->
      <value> 1.0 </value>
      <table>
@@ -1615,13 +1729,14 @@
     -->
     <product>
      <property>aero/qbar-psf</property>
-     <value> 1698.5 </value>
+     <property>aero/constants/volume-ft3_2_3</property>
      <!-- Start CD -->
      <!-- According to [WD:1941:AATM]
           the envelope on a small non-rigid contributes approximately
           35% to the total air resistance.
           I think they mean 'at zero alpha and beta'.
      -->  
+     <value> 0.75 </value> <!-- Tweak -->
      <value> 1.6 </value>
      <value> 0.0059211 </value>
     </product>
@@ -1643,7 +1758,7 @@
     -->
     <product>
      <property>aero/qbar-psf</property>
-     <value> 1698.5 </value>
+     <property>aero/constants/volume-ft3_2_3</property>
      <!-- Start CY -->
      <value> -1.0 </value>  <!-- Note the sign! --> 
      <table>
@@ -1693,7 +1808,7 @@
     -->
     <product>
      <property>aero/qbar-psf</property>
-     <value> 1698.5 </value>
+     <property>aero/constants/volume-ft3_2_3</property>
      <!-- Start CY -->
      <value> -0.5 </value>  <!-- There is only one vertical fin as opposed to
                                  two horizontal ones.
@@ -1746,7 +1861,7 @@
     -->
     <product>
      <property>aero/qbar-psf</property>
-     <value> 1698.5 </value>
+     <property>aero/constants/volume-ft3_2_3</property>
      <!-- Start CL -->
      <value> 0.5 </value> <!-- The rudder is not adjusted yet. -->
      <table>
@@ -1777,7 +1892,7 @@
     -->
     <product>
      <property>aero/qbar-psf</property>
-     <value> 1698.5 </value>
+     <property>aero/constants/volume-ft3_2_3</property>
      <!-- Start CL -->
      <table>
       <independentVar lookup="row">aero/envelope-alpha-deg</independentVar>
@@ -1826,7 +1941,7 @@
     -->
     <product>
      <property>aero/qbar-psf</property>
-     <value> 1698.5 </value>
+     <property>aero/constants/volume-ft3_2_3</property>
      <!-- Start CL -->
      <table>
       <independentVar lookup="row">aero/envelope-alpha-deg</independentVar>
@@ -1875,7 +1990,7 @@
     -->
     <product>
      <property>aero/qbar-psf</property>
-     <value> 1698.5 </value>
+     <property>aero/constants/volume-ft3_2_3</property>
      <!-- Start CL -->
      <value> 1.0 </value>
      <table>
@@ -1935,7 +2050,7 @@
     -->
     <product>
      <property>aero/qbar-psf</property>
-     <value> 70000 </value>
+     <property>aero/constants/volume-ft3</property>
      <!-- Start Cm -->
      <table>
       <independentVar lookup="row">aero/envelope-alpha-deg</independentVar>
@@ -1984,7 +2099,7 @@
     -->
     <product>
      <property>aero/qbar-psf</property>
-     <value> 70000 </value>
+     <property>aero/constants/volume-ft3</property>
      <!-- Start Cm -->
      <table>
       <independentVar lookup="row">aero/envelope-alpha-deg</independentVar>
@@ -2033,7 +2148,7 @@
     -->
     <product>
      <property>aero/qbar-psf</property>
-     <value> 70000 </value>
+     <property>aero/constants/volume-ft3</property>
      <!-- Start Cmdr = -->
      <value> 1.0 </value> <!-- The elevators are not adjusted yet. -->
      <table>
@@ -2075,7 +2190,7 @@
     -->
     <product>
      <property>aero/qbar-psf</property>
-     <value> 70000 </value>
+     <property>aero/constants/volume-ft3</property>
      <!-- Start Cmdr = -->
      <value> 10.0 </value> <!-- The rudder is not adjusted yet. -->
      <table>
@@ -2101,7 +2216,7 @@
     -->
     <product>
      <property>aero/qbar-psf</property>
-     <value> 70000 </value>
+     <property>aero/constants/volume-ft3</property>
      <!-- Start Cn -->
      <value> -1 </value> <!-- NOTE: sign. -->
      <table>
@@ -2151,7 +2266,7 @@
     -->
     <product>
      <property>aero/qbar-psf</property>
-     <value> 70000 </value>
+     <property>aero/constants/volume-ft3</property>
      <!-- Start Cn -->
      <value> -1.0 </value> <!-- There is only one vertical fin as opposed to
                                 two horizontal ones, but it might be bigger.
@@ -2193,10 +2308,11 @@
      </table>
     </product>
    </function>
- 
+
   </axis>
 
  </aerodynamics>
+
 <!--
  <output name="datalog.csv" type="CSV" rate="2">
 

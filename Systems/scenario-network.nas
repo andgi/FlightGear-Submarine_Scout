@@ -32,7 +32,7 @@ var handle_message = func (sender, msg) {
     if (type == message_id["bomb_impact"][0]) {
 #        print("Submarine_Scout: Bomb impact!");
         var pos = Binary.decodeCoord(substr(msg, 1));
-        debug.dump(pos);
+#        debug.dump(pos);
         geo.put_model("Aircraft/Submarine_Scout/Models/flare.osg",
                       pos.lat(), pos.lon(), pos.alt(),
                       0, 0, 0);

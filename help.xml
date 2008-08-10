@@ -67,27 +67,33 @@
  </key>
 
  <!-- Handling instructions. -->
- <line>Take-off</line>
- <line></line>
- <line>1. Weigh-off (W) a couple of times until weight on ground (w) is less than 10 lbs.</line>
- <line>   Small non-rigid airships often take-off slightly heavy.</line>
- <line>2. Tell the ground crew to let go (Y).</line>
- <line>3. Adjust static trim and envelope pressure if needed (q/Q, a/A).</line>
- <line>   During take-off the trim should be neutral while in flight the airship should be trimmed slightly nose heavy</line>
- <line>   for pitch stability at high speed (i.e. above 30 mph).</line>
- <line>4. Start the engine (magnetos on + s).</line>
- <line>5. Take-off is done at full throttle. Use some elevator to</line>
- <line>   keep the nose high.</line>
- <line>6. Stay in control by careful use of elevator and rudder.</line>
- <line>   The rudder needs constant attention since airships are unstable in yaw.</line>
- <line>7. Remember that the secondary effect of elevators and rudder are quite strong.</line>
- <line>   Full elevator up might push the whole airship down at low speed.</line>
- <line></line>
- <line>Landing</line>
- <line>1. Check static condition: slightly heavy is better than light.</line>
- <line>2. Prepare the ground crew (U).</line>
- <line>3. Approach is against the wind, low (~150ft) and slow.</line>
- <line>4. Aim to arrive between the handling parties, below 100ft and with very low speed.</line>
- <line>5. The ground crew uses the handling guys to secure the ship.</line>
+ <line>Take-off
+ 
+ 1. Weigh-off (W) a couple of times until weight on ground (w) is less than 10 lbs.
+    Small non-rigid airships often take-off slightly heavy.
+ 2. Tell the ground crew to let go (Y).
+ 3. Adjust static trim and envelope pressure if needed (q/Q, a/A).
+    During take-off the trim should be neutral while in flight the airship should be trimmed slightly nose heavy
+    for pitch stability at high speed (i.e. above 30 mph).
+ 4. Start the engine (magnetos on + s).
+ 5. Take-off is done at full throttle. Use some elevator to
+    keep the nose high.
+ 6. Stay in control by careful use of elevator and rudder.
+    The rudder needs constant attention since airships are unstable in yaw.
+ 7. Remember that the secondary effect of elevators and rudder are quite strong.
+    Full elevator up might push the whole airship down at low speed.
+ 
+ Landing
+ 1. Check static condition: slightly heavy is better than light.
+ 2. Prepare the ground crew (U).
+ 3. Approach is against the wind, low (~150ft) and slow.
+ 4. Aim to arrive between the handling parties, below 100ft and with very low speed.
+ 5. The ground crew uses the handling guys to secure the ship.
+
+ Moving the ground crew
+   The ground crew can be placed via Alt + click. 
+ 
+ Pilot's notes: http://wiki.flightgear.org/index.php/Submarine_Scout
+</line>
 
 </PropertyList>

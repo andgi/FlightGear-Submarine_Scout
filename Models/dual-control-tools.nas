@@ -44,7 +44,7 @@ Translator.new = func (src = nil, dest = nil, factor = 1, offset = 0) {
 }
 Translator.update = func () {
   var v = me.src.getValue();
-  if (num(v) != nil) {
+  if (is_num(v)) {
     me.dest.setValue(me.factor * v + me.offset);
   } else {
     if (typeof(v) == "scalar")
@@ -78,6 +78,7 @@ EdgeTrigger.update = func {
   #       This detector relies on that steady state is reached between
   #       flanks.
   var val = me.node.getValue();
+  if (!is_num(val)) return;
   if (me.old == 1) {
     if (val < me.old) {
       me.pos_flank(0);
@@ -126,6 +127,7 @@ StableTrigger.new = func (src, action) {
 }
 StableTrigger.update = func () {
   var v   = me.src.getValue();
+  if (!is_num(v)) return;
   var t = getprop("/sim/time/elapsed-sec"); # NOTE: simulated time.
 
   if ((me.old == v) and
@@ -169,6 +171,9 @@ MostRecentSelector.new = func (src1, src2, dest, threshold) {
   return obj;
 }
 MostRecentSelector.update = func {
+  var v1 = me.src1.getValue();
+  var v2 = me.src2.getValue();
+  if (!is_num(v1) or !is_num(v1)) return;
   if (abs (me.src2.getValue() - me.old2) > me.thres) {
     me.old2 = me.src2.getValue();
     me.dest.setValue(me.old2);
@@ -201,7 +206,10 @@ Adder.new = func (src1, src2, dest) {
   return obj;
 }
 Adder.update = func () {
-  me.dest.setValue(me.src1.getValue() + me.src2.getValue());
+  var v1 = me.src1.getValue();
+  var v2 = me.src2.getValue();
+  if (!is_num(v1) or !is_num(v2)) return;
+  me.dest.setValue(v1 + v2);
 }
 
 ############################################################
@@ -223,6 +231,7 @@ DeltaAdder.new = func (src, dest) {
 }
 DeltaAdder.update = func () {
   var v = me.src.getValue();
+  if (!is_num(v)) return;
   me.dest.setValue((v - me.old) + me.dest.getValue());
   me.old = v;
 }
@@ -304,11 +313,13 @@ SwitchDecoder.new = func (src, actions) {
 SwitchDecoder.update = func () {
   var t = getprop("/sim/time/elapsed-sec"); # NOTE: simulated time.
   var v = me.src.getValue();
+  if (!is_num(v)) return;
 
   if ((me.old == v) and ((t - me.stable_since) > me.MIN_STABLE) and
       (me.wait == 1)) {
     var ov = me.old_stable;
-
+# Use this to improve.
+#<cptf> here's the boring version:  var bittest = func(u, b) { while (b) { u = int(u / 2); b -= 1; } u != int(u / 2) * 2; }
     forindex (i; me.actions) {
       var m  = math.mod(v, 2);
       var om = math.mod(ov, 2);
@@ -438,6 +449,12 @@ TDMDecoder.process = func (msg) {
 TDMDecoder.update = func {
   me.channel.update();
 }
+
+###############################################################################
+
+var is_num = func (v) {
+    return num(v) != nil;
+} 
 
 ###############################################################################
 
