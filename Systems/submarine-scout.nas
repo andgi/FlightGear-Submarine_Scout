@@ -125,9 +125,9 @@ var selected = 0;
 bomb[0].setIntValue(1);
 bomb[1].setIntValue(1);
 
-var resolve_impact = func {
+var resolve_impact = func(n) {
     print("Bomb impact!");
-    var node = props.globals.getNode(cmdarg().getValue(), 1);
+    var node = props.globals.getNode(n.getValue(), 1);
     var pos = geo.aircraft_position();
     pos.set_latlon(node.getNode("impact/latitude-deg").getValue(),
                    node.getNode("impact/longitude-deg").getValue(),
