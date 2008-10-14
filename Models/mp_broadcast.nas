@@ -42,8 +42,8 @@
 var BroadcastChannel = {};
 BroadcastChannel.new = func (mpp_path, process,
                              send_to_self = 0,
-                             accept_predicate = func (p) { return 1; },
-                             on_disconnect = func (p) { return; },
+                             accept_predicate = nil,
+                             on_disconnect = nil,
                              enable_send=1) {
   obj = { parents      : [BroadcastChannel],
           mpp_path     : mpp_path,
@@ -51,8 +51,10 @@ BroadcastChannel.new = func (mpp_path, process,
                                      : nil,
           process_msg  : process,
           send_to_self : send_to_self,
-          accept_predicate : accept_predicate,
-          on_disconnect    : on_disconnect,
+          accept_predicate : (accept_predicate != nil) ? accept_predicate :
+                                                         func (p) { return 1; },
+          on_disconnect    : (on_disconnect != nil) ? on_disconnect :
+                                                      func (p) { return; },
           # Internal state.
           send_buf     : [],
           peers        : {},
@@ -67,10 +69,11 @@ BroadcastChannel.new = func (mpp_path, process,
     print("]");
   }
   settimer(func { obj._loop_(obj.loopid); }, 0, 1);
-  if (enable_send)
+  if (enable_send) {
       print("BroadcastChannel[" ~ obj.mpp_path ~ "] ...  started.");
-  else
+  } else {
       print("ReceiveBroadcastChannel[" ~ obj.mpp_path ~ "] ...  started.");
+  }
   return obj;
 }
 BroadcastChannel.send = func (msg) {
