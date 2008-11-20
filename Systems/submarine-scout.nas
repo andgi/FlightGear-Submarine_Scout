@@ -217,11 +217,11 @@ var ground_crew = {
         setprop("/fdm/jsbsim/landing-party/latitude-deg[0]", me.pos[0].lat());
         setprop("/fdm/jsbsim/landing-party/longitude-deg[0]", me.pos[0].lon());
         setprop("/fdm/jsbsim/landing-party/altitude-ft[0]",
-                me.pos[0].alt() * geo.M2FT);
+                me.pos[0].alt() * M2FT);
         setprop("/fdm/jsbsim/landing-party/latitude-deg[1]", me.pos[1].lat());
         setprop("/fdm/jsbsim/landing-party/longitude-deg[1]", me.pos[1].lon());
         setprop("/fdm/jsbsim/landing-party/altitude-ft[1]",
-                me.pos[1].alt() * geo.M2FT);
+                me.pos[1].alt() * M2FT);
     
         if (me.model.local[0] != nil) me.model.local[0].remove();
         if (me.model.local[1] != nil) me.model.local[1].remove();
