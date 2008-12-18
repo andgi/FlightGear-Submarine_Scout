@@ -125,11 +125,11 @@ var selected = 0;
 bomb[0].setIntValue(1);
 bomb[1].setIntValue(1);
 
-var resolve_impact = func(n) {
+var resolve_impact = func (n) {
     print("Bomb impact!");
     var node = props.globals.getNode(n.getValue(), 1);
-    var pos = geo.aircraft_position();
-    pos.set_latlon(node.getNode("impact/latitude-deg").getValue(),
+    var pos = geo.Coord.new().set_latlon
+                  (node.getNode("impact/latitude-deg").getValue(),
                    node.getNode("impact/longitude-deg").getValue(),
                    node.getNode("impact/elevation-m").getValue());
     broadcast.send(message_id["bomb_impact"] ~ Binary.encodeCoord(pos));

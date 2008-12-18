@@ -190,7 +190,7 @@
 
  <model>
   <name>Pilot Tacho</name>
-  <path>Aircraft/sopwithCamel/Models/tacho.xml</path>
+  <path>Aircraft/sopwithCamel/Models/tacho-Y.xml</path>
   <offsets>
    <!-- x/y/z == back/right/up -->
    <x-m>  2.240 </x-m>
@@ -561,56 +561,25 @@ var bomb1_rp  = "controls/armament/station[0]/present";
 var bomb2_rp  = "controls/armament/station[1]/present";
 
 ############################################################
-# For backwards compatibility.
-var load_nasal = func (p, n) {
-  if (contains(io, "load_nasal")) {
-    io.load_nasal(p, n);
-  } else {
-    debug.load_nasal(p, n);
-  }
-}
-
-############################################################
 # Load the needed modules if it hasn't been done yet.
-if (!contains(globals, "mp_broadcast")) {
-  load_nasal(getprop("/sim/fg-root") ~
-             "/Aircraft/Submarine_Scout/Models/mp_broadcast.nas",
-             "mp_broadcast");
-}
-if (!contains(globals, "DualControlTools")) {
-  load_nasal(getprop("/sim/fg-root") ~
-             "/Aircraft/Submarine_Scout/Models/dual-control-tools.nas",
-             "DualControlTools");
-}
 if (!contains(globals, "SubmarineScout")) {
-  load_nasal(getprop("/sim/fg-root") ~
-             "/Aircraft/Submarine_Scout/Systems/scenario-network.nas",
-             "SubmarineScout");
+  io.load_nasal(getprop("/sim/fg-root") ~
+                "/Aircraft/Submarine_Scout/Systems/scenario-network.nas",
+                "SubmarineScout");
   # Use the minimal remote_ground_crew instead of ground_crew.
   SubmarineScout.ground_crew = SubmarineScout.remote_ground_crew;
   # Initialize scenario network as observer.
   SubmarineScout.scenario_network_init(0);
 }
 
-# Set up MP data processing.
-var loopid = 1;
-var process_data =
-  [DualControlTools.Translator.new(rplayer.getNode(bomb1_mpp, 1),
-                                   rplayer.getNode(bomb1_rp, 1)),
-   DualControlTools.Translator.new(rplayer.getNode(bomb2_mpp, 1),
-                                   rplayer.getNode(bomb2_rp, 1))
-  ];
-
-var loop = func (id) {
-  if (id != loopid) return;
-
-  foreach (w; process_data) {
-    w.update();
-  }
-  settimer(func { loop(id); }, 0);
-}
-
-settimer(func { loop(loopid); }, 0);
+############################################################
+# Set up property aliases for the MP model animations.
+rplayer.getNode("fdm/jsbsim/animation/envelope-shape-norm", 1).
+  alias(rplayer.getNode("sim/multiplay/generic/float[0]"));
+rplayer.getNode(bomb1_rp, 1).
+  alias(rplayer.getNode(bomb1_mpp));
+rplayer.getNode(bomb2_rp, 1).
+  alias(rplayer.getNode(bomb2_mpp));
 ##############################################################################
   </load>
   <unload>
@@ -624,8 +593,6 @@ rplayer.getNode("sim/model/ac-type", 1).remove();
 # This is done automatically. However, the the module should be shut down
 # if this was its last user.
 #SubmarineScout.ground_crew.remove_remote_ground_crew(rplayer.getPath());
-
-loopid += 1;
 
 ##############################################################################
   </unload>

@@ -3,8 +3,8 @@
 <!--
   Submarine Scout class airship. Multiplayer observer view.
 
-  Copyright (C) 2007  Anders Gidenstam  (anders(at)gidenstam.org)
-  This file is licensed under the GPL license.
+  Copyright (C) 2007 - 2008  Anders Gidenstam  (anders(at)gidenstam.org)
+  This file is licensed under the GPL license version 2 or later.
 -->
 <!--
   Usage: fgfs - -prop:/sim/remote/pilot-callsign="callsign" - -aircraft=Submarine_Scout-observer
@@ -13,7 +13,7 @@
 
  <sim>
 
-  <description>Submarine Scout airship multiplayer observer.</description>
+  <description>Submarine Scout airship multiplayer observer</description>
   <author>Anders Gidenstam</author>
   <status>experimental</status>
   <aircraft-version>0.1</aircraft-version>
@@ -28,40 +28,11 @@
    <onground>true</onground>
   </presets>
 
-  <systems>
-   <electrical>
-    <path/>
-   </electrical>
-  </systems>
-  <instrumentation>
-   <path/>
-  </instrumentation>
- 
-  <remote>
-   <pilot-callsign type="string">AndersG</pilot-callsign>
-  </remote>
-
-  <!-- Doesn't work that great - lots of jitter. -->
   <view n="0">
-   <name>W/T operator*</name>
-   <type>lookfrom</type>
-   <internal type="bool">true</internal>
-   <config>
-    <from-model type="bool">true</from-model>
-    <from-model-idx type="int">0</from-model-idx>
-    <!-- x/y/z == right/up/back -->
-    <x-offset-m> 0.05 </x-offset-m>
-    <y-offset-m> 0.40 </y-offset-m>
-    <z-offset-m> 1.5 </z-offset-m>
-    <default-field-of-view-deg> 65 </default-field-of-view-deg>
-    <ground-level-nearplane-m type="double"> 0.1f </ground-level-nearplane-m>
-   </config>
-  </view>
-
-  <!-- Modification of Melchior FRANZ's model view -->
-  <view n="101">
+   <!-- name>W/T operator</name -->
    <name>W/T operator</name>
    <type>lookfrom</type>
+   <internal type="bool">true</internal>
    <config>
     <from-model type="bool">false</from-model>
     <from-model-idx type="int">0</from-model-idx>
@@ -72,26 +43,40 @@
     <eye-pitch-deg-path>/orientation/pitch-deg</eye-pitch-deg-path>
     <eye-roll-deg-path>/orientation/roll-deg</eye-roll-deg-path>
 
-    <at-model type="bool">false</at-model>
-    <at-model-idx type="int">0</at-model-idx>
-
-    <ground-level-nearplane-m type="double">0.1f</ground-level-nearplane-m>
-
-    <x-offset-m type="double">0.05</x-offset-m>
-    <y-offset-m type="double">0.40</y-offset-m>
-    <z-offset-m type="double">1.50</z-offset-m>
-    <heading-offset-deg>0</heading-offset-deg>
-    <pitch-offset-deg>0</pitch-offset-deg>
-    <roll-offset-deg>0</roll-offset-deg>
+    <!-- x/y/z == right/up/back -->
+    <x-offset-m type="double"> 0.05 </x-offset-m>
+    <y-offset-m type="double"> 0.40 </y-offset-m>
+    <z-offset-m type="double"> 1.4 </z-offset-m>
+    <ground-level-nearplane-m type="double"> 0.1f </ground-level-nearplane-m>
    </config>
   </view>
+
+  <sound>
+   <audible>false</audible>
+   <path/>
+  </sound>
+
+  <systems>
+   <electrical>
+    <path/>
+   </electrical>
+  </systems>
+  <instrumentation>
+   <path/>
+  </instrumentation>
 
  </sim>
 
  <nasal>
-  <SubmarineScoutObserver>
-   <file>Aircraft/Submarine_Scout/Systems/copilot-view.nas</file>
-  </SubmarineScoutObserver>
+  <dual_control_tools>
+   <file>Aircraft/ZLT-NT/DualControl/dual-control-tools.nas</file>
+  </dual_control_tools>
+  <aircraft_dual_control>
+   <file>Aircraft/Submarine_Scout/Systems/submarine-scout-dual-control.nas</file>
+  </aircraft_dual_control>
+  <dual_control_copilot>
+   <file>Aircraft/ZLT-NT/DualControl/copilot-dual-control.nas</file>
+  </dual_control_copilot>
  </nasal>
 
 </PropertyList>

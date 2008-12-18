@@ -10,7 +10,7 @@
 
  <sim>
 
-  <description>Submarine Scout airship (for JSBSim/CVS)</description>
+  <description>Royal Naval Air Service Submarine Scout airship</description>
   <author>Anders Gidenstam</author>
   <status>development</status>
   <aircraft-version>$Id$</aircraft-version>
@@ -43,8 +43,6 @@
     <y-offset-m type="double">  0.45 </y-offset-m>
     <z-offset-m type="double">  2.80 </z-offset-m>
     <pitch-offset-deg type="double"> -15 </pitch-offset-deg>
-    <default-field-of-view-deg type="double"> 65 </default-field-of-view-deg>
-    <ground-level-nearplane-m type="double"> 0.1f </ground-level-nearplane-m>
    </config>
   </view>
 
@@ -59,8 +57,6 @@
     <x-offset-m type="double"> 0.05 </x-offset-m>
     <y-offset-m type="double"> 0.40 </y-offset-m>
     <z-offset-m type="double"> 1.4 </z-offset-m>
-    <default-field-of-view-deg type="double"> 65 </default-field-of-view-deg>
-    <ground-level-nearplane-m type="double"> 0.1f </ground-level-nearplane-m>
    </config>
   </view>
 
@@ -77,8 +73,6 @@
     <z-offset-m type="double"> 3.4 </z-offset-m>
     <heading-offset-deg type="double"> 180 </heading-offset-deg>
     <pitch-offset-deg type="double"> -5 </pitch-offset-deg>
-    <default-field-of-view-deg type="double"> 65 </default-field-of-view-deg>
-    <ground-level-nearplane-m type="double"> 0.1f </ground-level-nearplane-m>
    </config>
   </view>
 
@@ -109,13 +103,15 @@
 
   <multiplay>
    <generic>
-    <float n="0" type="double"/>  <!-- Envelope shape norm. -->
+    <float n="0" alias="/fdm/jsbsim/animation/envelope-shape-norm"/>
     <float n="1" type="double"/>  <!-- ALDIS lamp heading. -->
     <float n="2" type="double"/>  <!-- ALDIS lamp pitch. -->
     <int   n="2" type="int"/>     <!-- ALDIS lamp on. -->
     <string n="0" type="string"/> <!-- BroadcastChannel -->
    </generic>
   </multiplay>
+
+  <max-simtime-per-frame n="0" type="double">0.1</max-simtime-per-frame>
  </sim>
 
  <controls>

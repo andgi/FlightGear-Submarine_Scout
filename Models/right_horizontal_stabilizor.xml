@@ -13,7 +13,7 @@
   <type>rotate</type>
   <object-name>right_horizontal_fin</object-name>
   <object-name>right_elevator</object-name>
-  <property>sim/multiplay/generic/float[0]</property>
+  <property>fdm/jsbsim/animation/envelope-shape-norm</property>
   <interpolation>
    <entry>
     <ind>0.0</ind>
