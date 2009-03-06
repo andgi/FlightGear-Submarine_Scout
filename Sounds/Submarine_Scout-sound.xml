@@ -43,7 +43,7 @@
     <z>  1.0 </z>
    </position>
    <volume>
-    <property>/engines/engine/mp-osi</property>
+    <property>/engines/engine/mp-inhg</property>
     <factor>0.005</factor>
     <min>0.10</min>
     <max>0.4</max>

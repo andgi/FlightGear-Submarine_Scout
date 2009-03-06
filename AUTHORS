@@ -9,14 +9,11 @@ to FlightGear:
 Emmanuel BARANGER
   - Propellers. (From FlightGear/Aircraft/Vickers-Vimy)
 
-Jon S. Berndt
-  - FDM engine definition. (From JSBSim-CVS)
-
 Detlef Faber
   - Ground crew 3d model. (From FlightGear/Aircraft/F4U/)
 
 AJ MacLeod, Vivian Meazza
-  - 3d instruments. (From FlightGear/Aircraft/sopwithCamel/)
+  - Most 3d instruments. (From FlightGear/Aircraft/sopwithCamel/)
 
 Vivian Meazza
   - Crew 3d model (From FlightGear/Aircraft/SpitfireIIa/)

@@ -89,14 +89,6 @@ remote_ground_crew.init();
 ###############################################################################
 # Initialization.
 var scenario_network_init = func (active_participant=0) {
-    # Load the broadcast module if it isn't loaded yet.
-
-    if (!contains(globals, "mp_broadcast")) {
-        io.load_nasal(getprop("/sim/fg-root") ~
-                      "/Aircraft/ZLT-NT/Systems/mp_broadcast.nas",
-                      "mp_broadcast");
-    }
-
     Binary = mp_broadcast.Binary;
     broadcast =
         mp_broadcast.BroadcastChannel.new

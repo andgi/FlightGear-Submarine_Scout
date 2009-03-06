@@ -29,7 +29,6 @@
   </presets>
 
   <view n="0">
-   <!-- name>W/T operator</name -->
    <name>W/T operator</name>
    <type>lookfrom</type>
    <internal type="bool">true</internal>

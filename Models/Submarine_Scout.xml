@@ -2,7 +2,7 @@
 <!--
   Submarine Scout class airship.
 
-  Copyright (C) 2007 - 2008  Anders Gidenstam  (anders(at)gidenstam.org)
+  Copyright (C) 2007 - 2009  Anders Gidenstam  (anders(at)gidenstam.org)
   This file is licensed under the GPL license version 2 or later.
 -->
 <PropertyList>
@@ -221,8 +221,8 @@
  </model>
 
  <model>
-  <name>Fore Ballonet Manometer</name>
-  <path>Aircraft/Submarine_Scout/Models/ballonet_manometer-1.xml</path>
+  <name>Gas Manometer 1</name>
+  <path>Aircraft/Submarine_Scout/Models/gas_manometer.xml</path>
   <offsets>
    <x-m>  2.260 </x-m>
    <y-m>  0.210 </y-m>
@@ -230,20 +230,17 @@
   </offsets>
  </model>
  <model>
-  <name>Gas Manometer</name>
+  <name>Gas Manometer 2</name>
+  <overlay>
+   <params>
+    <serviceable>instrumentation/gas-manometer[1]/serviceable</serviceable>
+    <pressure-psf>instrumentation/gas-manometer[1]/gas-pressure-psf</pressure-psf>
+   </params>
+  </overlay>
   <path>Aircraft/Submarine_Scout/Models/gas_manometer.xml</path>
   <offsets>
    <x-m>  2.260 </x-m>
    <y-m>  0.250 </y-m>
-   <z-m>  0.050 </z-m>
-  </offsets>
- </model>
- <model>
-  <name>Aft Ballonet Manometer</name>
-  <path>Aircraft/Submarine_Scout/Models/ballonet_manometer-2.xml</path>
-  <offsets>
-   <x-m>  2.260 </x-m>
-   <y-m>  0.290 </y-m>
    <z-m>  0.050 </z-m>
   </offsets>
  </model>

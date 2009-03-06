@@ -3,32 +3,22 @@
 ##
 ## Submarine Scout airship
 ##
-##  Copyright (C) 2007 - 2008  Anders Gidenstam  (anders(at)gidenstam.org)
+##  Copyright (C) 2007 - 2009  Anders Gidenstam  (anders(at)gidenstam.org)
 ##  This file is licensed under the GPL license v2 or later.
 ##
 ###############################################################################
 
-var static_trim_p = "/fdm/jsbsim/fcs/static-trim-cmd-norm";
+var gas_valve_p = "/fdm/jsbsim/fcs/gas-valve-cmd-norm";
 var ballonet_valve_p =
-    ["/fdm/jsbsim/buoyant_forces/gas-cell/ballonet[0]/valve_open",
-     "/fdm/jsbsim/buoyant_forces/gas-cell/ballonet[1]/valve_open"];
-var trim_ballast_p = "/fdm/jsbsim/inertia/pointmass-weight-lbs[3]";
-
-###############################################################################
-# For backwards compatibility.
-var load_nasal = func (p, n) {
-  if (contains(io, "load_nasal")) {
-    io.load_nasal(p, n);
-  } else {
-    debug.load_nasal(p, n);
-  }
-}
+    ["/fdm/jsbsim/fcs/ballonet-valve-cmd-norm[0]",
+     "/fdm/jsbsim/fcs/ballonet-valve-cmd-norm[1]"];
+var rip_cord_p = "/fdm/jsbsim/fcs/rip-cord-cmd-norm";
+var ballast_p = "/fdm/jsbsim/inertia/pointmass-weight-lbs[0]";
 
 ###############################################################################
 # User actions.
 var weight_on_gear =
   props.globals.getNode("/fdm/jsbsim/forces/fbz-gear-lbs");
-var ballast = "/fdm/jsbsim/inertia/pointmass-weight-lbs";
 
 var print_wow = func {
   gui.popupTip("Current weight on gear " ~
@@ -39,9 +29,9 @@ var weighoff = func {
   gui.popupTip("Weigh-off to 10% in progress. " ~
                "Current weight " ~ -weight_on_gear.getValue() ~ " lbs.");
   var wow  = weight_on_gear.getValue();
-  var cont = getprop(ballast);
+  var cont = getprop(ballast_p);
   var new  = cont + 0.90 * wow;
-  interpolate(ballast,
+  interpolate(ballast_p,
               (new > 0 ? new : 0.0),
               10);
 }
@@ -49,20 +39,25 @@ var weighoff = func {
 var initial_weighoff = func {
     # Set initial static condition.
     var v = getprop("/fdm/jsbsim/static-condition/net-lift-lbs");
-    setprop(trim_ballast_p,
+    setprop(ballast_p,
             v > 0 ? 50.0 + v : 0);
     settimer(func {
         var v = getprop("/fdm/jsbsim/static-condition/net-lift-lbs");
-        setprop(trim_ballast_p,
+        setprop(ballast_p,
                 v > 0 ? 50.0 + v : 0);
     }, 0.25);
+}
+
+var drop_ballast = func(v) {
+    var new = getprop(SubmarineScout.ballast_p) - v;
+    interpolate(SubmarineScout.ballast_p,
+                (new > 0.0 ? new : 0.0), 0.5);
 }
 
 setlistener("/sim/signals/fdm-initialized", func {
     initial_weighoff();
     setlistener("/sim/signals/reinit", func (reinit) {
         if (!reinit.getValue()) {
-            setprop(static_trim_p, 0.65);
             initial_weighoff();
             settimer(func {
                 ground_crew.place_ground_crew
@@ -73,16 +68,15 @@ setlistener("/sim/signals/fdm-initialized", func {
         }
     });
 
-    setprop(static_trim_p, 0.65);
-    setprop(ballonet_valve_p[0], 0.10);
-    setprop(ballonet_valve_p[1], 0.10);    
+    setprop(ballonet_valve_p[0], 0.0);
+    setprop(ballonet_valve_p[1], 0.0);    
 });
 
 ###############################################################################
 # Initialize scenario network for full participation.
-load_nasal(getprop("/sim/fg-root") ~
-           "/Aircraft/Submarine_Scout/Systems/scenario-network.nas",
-           "SubmarineScout");
+io.load_nasal(getprop("/sim/fg-root") ~
+              "/Aircraft/Submarine_Scout/Systems/scenario-network.nas",
+              "SubmarineScout");
 scenario_network_init(1);
 
 ###############################################################################
@@ -105,7 +99,7 @@ var init = func {
 init();
 
 ###############################################################################
-## Experimental armament.
+## Armament.
 var impact_signal =
     props.globals.getNode("sim/ai/aircraft/impact/bomb", 1);
 var bomb =
@@ -161,7 +155,7 @@ controls.trigger = func(b) {
 setlistener(impact_signal, resolve_impact);
 
 ###############################################################################
-## Experimental ground party.
+## Ground party.
 
 var ground_crew = {
     ##################################################
@@ -326,7 +320,7 @@ setlistener("/sim/signals/fdm-initialized", func {
 });
 
 ###############################################################################
-## Experimental ALDIS lamp.
+## ALDIS lamp.
 
 var ALDIS_lamp = {
     ##################################################

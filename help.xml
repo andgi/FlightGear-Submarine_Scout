@@ -3,7 +3,7 @@
 <!--
   Submarine Scout class airship.
 
-  Copyright (C) 2007 - 2008  Anders Gidenstam  (anders(at)gidenstam.org)
+  Copyright (C) 2007 - 2009  Anders Gidenstam  (anders(at)gidenstam.org)
   This file is licensed under the GPL license version 2 or later.
 -->
 
@@ -11,23 +11,13 @@
 
  <title>Submarine Scout Airship</title>
  <!-- Specific keys -->
-<!--
- <key>
-  <name>q</name>
-  <desc>Change static trim towards nose heavy.</desc>
- </key>
- <key>
-  <name>Q</name>
-  <desc>Change static trim towards tail heavy.</desc>
- </key>
--->
  <key>
   <name>d</name>
-  <desc>Drop ballast in 0.1% decrements.</desc>
+  <desc>Drop ballast in 5 lbs steps.</desc>
  </key>
  <key>
   <name>D</name>
-  <desc>Drop ballast in 1% decrements.</desc>
+  <desc>Drop ballast in 50 lbs steps.</desc>
  </key>
  <key>
   <name>W</name>
@@ -47,11 +37,11 @@
  </key>
  <key>
   <name>Q/q</name>
-  <desc>Open/close fore ballonet valve (closed = nose heavy).</desc>
+  <desc>Open/close fore ballonet valve (closed = nose becomes heavier).</desc>
  </key>
  <key>
   <name>A/a</name>
-  <desc>Open/close aft ballonet valve (closed = tail heavy).</desc>
+  <desc>Open/close aft ballonet valve (closed = tail becomes heavier).</desc>
  </key>
  <key>
   <name>U</name>
@@ -73,12 +63,14 @@
     Small non-rigid airships often take-off slightly heavy.
  2. Tell the ground crew to let go (Y).
  3. Adjust static trim and envelope pressure if needed (q/Q, a/A).
-    During take-off the trim should be neutral while in flight the airship should be trimmed slightly nose heavy
-    for pitch stability at high speed (i.e. above 30 mph).
+    During take-off the trim should be neutral while in flight the airship
+    should be trimmed slightly nose heavy
+    for pitch stability at high speed (i.e. above 30 MPH).
  4. Start the engine (magnetos on + s).
  5. Take-off is done at full throttle. Use some elevator to
     keep the nose high.
- 6. Stay in control by careful use of elevator and rudder.
+ 6. Maintain pitch trim and envelope pressure by careful use of the ballonet
+    valves (avoid permanent elevator deflections).
     The rudder needs constant attention since airships are unstable in yaw.
  7. Remember that the secondary effect of elevators and rudder are quite strong.
     Full elevator up might push the whole airship down at low speed.
@@ -90,8 +82,16 @@
  4. Aim to arrive between the handling parties, below 100ft and with very low speed.
  5. The ground crew uses the handling guys to secure the ship.
 
+ Envelope pressure and static trim management
+   Monitor and maintain the envelope pressure at between 15 - 25mm water (=
+   the height difference between the outer and inner fluid in the manometers).
+   The ballonet valves are used to keep the pressure and the static trim in
+   line. Opening the ballonet valves let air out of the ballonets.
+   Air at pressure to inflate the ballonets is constantly taken from the
+   propeller slip stream.
+
  Moving the ground crew
-   The ground crew can be placed via Alt + click. 
+   The ground crew can be moved via Alt + click. 
  
  Pilot's notes: http://wiki.flightgear.org/index.php/Submarine_Scout
 </line>
