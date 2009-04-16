@@ -1,10 +1,10 @@
 AC3Db
 MATERIAL "DefaultWhite" rgb 1 1 1  amb 1 1 1  emis 0 0 0  spec 0.5 0.5 0.5  shi 64  trans 0
-MATERIAL "ac3dmat3" rgb 0.8 0.639 0 amb 0 0 0 emis 0 0 0 spec 0.682 0.522 0 shi 28 trans 0
+MATERIAL "ac3dmat3" rgb 0.8 0.639 0 amb 0.8 0.639 0 emis 0 0 0 spec 0.682 0.522 0 shi 28 trans 0
 MATERIAL "DefaultWhite.001" rgb 1 1 1 amb 1 1 1 emis 0 0 0 spec 0.5 0.5 0.5 shi 64 trans 0
-MATERIAL "black" rgb 0 0 0 amb 0.5 0.5 0.5 emis 0 0 0 spec 0.5 0.5 0.5 shi 32 trans 0
-MATERIAL "ac3dmat1.001" rgb 1 1 1 amb 0.2 0.2 0.2 emis 0 0 0 spec 0 0 0 shi 10 trans 0
-MATERIAL "ac3dmat2" rgb 0.741 0.192 0.271 amb 0.2 0.2 0.2 emis 0 0 0 spec 0 0 0 shi 10 trans 0.541
+MATERIAL "black" rgb 0 0 0 amb 0 0 0 emis 0 0 0 spec 0.5 0.5 0.5 shi 32 trans 0
+MATERIAL "ac3dmat1.001" rgb 1 1 1 amb 1 1 1 emis 0 0 0 spec 0 0 0 shi 10 trans 0
+MATERIAL "ac3dmat2" rgb 0.741 0.192 0.271 amb 0.741 0.192 0.271 emis 0 0 0 spec 0 0 0 shi 10 trans 0.541
 OBJECT world
 kids 5
 OBJECT poly
@@ -541,7 +541,7 @@ OBJECT poly
 name "housing"
 data 8
 Mesh.007
-texture "brushed_brass2.rgb"
+texture "brushed_brass2.png"
 texrep 1 1
 crease 45.000000
 numvert 168
@@ -1884,7 +1884,7 @@ OBJECT poly
 name "screws"
 data 8
 Mesh.005
-texture "screw-brass-csk.rgb"
+texture "screw-brass-csk.png"
 texrep 1 1
 crease 45.000000
 numvert 8

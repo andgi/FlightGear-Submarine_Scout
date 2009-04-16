@@ -1,6 +1,6 @@
 AC3Db
 MATERIAL "DefaultWhite" rgb 1 1 1  amb 1 1 1  emis 0 0 0  spec 0.5 0.5 0.5  shi 64  trans 0
-MATERIAL "DarkGrey.003" rgb 1 1 1 amb 0.5 0.5 0.5 emis 0 0 0 spec 1 1 1 shi 32 trans 0
+MATERIAL "DarkGrey.003" rgb 1 1 1 amb 1 1 1 emis 0 0 0 spec 1 1 1 shi 32 trans 0
 OBJECT world
 kids 5
 OBJECT group
@@ -2046,7 +2046,7 @@ OBJECT poly
 name "/envelope_no_moving_p_1"
 data 8
 Mesh.014
-texture "SSZero_envelope.rgb"
+texture "SSZero_envelope.png"
 texrep 1 1
 crease 30.000000
 numvert 2445
@@ -33343,7 +33343,7 @@ OBJECT poly
 name "Ballonet_hose"
 data 10
 Sphere.004
-texture "SSZero_envelope.rgb"
+texture "SSZero_envelope.png"
 texrep 1 1
 crease 30.000000
 numvert 148
@@ -34715,7 +34715,7 @@ OBJECT poly
 name "Ballonet_scoop"
 data 8
 Tube.002
-texture "SSZero_envelope.rgb"
+texture "SSZero_envelope.png"
 texrep 1 1
 crease 30.000000
 numvert 32
@@ -34869,7 +34869,7 @@ OBJECT poly
 name "Fuel_tank"
 data 10
 Sphere.001
-texture "SSZero_envelope.rgb"
+texture "SSZero_envelope.png"
 texrep 1 1
 crease 30.000000
 numvert 210
@@ -37217,7 +37217,7 @@ OBJECT poly
 name "Fuel_tank.001"
 data 10
 Sphere.002
-texture "SSZero_envelope.rgb"
+texture "SSZero_envelope.png"
 texrep 1 1
 crease 30.000000
 numvert 210

@@ -1,6 +1,6 @@
 AC3Db
 MATERIAL "DefaultWhite" rgb 1 1 1  amb 1 1 1  emis 0 0 0  spec 0.5 0.5 0.5  shi 64  trans 0
-MATERIAL "Material" rgb 0.8 0.8 0.8 amb 0.5 0.5 0.5 emis 0 0 0 spec 1 1 1 shi 32 trans 0
+MATERIAL "Material" rgb 0.8 0.8 0.8 amb 0.8 0.8 0.8 emis 0 0 0 spec 1 1 1 shi 32 trans 0
 OBJECT world
 kids 1
 OBJECT group
@@ -10,7 +10,7 @@ OBJECT poly
 name "leg1.R"
 data 8
 Mesh.019
-texture "pilot1.rgb"
+texture "pilot1.png"
 texrep 1 1
 crease 30
 numvert 123
@@ -1339,7 +1339,7 @@ OBJECT poly
 name "leg2.L_1"
 data 8
 Mesh.006
-texture "pilot1.rgb"
+texture "pilot1.png"
 texrep 1 1
 crease 30
 numvert 122
@@ -2508,7 +2508,7 @@ OBJECT poly
 name "hip_1"
 data 8
 Mesh.014
-texture "pilot1.rgb"
+texture "pilot1.png"
 texrep 1 1
 crease 30
 numvert 69
@@ -3095,7 +3095,7 @@ OBJECT poly
 name "hand.L_1"
 data 8
 Mesh.018
-texture "pilot1.rgb"
+texture "pilot1.png"
 texrep 1 1
 crease 30
 numvert 95
@@ -4206,7 +4206,7 @@ OBJECT poly
 name "arm2.R_1"
 data 8
 Mesh.012
-texture "pilot1.rgb"
+texture "pilot1.png"
 texrep 1 1
 crease 30
 numvert 161
@@ -6128,7 +6128,7 @@ OBJECT poly
 name "arm1.R_1"
 data 8
 Mesh.011
-texture "pilot1.rgb"
+texture "pilot1.png"
 texrep 1 1
 crease 30
 numvert 137
@@ -7417,7 +7417,7 @@ OBJECT poly
 name "foot.R_1"
 data 8
 Mesh.021
-texture "pilot1.rgb"
+texture "pilot1.png"
 texrep 1 1
 crease 30
 numvert 67
@@ -7983,7 +7983,7 @@ OBJECT poly
 name "foot.L_1"
 data 8
 Mesh.005
-texture "pilot1.rgb"
+texture "pilot1.png"
 texrep 1 1
 crease 30
 numvert 67
@@ -8835,7 +8835,7 @@ OBJECT poly
 name "arm1.L_1"
 data 8
 Mesh.015
-texture "pilot1.rgb"
+texture "pilot1.png"
 texrep 1 1
 crease 30
 numvert 137
@@ -10212,7 +10212,7 @@ OBJECT poly
 name "torso_1"
 data 4
 Mesh
-texture "pilot1.rgb"
+texture "pilot1.png"
 texrep 1 1
 crease 30
 numvert 148
@@ -11388,7 +11388,7 @@ OBJECT poly
 name "head"
 data 8
 Mesh.001
-texture "pilot1.rgb"
+texture "pilot1.png"
 texrep 1 1
 crease 30
 numvert 183
@@ -13362,7 +13362,7 @@ OBJECT poly
 name "hand.R_1"
 data 8
 Mesh.023
-texture "pilot1.rgb"
+texture "pilot1.png"
 texrep 1 1
 crease 30
 numvert 95
@@ -14473,7 +14473,7 @@ OBJECT poly
 name "arm2.L_1"
 data 8
 Mesh.017
-texture "pilot1.rgb"
+texture "pilot1.png"
 texrep 1 1
 crease 30
 numvert 161
@@ -16054,7 +16054,7 @@ OBJECT poly
 name "leg1.L"
 data 8
 Mesh.022
-texture "pilot1.rgb"
+texture "pilot1.png"
 texrep 1 1
 crease 30
 numvert 123
@@ -17383,7 +17383,7 @@ OBJECT poly
 name "leg2.R_1"
 data 8
 Mesh.020
-texture "pilot1.rgb"
+texture "pilot1.png"
 texrep 1 1
 crease 30
 numvert 122

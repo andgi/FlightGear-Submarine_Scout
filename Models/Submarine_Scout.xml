@@ -201,7 +201,7 @@
 
  <model>
   <name>Pilot Compass</name>
-  <path>Aircraft/sopwithCamel/Models/type259compass.xml</path>
+  <path>Aircraft/Submarine_Scout/Models/type259compass.xml</path>
   <offsets>
    <x-m> 2.260 </x-m>
    <y-m> 0.000 </y-m>

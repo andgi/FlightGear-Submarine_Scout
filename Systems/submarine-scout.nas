@@ -85,7 +85,7 @@ scenario_network_init(1);
 ###############################################################################
 # Various
 var loop = func {
-    setprop("/fdm/jsbsim/fcs/sun-angle-rad",
+    setprop("/fdm/jsbsim/environment/sun-angle-rad",
             getprop("/sim/time/sun-angle-rad")); 
     settimer(loop, 3.14);
 }

@@ -1,9 +1,9 @@
 AC3Db
-MATERIAL "ac3dmat0" rgb 0.678 0.678 0.663  amb 0.2 0.2 0.2  emis 0 0 0  spec 0 0 0  shi 10  trans 0
-MATERIAL "ac3dmat1" rgb 1 1 1  amb 0.2 0.2 0.2  emis 0 0 0  spec 0 0 0  shi 10  trans 0
-MATERIAL "ac3dmat2" rgb 0 0.227 0.353  amb 0.2 0.2 0.62  emis 0 0 0  spec 0 0 0  shi 37  trans 0.82
-MATERIAL "ac3dmat3" rgb 0.478 0.318 0.008  amb 0.2 0.2 0.2  emis 0 0 0  spec 0 0 0  shi 4  trans 0
-MATERIAL "ac3dmat4" rgb 0.431 0.188 0.141  amb 0.192 0.529 0.278  emis 0 0 0  spec 0 0 0  shi 17  trans 0
+MATERIAL "ac3dmat0" rgb 0.678 0.678 0.663  amb 0.678 0.678 0.663  emis 0 0 0  spec 0 0 0  shi 10  trans 0
+MATERIAL "ac3dmat1" rgb 1 1 1  amb 1 1 1  emis 0 0 0  spec 0 0 0  shi 10  trans 0
+MATERIAL "ac3dmat2" rgb 0 0.227 0.353  amb 0 0.227 0.353  emis 0 0 0  spec 0 0 0  shi 37  trans 0.82
+MATERIAL "ac3dmat3" rgb 0.478 0.318 0.008  amb 0.478 0.318 0.008  emis 0 0 0  spec 0 0 0  shi 4  trans 0
+MATERIAL "ac3dmat4" rgb 0.431 0.188 0.141  amb 0.431 0.188 0.141  emis 0 0 0  spec 0 0 0  shi 17  trans 0
 OBJECT world
 kids 15
 OBJECT poly
@@ -557,7 +557,7 @@ kids 0
 OBJECT poly
 name "inner_face"
 loc 0.00596176 -0.000225738 0.00158017
-texture "markVAaltimeter.rgb"
+texture "markVAaltimeter.png"
 crease 45.000000
 numvert 36
 0 -0.00277542 0.0154403
@@ -640,7 +640,7 @@ kids 0
 OBJECT poly
 name "main_face"
 loc 0.00720272 0 0
-texture "markVAaltimeter.rgb"
+texture "markVAaltimeter.png"
 crease 45.000000
 numvert 74
 0 0.0170346 0

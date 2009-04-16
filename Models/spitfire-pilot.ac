@@ -1,10 +1,10 @@
 AC3Db
 MATERIAL "DefaultWhite" rgb 1 1 1  amb 1 1 1  emis 0 0 0  spec 0.5 0.5 0.5  shi 64  trans 0
-MATERIAL "ac3dmat1.001" rgb 1 1 1 amb 0.2 0.2 0.2 emis 0 0 0 spec 0.5 0.5 0.5 shi 10 trans 0
-MATERIAL "ac3dmat14" rgb 0.8 0.8 0.8 amb 0.2 0.2 0.2 emis 0 0 0 spec 0.502 0.502 0.502 shi 128 trans 0.902
-MATERIAL "ac3dmat1" rgb 1 1 1 amb 0.2 0.2 0.2 emis 0 0 0 spec 0 0 0 shi 10 trans 0
-MATERIAL "ac3dmat1.003" rgb 1 1 1 amb 0.2 0.2 0.2 emis 0 0 0 spec 0 0 0 shi 100 trans 0
-MATERIAL "ac3dmat0" rgb 0 0 0 amb 0.2 0.2 0.2 emis 0 0 0 spec 0.502 0.502 0.502 shi 10 trans 0
+MATERIAL "ac3dmat1.001" rgb 1 1 1 amb 1 1 1 emis 0 0 0 spec 0.5 0.5 0.5 shi 10 trans 0
+MATERIAL "ac3dmat14" rgb 0.8 0.8 0.8 amb 0.8 0.8 0.8 emis 0 0 0 spec 0.502 0.502 0.502 shi 128 trans 0.902
+MATERIAL "ac3dmat1" rgb 1 1 1 amb 1 1 1 emis 0 0 0 spec 0 0 0 shi 10 trans 0
+MATERIAL "ac3dmat1.003" rgb 1 1 1 amb 1 1 1 emis 0 0 0 spec 0 0 0 shi 100 trans 0
+MATERIAL "ac3dmat0" rgb 0 0 0 amb 0 0 0 emis 0 0 0 spec 0.502 0.502 0.502 shi 10 trans 0
 OBJECT world
 kids 1
 OBJECT group
@@ -20,7 +20,7 @@ OBJECT poly
 name "Frame"
 data 8
 Mesh.007
-texture "Pilot_1.rgb"
+texture "Pilot_1.png"
 texrep 1 1
 crease 45.000000
 numvert 72
@@ -872,7 +872,7 @@ OBJECT poly
 name "Strap"
 data 8
 Mesh.008
-texture "Pilot_1.rgb"
+texture "Pilot_1.png"
 texrep 1 1
 crease 80.000000
 numvert 28
@@ -1066,7 +1066,7 @@ OBJECT poly
 name "Face"
 data 8
 Mesh.006
-texture "Pilot_2.rgb"
+texture "Pilot_2.png"
 texrep 1 1
 crease 80.000000
 numvert 154
@@ -2580,7 +2580,7 @@ OBJECT poly
 name "Helmet"
 data 8
 Mesh.005
-texture "Pilot_1.rgb"
+texture "Pilot_1.png"
 texrep 1 1
 crease 80.000000
 numvert 267
@@ -5389,7 +5389,7 @@ OBJECT poly
 name "Mask"
 data 8
 Mesh.004
-texture "Pilot_1.rgb"
+texture "Pilot_1.png"
 texrep 1 1
 crease 80.000000
 numvert 58
@@ -5943,7 +5943,7 @@ OBJECT poly
 name "Boot-L"
 data 8
 Mesh.016
-texture "Pilot_1.rgb"
+texture "Pilot_1.png"
 texrep 1 1
 crease 61.000000
 numvert 41
@@ -6336,7 +6336,7 @@ OBJECT poly
 name "Boot-R"
 data 8
 Mesh.014
-texture "Pilot_1.rgb"
+texture "Pilot_1.png"
 texrep 1 1
 crease 61.000000
 numvert 41
@@ -6729,7 +6729,7 @@ OBJECT poly
 name "Collar"
 data 8
 Mesh.010
-texture "Pilot_2.rgb"
+texture "Pilot_2.png"
 texrep 1 1
 crease 61.000000
 numvert 50
@@ -7123,7 +7123,7 @@ OBJECT poly
 name "Pilot-Body"
 data 8
 Mesh.013
-texture "Pilot_2.rgb"
+texture "Pilot_2.png"
 texrep 1 1
 crease 61.000000
 numvert 234
@@ -9011,7 +9011,7 @@ OBJECT poly
 name "Pilot-LLArm"
 data 8
 Mesh.011
-texture "Pilot_1.rgb"
+texture "Pilot_1.png"
 texrep 1 1
 crease 61.000000
 numvert 69
@@ -9604,7 +9604,7 @@ OBJECT poly
 name "Pilot-LLLeg"
 data 8
 Mesh.015
-texture "Pilot_1.rgb"
+texture "Pilot_1.png"
 texrep 1 1
 crease 61.000000
 numvert 49
@@ -9991,7 +9991,7 @@ OBJECT poly
 name "Pilot-LUArm"
 data 8
 Mesh.017
-texture "Pilot_1.rgb"
+texture "Pilot_1.png"
 texrep 1 1
 crease 61.000000
 numvert 62
@@ -10497,7 +10497,7 @@ OBJECT poly
 name "Pilot-LULeg"
 data 8
 Mesh.021
-texture "Pilot_1.rgb"
+texture "Pilot_1.png"
 texrep 1 1
 crease 61.000000
 numvert 62
@@ -10997,7 +10997,7 @@ OBJECT poly
 name "Pilot-RLArm"
 data 8
 Mesh.020
-texture "Pilot_1.rgb"
+texture "Pilot_1.png"
 texrep 1 1
 crease 61.000000
 numvert 69
@@ -11590,7 +11590,7 @@ OBJECT poly
 name "Pilot-RLLeg"
 data 8
 Mesh.019
-texture "Pilot_1.rgb"
+texture "Pilot_1.png"
 texrep 1 1
 crease 61.000000
 numvert 49
@@ -11977,7 +11977,7 @@ OBJECT poly
 name "Pilot-RUArm"
 data 8
 Mesh.018
-texture "Pilot_1.rgb"
+texture "Pilot_1.png"
 texrep 1 1
 crease 61.000000
 numvert 62
@@ -12519,7 +12519,7 @@ OBJECT poly
 name "Pilot-RULeg"
 data 8
 Mesh.012
-texture "Pilot_1.rgb"
+texture "Pilot_1.png"
 texrep 1 1
 crease 61.000000
 numvert 62

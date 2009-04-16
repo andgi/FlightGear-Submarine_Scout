@@ -1,14 +1,14 @@
 AC3Db
 MATERIAL "DefaultWhite" rgb 1 1 1  amb 1 1 1  emis 0 0 0  spec 0.5 0.5 0.5  shi 64  trans 0
-MATERIAL "DarkGrey.001" rgb 1 1 1 amb 0.5 0.5 0.5 emis 0 0 0 spec 1 1 1 shi 32 trans 0
-MATERIAL "DarkGrey.003" rgb 1 1 1 amb 0.5 0.5 0.5 emis 0 0 0 spec 1 1 1 shi 32 trans 0
+MATERIAL "DarkGrey.001" rgb 1 1 1 amb 1 1 1 emis 0 0 0 spec 1 1 1 shi 32 trans 0
+MATERIAL "DarkGrey.003" rgb 1 1 1 amb 1 1 1 emis 0 0 0 spec 1 1 1 shi 32 trans 0
 OBJECT world
 kids 2
 OBJECT poly
 name "rudder"
 data 8
 Mesh.009
-texture "RNAS_rudder.rgb"
+texture "RNAS_rudder.png"
 texrep 1 1
 crease 30.000000
 numvert 80
@@ -1037,7 +1037,7 @@ OBJECT poly
 name "vertical_fin_0"
 data 4
 Mesh
-texture "RNAS_insignia.rgb"
+texture "RNAS_insignia.png"
 texrep 1 1
 crease 30.000000
 numvert 8
@@ -1069,7 +1069,7 @@ OBJECT poly
 name "vertical_fin_1"
 data 4
 Mesh
-texture "SSZero_envelope.rgb"
+texture "SSZero_envelope.png"
 texrep 1 1
 crease 30.000000
 numvert 88
