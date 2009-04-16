@@ -143,14 +143,6 @@
  </metrics>
 
  <!--
- ==== External environment properties ======================================
- -->
- <system name="External environment properties">
-  <property> fcs/sun-angle-rad </property>
-  <property> fcs/sun-radiation-norm </property>
- </system>
-
- <!--
  ==== Mass balance =========================================================
  -->
 
@@ -350,11 +342,6 @@
  <!--
  === Gas cell ==============================================================
  -->
- <system name="Forward declaration of ballonet inflow properties">
-  <property>ballonets/in-flow-ft3ps[0]</property>
-  <property>ballonets/in-flow-ft3ps[1]</property>
- </system>
-
  <buoyant_forces>
 
   <documentation>
@@ -379,6 +366,10 @@
     - Envelope    70,000 feet^3
     - 2 Ballonets 9,800 feet^3 each
   </documentation>
+
+  <!-- Forward declaration of ballonet inflow properties -->
+  <property value="0.0">ballonets/in-flow-ft3ps[0]</property>
+  <property value="0.0">ballonets/in-flow-ft3ps[1]</property>
 
   <gas_cell type="HYDROGEN">
    <location unit="M">
@@ -428,23 +419,6 @@
       </difference>
      </product>
     </function>
-    <!-- Heat gain due to solar radiation. Pure guess work. -->
-    <function name="buoyant_forces/gas-cell/dU_sun">
-     <product>
-      <value>   7.2330 </value> <!-- Conversion to [lb ft / s] -->
-      <value>   326.80 </value> <!-- Estimated projected surface area [m2] -->
-      <value>  1300.00 </value> <!-- Solar energy flow [W/m2] -->
-      <value>     0.01 </value> <!-- Guess -->
-      <property> fcs/sun-radiation-norm </property>
-      <max>
-       <value> 0.0 </value>
-       <difference>
-        <value> 1.5708 </value>
-        <property> fcs/sun-angle-rad </property>
-       </difference>
-      </max>
-     </product>
-    </function>    
 
    </heat>
 
@@ -458,7 +432,7 @@
     <x_radius unit="M">  6.45 </x_radius>
     <y_radius unit="M">  3.00 </y_radius>
     <z_radius unit="M">  2.23 </z_radius>
-    <max_overpressure unit="PA"> 250.0 </max_overpressure> 
+    <max_overpressure unit="PA"> 255.0 </max_overpressure> 
     <valve_coefficient unit="M4*SEC/KG"> 0.01 </valve_coefficient>
     <fullness>0.5</fullness>
     <heat>
@@ -824,42 +798,15 @@
  </system>
 
  <!--
- ==== Animation control =====================================================
- -->
- <system name="Animation">
-
-  <channel name="Envelope">
-
-   <fcs_function name="animation/envelope-shape-norm">
-    <function>
-     <max>
-      <value> 0.0 </value>
-      <min>
-       <value> 1.0 </value>
-       <quotient>
-        <property> instrumentation/gas-pressure-psf </property>
-        <value> 5.12 </value> <!-- about 25mm water. -->
-       </quotient>
-      </min>
-     </max>
-    </function>
-    <output> /sim/multiplay/generic/float[0] </output>
-   </fcs_function>
-
-  </channel>
-
- </system>
-
- <!--
  ==== Flight control system =================================================
  -->
- <autopilot file="Submarine_Scout_crew_ap">
+ <system file="Submarine_Scout_crew_ap">
   <limitation>
    The real aircraft did not have any autopilot. This autopilot is
    mostly intended for scripted flights in JSBSim/standalone.
    The autopilot is only minimally tuned.
   </limitation>
- </autopilot>
+ </system>
 
  <system name="Ballonet and gas control">
 
@@ -913,7 +860,7 @@
     <function>
      <sum>
       <property>fcs/gas-valve-cmd-norm</property>
-      <property>ap/gas-valve-cmd</property>
+      <property>ap/gas-valve-cmd-norm</property>
       <product>
        <value>100.0</value>
        <property>fcs/ripped-sample-hold</property>
@@ -981,7 +928,7 @@
     <function>
      <sum>
       <property>fcs/ballonet-valve-cmd-norm[0]</property>
-      <property>ap/ballonet-valve-cmd[0]</property>
+      <property>ap/ballonet-valve-cmd-norm[0]</property>
      </sum>
     </function>
     <output>buoyant_forces/gas-cell/ballonet[0]/valve_open</output>
@@ -991,7 +938,7 @@
     <function>
      <sum>
       <property>fcs/ballonet-valve-cmd-norm[1]</property>
-      <property>ap/ballonet-valve-cmd[1]</property>
+      <property>ap/ballonet-valve-cmd-norm[1]</property>
      </sum>
     </function>
     <output>buoyant_forces/gas-cell/ballonet[1]/valve_open</output>
@@ -1053,7 +1000,6 @@
 
    <summer name="fcs/yaw-trim-sum">
     <input>fcs/rudder-cmd-norm</input>
-    <input>-fcs/aileron-cmd-norm</input>
     <input>fcs/yaw-trim-cmd-norm</input>
     <input>ap/rudder-cmd-norm</input>
     <clipto>
@@ -1172,44 +1118,6 @@
 
  <external_reactions>
 
-  <!-- Note: these forces are applied to the wrong location. -->
-  <force name="guy-wire-north" frame="LOCAL">
-   <location unit="M">
-    <x> 0.0 </x>
-    <y> 0.0 </y>
-    <z> 0.0 </z>
-   </location>
-   <direction>
-    <x> 1.0 </x>
-    <y> 0.0 </y>
-    <z> 0.0 </z>
-   </direction>
-  </force>
-  <force name="guy-wire-east" frame="LOCAL">
-   <location unit="M">
-    <x> 0.0 </x>
-    <y> 0.0 </y>
-    <z> 0.0 </z>
-   </location>
-   <direction>
-    <x> 0.0 </x>
-    <y> 1.0 </y>
-    <z> 0.0 </z>
-   </direction>
-  </force>
-  <force name="guy-wire-down" frame="LOCAL">
-   <location unit="M">
-    <x> 0.0 </x>
-    <y> 0.0 </y>
-    <z> 0.0 </z>
-   </location>
-   <direction>
-    <x> 0.0 </x>
-    <y> 0.0 </y>
-    <z> 1.0 </z>
-   </direction>
-  </force>
-
   <force name="added-mass-bx" frame="BODY">
    <location unit="M">
     <x> 20.0 </x>
@@ -1300,246 +1208,10 @@
  </external_reactions>
 
  <!--
- ==== Mooring force calculation =============================================
- -->
-
- <!-- fgfs4jsbsim is only for use with JSBSim/standalone. -->
- <!-- system file="fgfs4jsbsim"/ -->
-
- <system name="landing-party">
-
-  <!-- INTERFACE PROPERTIES -->
-  <!--  Ground crew actions -->
-  <property value="0.0"> landing-party/wire-connected[0] </property>
-  <property value="0.0"> landing-party/wire-connected[1] </property>
-  <property value="70.0"> landing-party/wire-length-ft </property>
-  <!--  Handling party locations -->
-  <property value="0.0"> landing-party/latitude-deg[0]  </property>
-  <property value="0.0"> landing-party/longitude-deg[0] </property>
-  <property value="0.0"> landing-party/altitude-ft[0] </property>
-  <property value="0.0"> landing-party/latitude-deg[1]  </property>
-  <property value="0.0"> landing-party/longitude-deg[1] </property>
-  <property value="0.0"> landing-party/altitude-ft[1] </property>
-
-  <!-- Constants -->
-  <!--  Wire -->
-  <property value="10.0"> landing-party/wire-spring-coeff </property>
-  <property value="500.0"> landing-party/max-wire-force-lbs </property>
-
-  <channel name="Guy Wire Forces">
-
-   <fcs_function name="landing-party/latitude-diff-ft[0]">
-    <function>
-     <product>
-      <value> -364560.0 </value>
-      <difference>
-       <property> /position/latitude-deg </property>
-       <property> landing-party/latitude-deg[0] </property>
-      </difference>
-     </product>
-    </function>
-   </fcs_function>
-   <fcs_function name="landing-party/latitude-diff-ft[1]">
-    <function>
-     <product>
-      <value> -364560.0 </value>
-      <difference>
-       <property> /position/latitude-deg </property>
-       <property> landing-party/latitude-deg[1] </property>
-      </difference>
-     </product>
-    </function>
-   </fcs_function>
-
-   <fcs_function name="landing-party/longitude-diff-ft[0]">
-    <function>
-     <product>
-      <value> -364560.0 </value> <!-- Bougus conversion factor. -->
-      <difference>
-       <property> /position/longitude-deg </property>
-       <property> landing-party/longitude-deg[0] </property>
-      </difference>
-     </product>
-    </function>
-   </fcs_function>
-   <fcs_function name="landing-party/longitude-diff-ft[1]">
-    <function>
-     <product>
-      <value> -364560.0 </value> <!-- Bougus conversion factor. -->
-      <difference>
-       <property> /position/longitude-deg </property>
-       <property> landing-party/longitude-deg[1] </property>
-      </difference>
-     </product>
-    </function>
-   </fcs_function>
-
-   <summer name="landing-party/altitude-diff-ft[0]">
-    <input> /position/altitude-ft </input>
-    <input> -landing-party/altitude-ft[0] </input>
-   </summer>
-   <summer name="landing-party/altitude-diff-ft[1]">
-    <input> /position/altitude-ft </input>
-    <input> -landing-party/altitude-ft[1] </input>
-   </summer>
-
-   <fcs_function name="landing-party/total-distance-ft[0]">
-    <function>
-     <pow>
-      <sum>
-       <pow>
-        <property> landing-party/latitude-diff-ft[0] </property>
-        <value> 2.0 </value>
-       </pow>
-       <pow>
-        <property> landing-party/longitude-diff-ft[0] </property>
-        <value> 2.0 </value>
-       </pow>
-       <pow>
-        <property> landing-party/altitude-diff-ft[0] </property>
-        <value> 2.0 </value>
-       </pow>
-      </sum>
-      <value> 0.5 </value>
-     </pow>
-    </function>
-   </fcs_function>
-   <fcs_function name="landing-party/total-distance-ft[1]">
-    <function>
-     <pow>
-      <sum>
-       <pow>
-        <property> landing-party/latitude-diff-ft[1] </property>
-        <value> 2.0 </value>
-       </pow>
-       <pow>
-        <property> landing-party/longitude-diff-ft[1] </property>
-        <value> 2.0 </value>
-       </pow>
-       <pow>
-        <property> landing-party/altitude-diff-ft[1] </property>
-        <value> 2.0 </value>
-       </pow>
-      </sum>
-      <value> 0.5 </value>
-     </pow>
-    </function>
-   </fcs_function>
-
-   <fcs_function name="landing-party/wire-force-lbs[0]">
-    <function>
-     <product>
-      <property> landing-party/wire-connected[0] </property>
-      <property> landing-party/wire-spring-coeff </property>
-      <max>
-       <difference>
-        <property> landing-party/total-distance-ft[0] </property>
-        <property> landing-party/wire-length-ft </property>
-       </difference>
-       <value> 0.0 </value>
-      </max>
-     </product>
-    </function>
-    <clipto>
-     <min> 0.0 </min>
-     <max> landing-party/max-wire-force-lbs </max>
-    </clipto>
-   </fcs_function>
-   <fcs_function name="landing-party/wire-force-lbs[1]">
-    <function>
-     <product>
-      <property> landing-party/wire-connected[1] </property>
-      <property> landing-party/wire-spring-coeff </property>
-      <max>
-       <difference>
-        <property> landing-party/total-distance-ft[1] </property>
-        <property> landing-party/wire-length-ft </property>
-       </difference>
-       <value> 0.0 </value>
-      </max>
-     </product>
-    </function>
-    <clipto>
-     <min> 0.0 </min>
-     <max> landing-party/max-wire-force-lbs </max>
-    </clipto>
-   </fcs_function>
-
-   <fcs_function name="landing-party/force-north-lbs">
-    <function>
-     <sum>
-      <product>
-       <property> landing-party/wire-force-lbs[0] </property>
-       <quotient>
-        <property> landing-party/latitude-diff-ft[0] </property>
-        <property> landing-party/total-distance-ft[0] </property>
-       </quotient>
-      </product>
-      <product>
-       <property> landing-party/wire-force-lbs[1] </property>
-       <quotient>
-        <property> landing-party/latitude-diff-ft[1] </property>
-        <property> landing-party/total-distance-ft[1] </property>
-       </quotient>
-      </product>
-     </sum>
-    </function>
-    <output> external_reactions/guy-wire-north/magnitude </output>
-   </fcs_function>
-
-   <fcs_function name="landing-party/force-east-lbs">
-    <function>
-     <sum>
-      <product>
-       <property> landing-party/wire-force-lbs[0] </property>
-       <quotient>
-        <property> landing-party/longitude-diff-ft[0] </property>
-        <property> landing-party/total-distance-ft[0] </property>
-       </quotient>
-      </product>
-      <product>
-       <property> landing-party/wire-force-lbs[1] </property>
-       <quotient>
-        <property> landing-party/longitude-diff-ft[1] </property>
-        <property> landing-party/total-distance-ft[1] </property>
-       </quotient>
-      </product>
-     </sum>
-    </function>
-    <output> external_reactions/guy-wire-east/magnitude </output>
-   </fcs_function>
-
-   <fcs_function name="landing-party/force-down-lbs">
-    <function>
-     <sum>
-      <product>
-       <property> landing-party/wire-force-lbs[0] </property>
-       <quotient>
-        <property> landing-party/altitude-diff-ft[0] </property>
-        <property> landing-party/total-distance-ft[0] </property>
-       </quotient>
-      </product>
-      <product>
-       <property> landing-party/wire-force-lbs[1] </property>
-       <quotient>
-        <property> landing-party/altitude-diff-ft[1] </property>
-        <property> landing-party/total-distance-ft[1] </property>
-       </quotient>
-      </product>
-     </sum>
-    </function>
-    <output> external_reactions/guy-wire-down/magnitude </output>
-   </fcs_function>
-
-  </channel>  
-
- </system>
-
- <!--
  ==== Aerodynamics ==========================================================
  -->
 
- <system file="airship_added_mass">
+ <system name="Aerodynamic constants">
   <!-- Aerodynamic constants. -->
   <property value="143.42">  aero/constants/length-ft </property>
   <property value="30.0">    aero/constants/diameter-ft </property>
@@ -1552,6 +1224,7 @@
   <property value="-0.69"> aero/constants/added-mass/k-rotational </property>
   <property value="0.75">  aero/constants/added-mass/tweak-factor </property>
  </system>
+ <system file="airship_added_mass"/>
 
  <aerodynamics>
 
@@ -2387,7 +2060,6 @@
 
  </aerodynamics>
 
-<!--
  <output name="datalog.csv" type="CSV" rate="2">
 
   <rates> ON </rates>
@@ -2423,5 +2095,5 @@
   <property> aero/envelope-aoa-mag-deg </property>
 
  </output>
--->
+
 </fdm_config>
