@@ -21,7 +21,7 @@
  </key>
  <key>
   <name>W</name>
-  <desc>Weigh-off to 10% of current weight by dropping ballast. (Takes about 10 seconds and only works on ground.)</desc>
+  <desc>Weigh-off to 50 lb heavy. (Takes about 10 seconds and only works on ground.)</desc>
  </key>
  <key>
   <name>w</name>
@@ -37,11 +37,19 @@
  </key>
  <key>
   <name>Q/q</name>
-  <desc>Open/close fore ballonet valve (closed = nose becomes heavier).</desc>
+  <desc>Open/close fore ballonet outflow valve (closed = nose becomes heavier).</desc>
+ </key>
+ <key>
+  <name>Ctrl-Q</name>
+  <desc>Open/close fore ballonet inflow valve.</desc>
  </key>
  <key>
   <name>A/a</name>
-  <desc>Open/close aft ballonet valve (closed = tail becomes heavier).</desc>
+  <desc>Open/close aft ballonet outflow valve (closed = tail becomes heavier).</desc>
+ </key>
+ <key>
+  <name>Ctrl-A</name>
+  <desc>Open/close aft ballonet valve inflow valve.</desc>
  </key>
  <key>
   <name>U</name>
@@ -59,14 +67,13 @@
  <!-- Handling instructions. -->
  <line>Take-off
  
- 1. Weigh-off (W) a couple of times until weight on ground (w) is less than 10 lbs.
-    Small non-rigid airships often take-off slightly heavy.
+ 1. Weigh-off (W). Small non-rigid airships often take-off slightly heavy.
  2. Tell the ground crew to let go (Y).
  3. Adjust static trim and envelope pressure if needed (q/Q, a/A).
     During take-off the trim should be neutral while in flight the airship
     should be trimmed slightly nose heavy
     for pitch stability at high speed (i.e. above 30 MPH).
- 4. Start the engine (magnetos on + s).
+ 4. Start the engine (magnetos on + s hold intil the engine catches).
  5. Take-off is done at full throttle. Use some elevator to
     keep the nose high.
  6. Maintain pitch trim and envelope pressure by careful use of the ballonet
@@ -86,9 +93,9 @@
    Monitor and maintain the envelope pressure at between 15 - 25mm water (=
    the height difference between the outer and inner fluid in the manometers).
    The ballonet valves are used to keep the pressure and the static trim in
-   line. Opening the ballonet valves let air out of the ballonets.
-   Air at pressure to inflate the ballonets is constantly taken from the
-   propeller slip stream.
+   line. Opening the ballonet outflow valves let air out of the ballonets.
+   Air at pressure to inflate the ballonets is taken from the
+   propeller slip stream when the ballonet inflow valves are open.
 
  Moving the ground crew
    The ground crew can be moved via Alt + click. 

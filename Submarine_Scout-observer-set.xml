@@ -3,7 +3,7 @@
 <!--
   Submarine Scout class airship. Multiplayer observer view.
 
-  Copyright (C) 2007 - 2008  Anders Gidenstam  (anders(at)gidenstam.org)
+  Copyright (C) 2007 - 2009  Anders Gidenstam  (anders(at)gidenstam.org)
   This file is licensed under the GPL license version 2 or later.
 -->
 <!--
@@ -16,12 +16,12 @@
   <description>Submarine Scout airship multiplayer observer</description>
   <author>Anders Gidenstam</author>
   <status>experimental</status>
-  <aircraft-version>0.1</aircraft-version>
+  <aircraft-version>$Id$</aircraft-version>
 
   <flight-model>null</flight-model>
 
   <model>
-   <path>Models/Geometry/null.ac</path>
+   <path>Aircraft/Submarine_Scout/Models/Submarine_Scout-observer.xml</path>
   </model>
 
   <presets>
@@ -64,6 +64,24 @@
    <path/>
   </instrumentation>
 
+  <menubar>
+   <default>
+    <menu n="100">
+     <label>Submarine Scout</label>
+     <item>
+      <label>Select MP-pilot</label>
+      <binding>
+       <command>nasal</command>
+       <script>
+        dual_control_tools.
+          copilot_dialog.show(aircraft_dual_control.pilot_type);
+       </script>
+      </binding>
+     </item>
+    </menu>
+   </default>
+  </menubar>
+
  </sim>
 
  <nasal>
@@ -73,9 +91,9 @@
   <aircraft_dual_control>
    <file>Aircraft/Submarine_Scout/Systems/submarine-scout-dual-control.nas</file>
   </aircraft_dual_control>
-  <dual_control_copilot>
+  <dual_control>
    <file>Aircraft/ZLT-NT/DualControl/copilot-dual-control.nas</file>
-  </dual_control_copilot>
+  </dual_control>
  </nasal>
 
 </PropertyList>

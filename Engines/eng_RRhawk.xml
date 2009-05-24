@@ -1,4 +1,10 @@
 <?xml version="1.0"?>
+<!--
+  Submarine Scout class airship.
+
+  Copyright (C) 2007 - 2009  Anders Gidenstam  (anders(at)gidenstam.org)
+  This file is licensed under the GPL license version 2 or later.
+-->
 <piston_engine name="RR_Hawk">
  <!--
    http://en.wikipedia.org/wiki/Rolls-Royce_Hawk
@@ -36,7 +42,7 @@
  <cylinders>         6.0 </cylinders>
  <compression-ratio> 5.1 </compression-ratio> 
  <cycles>            4.0 </cycles>
- <idlerpm>         300.0 </idlerpm>
+ <idlerpm>         400.0 </idlerpm>
  <maxrpm>         1350.0 </maxrpm>
  <maxthrottle>       1.0 </maxthrottle>
  <minthrottle>       0.1 </minthrottle>

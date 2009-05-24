@@ -1,3 +1,4 @@
+<?xml version="1.0"?>
 <!-- $Id$ -->
 <!--
   Submarine Scout class airship.
@@ -549,9 +550,6 @@
 var rplayer = cmdarg();
 print("LOAD Submarine_Scout", rplayer.getPath());
 
-# Set aircraft type property.
-rplayer.getNode("sim/model/ac-type", 1).setValue("Submarine_Scout");
-
 var bomb1_mpp = "sim/multiplay/generic/int[0]";
 var bomb2_mpp = "sim/multiplay/generic/int[1]";
 var bomb1_rp  = "controls/armament/station[0]/present";
@@ -583,9 +581,6 @@ rplayer.getNode(bomb2_rp, 1).
 ##############################################################################
 var rplayer = cmdarg();
 print("UNLOAD Submarine_Scout ", rplayer.getPath());
-# Unset aircraft type property.
-rplayer.getNode("sim/model/ac-type", 1).setValue("");
-rplayer.getNode("sim/model/ac-type", 1).remove();
 
 # This is done automatically. However, the the module should be shut down
 # if this was its last user.

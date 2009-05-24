@@ -150,19 +150,19 @@
   </weight>
   <weight>
    <name type="string">W/T Operator</name>
-   <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[6]"/>
+   <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[5]"/>
    <min-lb type="double">0.0</min-lb>
    <max-lb type="double">300.0</max-lb>
   </weight>
   <weight>
    <name type="string">Pilot</name>
-   <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[7]"/>
+   <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[6]"/>
    <min-lb type="double">0.0</min-lb>
    <max-lb type="double">300.0</max-lb>
   </weight>
   <weight>
    <name type="string">Mechanic</name>
-   <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[8]"/>
+   <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[7]"/>
    <min-lb type="double">0.0</min-lb>
    <max-lb type="double">300.0</max-lb>
   </weight>
@@ -195,7 +195,7 @@
     <binding> 
      <command>nasal</command>
      <script>
-      SubmarineScout.weighoff();
+      SubmarineScout.auto_weighoff();
      </script>     
     </binding>
    </key>
@@ -277,34 +277,50 @@
    <!-- Ballonet commands ====================================== -->
    <key n="113">
     <name>q</name>
-    <desc>Close forward ballonet valve</desc>
+    <desc>Close forward ballonet outflow valve</desc>
     <repeatable type="bool">true</repeatable>
     <binding>
      <command>nasal</command>
      <script>
       <![CDATA[
-       var p = SubmarineScout.ballonet_valve_p[0];
+       var p = SubmarineScout.ballonet_outflow_valve_p[0];
        var t = getprop(p) - 0.025;
        if (t < 0.0) { t = 0.0; }
        setprop(p, t);
-       gui.popupTip("Forward ballonet " ~ int(100*t) ~ "% open.");
+       gui.popupTip("Forward ballonet outflow " ~ int(100*t) ~ "% open.");
       ]]>
      </script>
     </binding>
    </key>
    <key n="81">
     <name>Q</name>
-    <desc>Open forward ballonet valve</desc>
+    <desc>Open forward ballonet outflow valve</desc>
     <repeatable type="bool">true</repeatable>
     <binding>
      <command>nasal</command>
      <script>
       <![CDATA[
-       var p = SubmarineScout.ballonet_valve_p[0];
+       var p = SubmarineScout.ballonet_outflow_valve_p[0];
        var t = getprop(p) + 0.025;
        if (t > 1.0) { t = 1.0; }
        setprop(p, t);
-       gui.popupTip("Forward ballonet " ~ int(100*t) ~ "% open.");
+       gui.popupTip("Forward ballonet outflow " ~ int(100*t) ~ "% open.");
+      ]]>
+     </script>
+    </binding>
+   </key>
+   <key n="17">
+    <name>Ctrl-Q</name>
+    <desc>Open/Close forward ballonet inflow valve</desc>
+    <binding>
+     <command>nasal</command>
+     <script>
+      <![CDATA[
+       var p = SubmarineScout.ballonet_inflow_valve_p[0];
+       var v = getprop(p);
+       setprop(p, (v < 0.5 ? 1.0 : 0.0));
+       gui.popupTip("Forward ballonet inflow " ~
+                    (v < 0.5 ? "opened" : "closed") ~ ".");
       ]]>
      </script>
     </binding>
@@ -312,34 +328,50 @@
 
    <key n="97">
     <name>a</name>
-    <desc>Close aft ballonet valve</desc>
+    <desc>Close aft ballonet outflow valve</desc>
     <repeatable type="bool">true</repeatable>
     <binding>
      <command>nasal</command>
      <script>
       <![CDATA[
-       var p = SubmarineScout.ballonet_valve_p[1];
+       var p = SubmarineScout.ballonet_outflow_valve_p[1];
        var t = getprop(p) - 0.025;
        if (t < 0.0) { t = 0.0; }
        setprop(p, t);
-       gui.popupTip("Aft ballonet " ~ int(100*t) ~ "% open.");
+       gui.popupTip("Aft ballonet outflow " ~ int(100*t) ~ "% open.");
       ]]>
      </script>
     </binding>
    </key>
    <key n="65">
     <name>A</name>
-    <desc>Open aft ballonet valve</desc>
+    <desc>Open aft ballonet outflow valve</desc>
     <repeatable type="bool">true</repeatable>
     <binding>
      <command>nasal</command>
      <script>
       <![CDATA[
-       var p = SubmarineScout.ballonet_valve_p[1];
+       var p = SubmarineScout.ballonet_outflow_valve_p[1];
        var t = getprop(p) + 0.025;
        if (t > 1.0) { t = 1.0; }
        setprop(p, t);
-       gui.popupTip("Aft ballonet " ~ int(100*t) ~ "% open.");
+       gui.popupTip("Aft ballonet outflow " ~ int(100*t) ~ "% open.");
+      ]]>
+     </script>
+    </binding>
+   </key>
+   <key n="1">
+    <name>Ctrl-A</name>
+    <desc>Open/Close aft ballonet inflow valve</desc>
+    <binding>
+     <command>nasal</command>
+     <script>
+      <![CDATA[
+       var p = SubmarineScout.ballonet_inflow_valve_p[1];
+       var v = getprop(p);
+       setprop(p, (v < 0.5 ? 1.0 : 0.0));
+       gui.popupTip("Aft ballonet inflow " ~
+                    (v < 0.5 ? "opened" : "closed") ~ ".");
       ]]>
      </script>
     </binding>

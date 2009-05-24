@@ -3,7 +3,7 @@
 ##
 ## Submarine Scout airship
 ##
-##  Copyright (C) 2007 - 2008  Anders Gidenstam  (anders(at)gidenstam.org)
+##  Copyright (C) 2007 - 2009  Anders Gidenstam  (anders(at)gidenstam.org)
 ##  This file is licensed under the GPL license v2 or later.
 ##
 ###############################################################################
@@ -41,9 +41,9 @@ var handle_message = func (sender, msg) {
 ###############################################################################
 # MP Accept and disconnect handlers.
 var listen_to = func (pilot) {
-    if (pilot.getNode("sim/model/ac-type") != nil and
-        streq("Submarine_Scout",
-              pilot.getNode("sim/model/ac-type").getValue())) {
+    if (pilot.getNode("sim/model/path") != nil and
+        streq("Aircraft/Submarine_Scout/Models/Submarine_Scout.xml",
+              pilot.getNode("sim/model/path").getValue())) {
 #        print("Accepted " ~ pilot.getPath());
         return 1;
     } else {

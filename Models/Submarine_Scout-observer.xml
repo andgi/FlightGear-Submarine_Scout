@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!-- $Id$ -->
+<!--
+  Submarine Scout class airship.
+
+  Copyright (C) 2007 - 2009  Anders Gidenstam  (anders(at)gidenstam.org)
+  This file is licensed under the GPL license version 2 or later.
+-->
+<PropertyList>
+
+ <path>../../../Models/Geometry/null.ac</path>
+ 
+ <!-- nasal>
+  <load>
+  </load>
+  <unload>
+  </unload>
+ </nasal -->
+
+</PropertyList>

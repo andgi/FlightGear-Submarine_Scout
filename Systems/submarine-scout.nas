@@ -9,9 +9,12 @@
 ###############################################################################
 
 var gas_valve_p = "/fdm/jsbsim/fcs/gas-valve-cmd-norm";
-var ballonet_valve_p =
+var ballonet_outflow_valve_p =
     ["/fdm/jsbsim/fcs/ballonet-valve-cmd-norm[0]",
      "/fdm/jsbsim/fcs/ballonet-valve-cmd-norm[1]"];
+var ballonet_inflow_valve_p =
+    ["/fdm/jsbsim/fcs/ballonet-crabpot-valve-cmd-norm[0]",
+     "/fdm/jsbsim/fcs/ballonet-crabpot-valve-cmd-norm[1]"];
 var rip_cord_p = "/fdm/jsbsim/fcs/rip-cord-cmd-norm";
 var ballast_p = "/fdm/jsbsim/inertia/pointmass-weight-lbs[0]";
 
@@ -25,27 +28,31 @@ var print_wow = func {
                -weight_on_gear.getValue() ~ " lbs.");
 }
 
-var weighoff = func {
-  gui.popupTip("Weigh-off to 10% in progress. " ~
-               "Current weight " ~ -weight_on_gear.getValue() ~ " lbs.");
-  var wow  = weight_on_gear.getValue();
-  var cont = getprop(ballast_p);
-  var new  = cont + 0.90 * wow;
-  interpolate(ballast_p,
-              (new > 0 ? new : 0.0),
-              10);
+var auto_weighoff = func {
+    var lift = getprop("/fdm/jsbsim/static-condition/net-lift-lbs");
+    var v = getprop(ballast_p) + 50 + lift;
+        
+    print("Submarine Scout: Auto weigh off from " ~ (-lift) ~
+          " lb heavy to 50 lb heavy.");
+
+    interpolate(ballast_p,
+                (v > 0 ? v : 0),
+                0.5);
 }
+
 
 var initial_weighoff = func {
     # Set initial static condition.
-    var v = getprop("/fdm/jsbsim/static-condition/net-lift-lbs");
-    setprop(ballast_p,
-            v > 0 ? 50.0 + v : 0);
+    # Finding the right static condition at initialization time is tricky.
+    auto_weighoff();
+    settimer(auto_weighoff, 0.25);
+    settimer(auto_weighoff, 1.0);
+    # Fill up the envelope if not at pressure already. A bit of a hack.
     settimer(func {
-        var v = getprop("/fdm/jsbsim/static-condition/net-lift-lbs");
-        setprop(ballast_p,
-                v > 0 ? 50.0 + v : 0);
-    }, 0.25);
+        setprop("/fdm/jsbsim/buoyant_forces/gas-cell/contents-mol",
+                2.0 *
+                getprop("/fdm/jsbsim/buoyant_forces/gas-cell/contents-mol"));
+    }, 0.8);
 }
 
 var drop_ballast = func(v) {
@@ -68,8 +75,10 @@ setlistener("/sim/signals/fdm-initialized", func {
         }
     });
 
-    setprop(ballonet_valve_p[0], 0.0);
-    setprop(ballonet_valve_p[1], 0.0);    
+    setprop(ballonet_outflow_valve_p[0], 0.0);
+    setprop(ballonet_outflow_valve_p[1], 0.0);    
+    setprop(ballonet_inflow_valve_p[0], 1.0);
+    setprop(ballonet_inflow_valve_p[1], 1.0);    
 });
 
 ###############################################################################

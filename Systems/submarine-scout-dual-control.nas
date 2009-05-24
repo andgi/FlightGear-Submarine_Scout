@@ -3,7 +3,7 @@
 ##
 ## Nasal module for dual control over the multiplayer network.
 ##
-##  Copyright (C) 2008  Anders Gidenstam  (anders(at)gidenstam.org)
+##  Copyright (C) 2008 - 2009  Anders Gidenstam  (anders(at)gidenstam.org)
 ##  This file is licensed under the GPL license version 2 or later.
 ##
 ###############################################################################
@@ -13,8 +13,8 @@ var DCT = dual_control_tools;
 
 ######################################################################
 # Pilot/copilot aircraft identifiers. Used by dual_control.
-var pilot_type   = "Submarine_Scout";
-var copilot_type = "Submarine_Scout-observer";
+var pilot_type   = "Aircraft/Submarine_Scout/Models/Submarine_Scout.xml";
+var copilot_type = "Aircraft/Submarine_Scout/Models/Submarine_Scout-observer.xml";
 var copilot_view = "W/T operator";
 
 props.globals.initNode("/sim/remote/pilot-callsign", "", "STRING");
