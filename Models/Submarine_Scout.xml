@@ -3,7 +3,7 @@
 <!--
   Submarine Scout class airship.
 
-  Copyright (C) 2007 - 2009  Anders Gidenstam  (anders(at)gidenstam.org)
+  Copyright (C) 2007 - 2010  Anders Gidenstam  (anders(at)gidenstam.org)
   This file is licensed under the GPL license version 2 or later.
 -->
 <PropertyList>
@@ -64,27 +64,11 @@
 
  <model>
   <name>Engine</name>
-  <path>Aircraft/Submarine_Scout/Models/engine.ac</path>
+  <path>Aircraft/Submarine_Scout/Models/RR_Hawk.xml</path>
   <offsets>
    <x-m>   5.40 </x-m>
    <y-m>   0.00 </y-m>
    <z-m>   0.75 </z-m>
-   <heading-deg> 180.0 </heading-deg>
-  </offsets>
- </model>
-
- <!--
-  The propeller. Models and animations based on the Vickers Vimy
-  by Emmanuel BARANGER.
- -->
- <model>
-  <name>Propeller_</name>
-  <path>Aircraft/Submarine_Scout/Models/propeller.ac</path>
-  <offsets>
-   <heading-deg>180</heading-deg>
-   <x-m>  5.53 </x-m>
-   <y-m>  0.0  </y-m>
-   <z-m>  0.75 </z-m>
   </offsets>
  </model>
 
@@ -351,22 +335,7 @@
   <object-name>Aft Ballonet Manometer</object-name>
   <object-name>Mag1</object-name>
   <object-name>Mag2</object-name>
- </animation>
-
- <!-- LOD for the model as a whole -->
-<!--
- <animation>
-  <type>range</type>
-  <min-m>0</min-m>
-  <max-m>10000</max-m>
- </animation>
--->
-
- <animation>
-  <type>range</type>
-  <object-name>CockpitDetails</object-name>
-  <min-m>0</min-m>
-  <max-m>50</max-m>
+  <object-name>elevator_wheel</object-name>
  </animation>
 
  <!-- Hide crew. -->
@@ -438,67 +407,6 @@
   </axis>
  </animation>
 
- <!-- Propeller -->
- <animation>
-  <type>select</type>
-  <object-name>PropDisc</object-name>
-  <condition>
-   <greater-than>
-    <property>engines/engine[0]/rpm</property>
-    <value>1000</value>
-   </greater-than>
-  </condition>
- </animation>
- <animation>
-  <type>select</type>
-  <object-name>PropBlur</object-name>
-  <condition>
-   <and>
-    <greater-than>
-     <property>engines/engine[0]/rpm</property>
-     <value>400.000</value>
-    </greater-than>
-    <less-than>
-     <property>engines/engine[0]/rpm</property>
-     <value>1000.001</value>
-    </less-than>
-   </and>
-  </condition>
- </animation>
-
- <animation>
-  <type>spin</type>
-  <object-name>Propeller</object-name>
-  <property>engines/engine[0]/rpm</property>
-  <factor>1</factor>
-  <center>
-   <x-m> 0.0 </x-m>
-   <y-m> 0.0 </y-m>
-   <z-m> 0.0 </z-m>
-  </center>
-  <axis>
-   <x> 1.0 </x>
-   <y> 0.0 </y>
-   <z> 0.0 </z>
-  </axis>
- </animation>
- <animation>
-  <type>spin</type>
-  <object-name>PropBlur</object-name>
-  <property>engines/engine[0]/rpm</property>
-  <factor>-0.001</factor>
-  <center>
-   <x-m> 0.0 </x-m>
-   <y-m> 0.0 </y-m>
-   <z-m> 0.0 </z-m>
-  </center>
-  <axis>
-   <x> 1.0 </x>
-   <y> 0.0 </y>
-   <z> 0.0 </z>
-  </axis>
- </animation>
-
  <!-- Armament -->
  <animation>
   <type>select</type>
@@ -515,30 +423,43 @@
   </condition>
  </animation>
 
+ <animation>
+  <name>CarDetails</name>
+  <object-name>Engine</object-name>
+  <object-name>Commander</object-name>
+  <object-name>WTOperator</object-name>
+  <object-name>Mechanic</object-name>
+  <object-name>Bomb1</object-name>
+  <object-name>Bomb2</object-name>
+ </animation>
+
  <!-- Shaders -->
  <animation>
   <type>shader</type>
   <shader>chrome</shader>
-  <texture>chrome2.png</texture>
-  <object-name>engine_body</object-name>
-  <object-name>carburetor.1</object-name>
-  <object-name>carburetor.2</object-name>
-  <object-name>exhaust.1</object-name>
-  <object-name>exhaust.2</object-name>
- </animation>
- <animation>
-  <type>shader</type>
-  <shader>chrome</shader>
   <texture>brass.png</texture>
-  <object-name>cam_shaft</object-name>
   <object-name>radiator_frame</object-name>
  </animation>
+
+ <!-- LOD -->
  <animation>
-  <type>shader</type>
-  <shader>chrome</shader>
-  <texture>copper.png</texture>
-  <object-name>intake.1</object-name>
-  <object-name>intake.2</object-name>
+  <type>range</type>
+  <object-name>CockpitDetails</object-name>
+  <min-m>0</min-m>
+  <max-m>50</max-m>
+ </animation>
+ <animation>
+  <type>range</type>
+  <object-name>CarDetails</object-name>
+  <min-m>0</min-m>
+  <max-m>10000</max-m>
+ </animation>
+
+ <!-- LOD for the model as a whole -->
+ <animation>
+  <type>range</type>
+  <min-m>0</min-m>
+  <max-m>30000</max-m>
  </animation>
 
  <nasal>

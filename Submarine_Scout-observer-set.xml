@@ -1,9 +1,8 @@
 <?xml version="1.0"?>
-<!-- $Id$ -->
 <!--
   Submarine Scout class airship. Multiplayer observer view.
 
-  Copyright (C) 2007 - 2009  Anders Gidenstam  (anders(at)gidenstam.org)
+  Copyright (C) 2007 - 2010  Anders Gidenstam  (anders(at)gidenstam.org)
   This file is licensed under the GPL license version 2 or later.
 -->
 <!--
@@ -15,8 +14,8 @@
 
   <description>Submarine Scout airship multiplayer observer</description>
   <author>Anders Gidenstam</author>
-  <status>experimental</status>
-  <aircraft-version>$Id$</aircraft-version>
+  <status>development</status>
+  <aircraft-version>$Id: Submarine_Scout-observer-set.xml,v 1.11 2010-05-19 20:46:50 anders Exp $</aircraft-version>
 
   <flight-model>null</flight-model>
 
@@ -47,6 +46,37 @@
     <y-offset-m type="double"> 0.40 </y-offset-m>
     <z-offset-m type="double"> 1.4 </z-offset-m>
     <ground-level-nearplane-m type="double"> 0.1f </ground-level-nearplane-m>
+   </config>
+  </view>
+
+  <view n="1">
+   <config>
+    <at-model type="bool">false</at-model>
+   </config>
+  </view>
+  <view n="2">
+   <config>
+    <at-model type="bool">false</at-model>
+   </config>
+  </view>
+  <view n="3">
+   <config>
+    <at-model type="bool">false</at-model>
+   </config>
+  </view>
+  <view n="4">
+   <config>
+    <at-model type="bool">false</at-model>
+   </config>
+  </view>
+  <view n="5">
+   <config>
+    <at-model type="bool">false</at-model>
+   </config>
+  </view>
+  <view n="6">
+   <config>
+    <at-model type="bool">false</at-model>
    </config>
   </view>
 
@@ -90,6 +120,10 @@
   </dual_control_tools>
   <aircraft_dual_control>
    <file>Aircraft/Submarine_Scout/Systems/submarine-scout-dual-control.nas</file>
+   <script>
+    # Disable the autopilot menu.
+    gui.menuEnable("autopilot", 0);
+   </script>
   </aircraft_dual_control>
   <dual_control>
    <file>Aircraft/ZLT-NT/DualControl/copilot-dual-control.nas</file>

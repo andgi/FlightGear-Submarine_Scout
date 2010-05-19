@@ -1,0 +1,122 @@
+<?xml version="1.0"?>
+<!-- $Id$ -->
+<!--
+  Submarine Scout class airship.
+
+  Copyright (C) 2007 - 2010  Anders Gidenstam  (anders(at)gidenstam.org)
+  This file is licensed under the GPL license version 2 or later.
+-->
+<PropertyList>
+
+ <path>engine.ac</path>
+
+ <offsets>
+  <!-- x/y/z == back/right/up -->
+  <x-m> 0.00 </x-m>
+  <y-m> 0.00 </y-m>
+  <z-m> 0.00 </z-m>
+  <heading-deg> 180.0 </heading-deg>
+ </offsets>
+
+ <!--
+  The propeller. Models and animations based on the Vickers Vimy
+  by Emmanuel BARANGER.
+ -->
+ <model>
+  <name>Propeller_</name>
+  <path>Aircraft/Submarine_Scout/Models/propeller.ac</path>
+  <offsets>
+   <heading-deg>180</heading-deg>
+   <x-m> -0.13 </x-m>
+   <y-m>  0.00 </y-m>
+   <z-m>  0.00 </z-m>
+  </offsets>
+ </model>
+
+ <!-- Propeller -->
+ <animation>
+  <type>select</type>
+  <object-name>PropDisc</object-name>
+  <condition>
+   <greater-than>
+    <property>engines/engine[0]/rpm</property>
+    <value>1000</value>
+   </greater-than>
+  </condition>
+ </animation>
+ <animation>
+  <type>select</type>
+  <object-name>PropBlur</object-name>
+  <condition>
+   <and>
+    <greater-than>
+     <property>engines/engine[0]/rpm</property>
+     <value>400.000</value>
+    </greater-than>
+    <less-than>
+     <property>engines/engine[0]/rpm</property>
+     <value>1000.001</value>
+    </less-than>
+   </and>
+  </condition>
+ </animation>
+
+ <animation>
+  <type>spin</type>
+  <object-name>Propeller</object-name>
+  <property>engines/engine[0]/rpm</property>
+  <factor>1</factor>
+  <center>
+   <x-m> 0.0 </x-m>
+   <y-m> 0.0 </y-m>
+   <z-m> 0.0 </z-m>
+  </center>
+  <axis>
+   <x> 1.0 </x>
+   <y> 0.0 </y>
+   <z> 0.0 </z>
+  </axis>
+ </animation>
+ <animation>
+  <type>spin</type>
+  <object-name>PropBlur</object-name>
+  <property>engines/engine[0]/rpm</property>
+  <factor>-0.001</factor>
+  <center>
+   <x-m> 0.0 </x-m>
+   <y-m> 0.0 </y-m>
+   <z-m> 0.0 </z-m>
+  </center>
+  <axis>
+   <x> 1.0 </x>
+   <y> 0.0 </y>
+   <z> 0.0 </z>
+  </axis>
+ </animation>
+
+ <!-- Shaders -->
+ <animation>
+  <type>shader</type>
+  <shader>chrome</shader>
+  <texture>chrome2.png</texture>
+  <object-name>engine_body</object-name>
+  <object-name>carburetor.1</object-name>
+  <object-name>carburetor.2</object-name>
+  <object-name>exhaust.1</object-name>
+  <object-name>exhaust.2</object-name>
+ </animation>
+ <animation>
+  <type>shader</type>
+  <shader>chrome</shader>
+  <texture>brass.png</texture>
+  <object-name>cam_shaft</object-name>
+ </animation>
+ <animation>
+  <type>shader</type>
+  <shader>chrome</shader>
+  <texture>copper.png</texture>
+  <object-name>intake.1</object-name>
+  <object-name>intake.2</object-name>
+ </animation>
+
+</PropertyList>

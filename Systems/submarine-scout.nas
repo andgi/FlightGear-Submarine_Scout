@@ -3,7 +3,7 @@
 ##
 ## Submarine Scout airship
 ##
-##  Copyright (C) 2007 - 2009  Anders Gidenstam  (anders(at)gidenstam.org)
+##  Copyright (C) 2007 - 2010  Anders Gidenstam  (anders(at)gidenstam.org)
 ##  This file is licensed under the GPL license v2 or later.
 ##
 ###############################################################################
@@ -78,7 +78,10 @@ setlistener("/sim/signals/fdm-initialized", func {
     setprop(ballonet_outflow_valve_p[0], 0.0);
     setprop(ballonet_outflow_valve_p[1], 0.0);    
     setprop(ballonet_inflow_valve_p[0], 1.0);
-    setprop(ballonet_inflow_valve_p[1], 1.0);    
+    setprop(ballonet_inflow_valve_p[1], 1.0);
+
+    # Disable the autopilot menu.
+    gui.menuEnable("autopilot", 0);
 });
 
 ###############################################################################

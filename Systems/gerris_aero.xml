@@ -29,16 +29,10 @@
  <aerodynamics>
 
   <!-- Tuning parameter for CD, CL due to envelope alpha. -->
-  <function name="aero/envelope-lift-force-tweak-factor">
-   <value> 1.0 </value>
-  </function>
+  <property value="1.0">aero/envelope-lift-force-tweak-factor</property>
   <!-- Tuning parameter for CM and CN due to alpha and beta. -->
-  <function name="aero/envelope-pitch-moment-tweak-factor">
-   <value> 1.0 </value>
-  </function>
-  <function name="aero/envelope-yaw-moment-tweak-factor">
-   <value> 1.0 </value>
-  </function>
+  <property value="1.0">aero/envelope-pitch-moment-tweak-factor</property>
+  <property value="1.0">aero/envelope-yaw-moment-tweak-factor</property>
 
   <!-- The envelope can be rigged at an angle to the car. -->
   <!-- According to the handbook it was either neutral or down by the nose. -->
