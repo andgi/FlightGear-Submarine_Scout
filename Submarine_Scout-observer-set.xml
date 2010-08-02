@@ -15,7 +15,7 @@
   <description>Submarine Scout airship multiplayer observer</description>
   <author>Anders Gidenstam</author>
   <status>development</status>
-  <aircraft-version>$Id: Submarine_Scout-observer-set.xml,v 1.11 2010-05-19 20:46:50 anders Exp $</aircraft-version>
+  <aircraft-version>$Id: Submarine_Scout-observer-set.xml,v 1.12 2010-08-02 18:13:23 anders Exp $</aircraft-version>
 
   <flight-model>null</flight-model>
 
@@ -108,6 +108,13 @@
        </script>
       </binding>
      </item>
+     <!-- item>
+      <label>About</label>
+      <binding>
+       <command>nasal</command>
+       <script>SubmarineScout.about()</script>
+      </binding>
+     </item -->
     </menu>
    </default>
   </menubar>

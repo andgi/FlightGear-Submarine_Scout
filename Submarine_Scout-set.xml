@@ -12,7 +12,7 @@
   <description>Royal Naval Air Service Submarine Scout airship</description>
   <author>Anders Gidenstam</author>
   <status>development</status>
-  <aircraft-version>$Id: Submarine_Scout-set.xml,v 1.42 2010-05-19 20:46:50 anders Exp $</aircraft-version>
+  <aircraft-version>$Id: Submarine_Scout-set.xml,v 1.43 2010-08-02 18:13:23 anders Exp $</aircraft-version>
   
   <flight-model>jsb</flight-model>
   <aero>Submarine_Scout</aero>
@@ -111,6 +111,21 @@
   </multiplay>
 
   <max-simtime-per-frame n="0" type="double">0.1</max-simtime-per-frame>
+
+  <menubar>
+   <default>
+    <menu n="100">
+     <label>Submarine Scout</label>
+     <item>
+      <label>About</label>
+      <binding>
+       <command>nasal</command>
+       <script>SubmarineScout.about()</script>
+      </binding>
+     </item>
+    </menu>
+   </default>
+  </menubar>
 
  </sim>
 
