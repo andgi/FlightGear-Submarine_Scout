@@ -71,6 +71,7 @@
     <y-offset-m type="double"> 0.40 </y-offset-m>
     <z-offset-m type="double"> 3.4 </z-offset-m>
     <heading-offset-deg type="double"> 180 </heading-offset-deg>
+    <default-heading-offset-deg type="double"> 180 </default-heading-offset-deg>
     <pitch-offset-deg type="double"> -5 </pitch-offset-deg>
    </config>
   </view>
