@@ -116,7 +116,7 @@
 
  <nasal>
   <dual_control_tools>
-   <file>Aircraft/ZLT-NT/DualControl/dual-control-tools.nas</file>
+   <file>Aircraft/Generic/DualControl/dual-control-tools.nas</file>
   </dual_control_tools>
   <aircraft_dual_control>
    <file>Aircraft/Submarine_Scout/Systems/submarine-scout-dual-control.nas</file>
@@ -126,7 +126,7 @@
    </script>
   </aircraft_dual_control>
   <dual_control>
-   <file>Aircraft/ZLT-NT/DualControl/copilot-dual-control.nas</file>
+   <file>Aircraft/Generic/DualControl/copilot-dual-control.nas</file>
   </dual_control>
  </nasal>
 
