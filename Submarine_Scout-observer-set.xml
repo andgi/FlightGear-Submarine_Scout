@@ -2,7 +2,7 @@
 <!--
   Submarine Scout class airship. Multiplayer observer view.
 
-  Copyright (C) 2007 - 2010  Anders Gidenstam  (anders(at)gidenstam.org)
+  Copyright (C) 2007 - 2011  Anders Gidenstam  (anders(at)gidenstam.org)
   This file is licensed under the GPL license version 2 or later.
 -->
 <!--
@@ -15,7 +15,7 @@
   <description>Submarine Scout airship multiplayer observer</description>
   <author>Anders Gidenstam</author>
   <status>development</status>
-  <aircraft-version>$Id: Submarine_Scout-observer-set.xml,v 1.12 2010-08-02 18:13:23 anders Exp $</aircraft-version>
+  <aircraft-version>$Id: Submarine_Scout-observer-set.xml,v 1.13 2011-02-05 19:45:36 anders Exp $</aircraft-version>
 
   <flight-model>null</flight-model>
 
@@ -26,6 +26,9 @@
   <presets>
    <onground>true</onground>
   </presets>
+  <startup>
+   <splash-texture>Aircraft/Submarine_Scout/splash.png</splash-texture>
+  </startup>
 
   <view n="0">
    <name>W/T operator</name>
