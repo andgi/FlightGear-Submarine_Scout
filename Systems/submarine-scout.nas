@@ -2,18 +2,18 @@
 ##
 ## Submarine Scout airship
 ##
-##  Copyright (C) 2007 - 2010  Anders Gidenstam  (anders(at)gidenstam.org)
+##  Copyright (C) 2007 - 2011  Anders Gidenstam  (anders(at)gidenstam.org)
 ##  This file is licensed under the GPL license v2 or later.
 ##
 ###############################################################################
 
 var gas_valve_p = "/fdm/jsbsim/fcs/gas-valve-cmd-norm";
 var ballonet_outflow_valve_p =
-    ["/fdm/jsbsim/fcs/ballonet-valve-cmd-norm[0]",
-     "/fdm/jsbsim/fcs/ballonet-valve-cmd-norm[1]"];
+    ["/fdm/jsbsim/fcs/ballonet-out-valve-cmd-norm[0]",
+     "/fdm/jsbsim/fcs/ballonet-out-valve-cmd-norm[1]"];
 var ballonet_inflow_valve_p =
-    ["/fdm/jsbsim/fcs/ballonet-crabpot-valve-cmd-norm[0]",
-     "/fdm/jsbsim/fcs/ballonet-crabpot-valve-cmd-norm[1]"];
+    ["/fdm/jsbsim/fcs/ballonet-in-valve-cmd-norm[0]",
+     "/fdm/jsbsim/fcs/ballonet-in-valve-cmd-norm[1]"];
 var rip_cord_p = "/fdm/jsbsim/fcs/rip-cord-cmd-norm";
 var ballast_p = "/fdm/jsbsim/inertia/pointmass-weight-lbs[0]";
 
@@ -464,9 +464,9 @@ var dialog = {
         content.set("default-padding", 5);
         props.globals.initNode("sim/about/text",
              "Royal Naval Air Service Submarine Scout Zero airship for FlightGear\n" ~
-             "Copyright (C) 2007 - 2010  Anders Gidenstam\n\n" ~
+             "Copyright (C) 2007 - 2011  Anders Gidenstam\n\n" ~
              "FlightGear flight simulator\n" ~
-             "Copyright (C) 1996 - 2010  http://www.flightgear.org\n\n" ~
+             "Copyright (C) 1996 - 2011  http://www.flightgear.org\n\n" ~
              "This is free software, and you are welcome to\n" ~
              "redistribute it under certain conditions.\n" ~
              "See the GNU GENERAL PUBLIC LICENSE Version 2 for the details.",

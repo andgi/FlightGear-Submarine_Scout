@@ -3,7 +3,7 @@
 
   Submarine Scout airship flight model for JSBSim.
 
-    Copyright (C) 2007 - 2010  Anders Gidenstam  (anders(at)gidenstam.org)
+    Copyright (C) 2007 - 2011  Anders Gidenstam  (anders(at)gidenstam.org)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -33,7 +33,7 @@
   <email>anders at gidenstam dot org</email>
 
   <filecreationdate>2007-02-11</filecreationdate>
-  <version>$Id: Submarine_Scout.xml,v 1.54 2010-05-19 21:00:25 anders Exp $</version>
+  <version>$Id: Submarine_Scout.xml,v 1.55 2011-02-21 21:05:34 anders Exp $</version>
 
   <license>
    <licenseName>GPL</licenseName>
@@ -291,9 +291,15 @@
   <documentation>
    According to [VentryKo:1982:AS] page 44 these ships normally carried
    two 65lb bombs set as depth charges.
+
+   According to [Mowthrope:1998:Battlebags] the SSZ type could carry either
+   two 110lb or one 250lb bomb on each side of the car.
+
+   The inspiration for my bomb model appears to be a 110lb bomb
+   from a photo of the car of SSZ.27.
   </documentation>
   <pointmass name="Bomb1">
-   <weight unit="LBS"> 65.0 </weight>
+   <weight unit="LBS"> 110.0 </weight>
    <location name="POINTMASS" unit="M">
     <x> 17.00 </x>
     <y> -0.57 </y>
@@ -301,7 +307,7 @@
    </location>
   </pointmass>
   <pointmass name="Bomb2">
-   <weight unit="LBS"> 65.0 </weight>
+   <weight unit="LBS"> 110.0 </weight>
    <location name="POINTMASS" unit="M">
     <x> 17.00 </x>
     <y>  0.57 </y>
@@ -385,6 +391,7 @@
   <documentation>
    NOTE: The cell is placed based on the envelope centroid location
          as computed by BRLCAD.
+         The automatic valves are implemented using a system.
   </documentation>
   <documentation>
    Envelope and gas control for a S.S. b.E.2C according to [Whale:1919:BA]:
@@ -393,9 +400,9 @@
     - Nose stiffeners: 24
     - 2 Ballonets
       - capacity 6,375 feet^3 each
-      - automatic spring valves set to open at 25 - 28mm (of water I presume)
+      - automatic spring valves set to open at 25 - 28mm water.
     - 2 gas valves one at the bottom and one at the top of the envelope
-      - Bottom valve automatically opens at 30 - 35mm pressure.
+      - Bottom valve automatically opens at 30 - 35mm water pressure.
       - Top valve is manual only
   </documentation>
   <documentation>
@@ -421,7 +428,7 @@
    <x_radius unit="M"> 22.86 </x_radius>
    <y_radius unit="M">  4.55 </y_radius>
    <z_radius unit="M">  4.55 </z_radius>
-   <max_overpressure unit="PA"> 340.0 </max_overpressure> 
+   <max_overpressure unit="PA"> 395.0 </max_overpressure> 
    <valve_coefficient unit="M4*SEC/KG"> 0.0075 </valve_coefficient>
    <fullness>0.90</fullness>
 
@@ -490,7 +497,7 @@
     <x_radius unit="M">  6.45 </x_radius>
     <y_radius unit="M">  3.00 </y_radius>
     <z_radius unit="M">  2.23 </z_radius>
-    <max_overpressure unit="PA"> 255.0 </max_overpressure> 
+    <max_overpressure unit="PA"> 295.0 </max_overpressure> 
     <valve_coefficient unit="M4*SEC/KG"> 0.01 </valve_coefficient>
     <fullness>0.15</fullness>
     <heat>
@@ -540,7 +547,7 @@
     <x_radius unit="M">  7.55 </x_radius>
     <y_radius unit="M">  2.85 </y_radius>
     <z_radius unit="M">  2.00 </z_radius>
-    <max_overpressure unit="PA"> 250.0 </max_overpressure> 
+    <max_overpressure unit="PA"> 295.0 </max_overpressure> 
     <valve_coefficient unit="M4*SEC/KG"> 0.01 </valve_coefficient>
     <fullness>0.15</fullness>
     <heat>
@@ -804,7 +811,7 @@
    Pilot:
     - watch
     - air-speed indicator graduated in knots
-    - aneroid (pressure altimeter?) reading to 10,000 feet.
+    - aneroid (pressure altimeter) reading to 10,000 feet.
     - Elliot revolution counter (tachometer?)
     - Clift inclinometer reading up to 20 degrees depression or elevation.
     - map case
@@ -865,7 +872,7 @@
        <value> 1.0 </value>
        <quotient>
         <property> instrumentation/gas-pressure-psf </property>
-        <value> 5.12 </value> <!-- about 25mm water. -->
+        <value> 3.50 </value> <!-- about 17mm water. -->
        </quotient>
       </min>
      </max>
@@ -888,7 +895,7 @@
   </limitation>
  </system>
 
- <system name="Ballonet and gas control">
+ <system file="air-and-gas-control-jsbsim">
 
   <documentation>
    "Two ballonets are provided, one forward and one aft, the capacity
@@ -920,119 +927,6 @@
    The slip stream pressure calculation does not take the direction of the
    relative wind into account.
   </limitation>
-
-  <!-- Pilot inputs. -->
-  <property value="0.0">fcs/gas-valve-cmd-norm[0]</property>
-  <property value="0.0">fcs/ballonet-valve-cmd-norm[0]</property>
-  <property value="0.0">fcs/ballonet-valve-cmd-norm[1]</property>
-  <property value="0.0">fcs/ballonet-crabpot-valve-cmd-norm[0]</property>
-  <property value="0.0">fcs/ballonet-crabpot-valve-cmd-norm[1]</property>
-  <property value="0.0">fcs/rip-cord-cmd-norm</property>
-
-  <channel name="Gas valve">
-
-   <switch name="fcs/ripped-sample-hold">
-    <default value="fcs/rip-cord-cmd-norm"/>
-    <test logic="AND" value="fcs/ripped-sample-hold">
-     fcs/ripped-sample-hold GE 1.0
-    </test>
-   </switch>
-
-   <fcs_function name="fcs/gas-valve-pos-norm">
-    <function>
-     <sum>
-      <property>fcs/gas-valve-cmd-norm</property>
-      <property>ap/gas-valve-cmd-norm</property>
-      <product>
-       <value>100.0</value>
-       <property>fcs/ripped-sample-hold</property>
-      </product>
-     </sum>
-    </function>
-    <output>buoyant_forces/gas-cell/valve_open</output>
-   </fcs_function>
-
-  </channel>
-
-
-  <channel name="Ballonet air supply">
-
-   <fcs_function name="ballonets/slip-stream-pressure-psf">
-    <function>
-     <sum>
-      <property>atmosphere/P-psf</property>
-      <property>aero/qbar-psf</property>
-      <quotient>
-       <property>propulsion/engine/thrust-lbs</property>
-       <value>63.62</value> <!-- Propeller disc area ft^2 -->
-      </quotient>
-     </sum>
-    </function>
-   </fcs_function>
-
-   <fcs_function name="ballonets/crab-pot-valve-flow-ft3ps[0]">
-    <function>
-     <product>
-      <value>20.0</value> <!-- Inflow valve coefficient ft4*sec/slug -->
-      <max>
-       <value>0.0</value>
-       <product>
-        <property>fcs/ballonet-crabpot-valve-cmd-norm[0]</property>
-        <difference>
-         <property>ballonets/slip-stream-pressure-psf</property>
-         <property>buoyant_forces/gas-cell/ballonet[0]/pressure-psf</property>
-        </difference>
-       </product>
-      </max>
-     </product>
-    </function>
-    <output>ballonets/in-flow-ft3ps[0]</output>
-   </fcs_function>
-
-   <fcs_function name="ballonets/crab-pot-valve-flow-ft3ps[1]">
-    <function>
-     <product>
-      <value>20.0</value> <!-- Inflow valve coefficient ft4*sec/slug -->
-      <max>
-       <value>0.0</value>
-       <product>
-        <property>fcs/ballonet-crabpot-valve-cmd-norm[1]</property>
-        <difference>
-         <property>ballonets/slip-stream-pressure-psf</property>
-         <property>buoyant_forces/gas-cell/ballonet[1]/pressure-psf</property>
-        </difference>
-       </product>
-      </max>
-     </product>
-    </function>
-    <output>ballonets/in-flow-ft3ps[1]</output>
-   </fcs_function>
-
-  </channel>
-
-  <channel name="Ballonet out-flow valves">
-
-   <fcs_function name="ballonets/valve-pos-norm[0]">
-    <function>
-     <sum>
-      <property>fcs/ballonet-valve-cmd-norm[0]</property>
-      <property>ap/ballonet-valve-cmd-norm[0]</property>
-     </sum>
-    </function>
-    <output>buoyant_forces/gas-cell/ballonet[0]/valve_open</output>
-   </fcs_function>
-
-   <fcs_function name="ballonets/valve-pos-norm[1]">
-    <function>
-     <sum>
-      <property>fcs/ballonet-valve-cmd-norm[1]</property>
-      <property>ap/ballonet-valve-cmd-norm[1]</property>
-     </sum>
-    </function>
-    <output>buoyant_forces/gas-cell/ballonet[1]/valve_open</output>
-   </fcs_function>
-
-  </channel>
 
  </system>
 
