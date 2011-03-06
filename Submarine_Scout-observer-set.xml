@@ -12,10 +12,10 @@
 
  <sim>
 
-  <description>Submarine Scout airship multiplayer observer</description>
+  <description>Submarine Scout Zero airship multiplayer observer</description>
   <author>Anders Gidenstam</author>
   <status>development</status>
-  <aircraft-version>$Id: Submarine_Scout-observer-set.xml,v 1.13 2011-02-05 19:45:36 anders Exp $</aircraft-version>
+  <aircraft-version>$Id: Submarine_Scout-observer-set.xml,v 1.14 2011-03-06 17:45:18 anders Exp $</aircraft-version>
 
   <flight-model>null</flight-model>
 

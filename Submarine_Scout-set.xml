@@ -9,10 +9,10 @@
 
  <sim>
 
-  <description>Royal Naval Air Service Submarine Scout airship</description>
+  <description>Royal Naval Air Service Submarine Scout Zero airship</description>
   <author>Anders Gidenstam</author>
   <status>development</status>
-  <aircraft-version>$Id: Submarine_Scout-set.xml,v 1.44 2011-02-05 19:45:36 anders Exp $</aircraft-version>
+  <aircraft-version>$Id: Submarine_Scout-set.xml,v 1.45 2011-03-06 17:45:18 anders Exp $</aircraft-version>
   
   <flight-model>jsb</flight-model>
   <aero>Submarine_Scout</aero>
