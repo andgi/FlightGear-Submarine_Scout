@@ -14,8 +14,15 @@
 
   <description>Submarine Scout Zero airship multiplayer observer</description>
   <author>Anders Gidenstam</author>
-  <status>development</status>
-  <aircraft-version>$Id: Submarine_Scout-observer-set.xml,v 1.14 2011-03-06 17:45:18 anders Exp $</aircraft-version>
+  <aircraft-version>$Id: Submarine_Scout-observer-set.xml,v 1.15 2011-05-26 18:46:09 anders Exp $</aircraft-version>
+
+  <status type="string">beta</status>
+  <!-- rating>
+   <FDM type="int">2</FDM>
+   <systems type="int">3</systems>
+   <cockpit type="int">3</cockpit>
+   <model type="int">3</model>
+  </rating -->
 
   <flight-model>null</flight-model>
 
