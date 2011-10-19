@@ -1,9 +1,8 @@
 <?xml version="1.0"?>
-<!-- $Id$ -->
 <!--
   Submarine Scout class airship.
 
-  Copyright (C) 2007 - 2010  Anders Gidenstam  (anders(at)gidenstam.org)
+  Copyright (C) 2007 - 2011  Anders Gidenstam  (anders(at)gidenstam.org)
   This file is licensed under the GPL license version 2 or later.
 -->
 <PropertyList>
@@ -479,9 +478,14 @@ var bomb2_rp  = "controls/armament/station[1]/present";
 ############################################################
 # Load the needed modules if it hasn't been done yet.
 if (!contains(globals, "SubmarineScout")) {
-  io.load_nasal(getprop("/sim/fg-root") ~
-                "/Aircraft/Submarine_Scout/Systems/scenario-network.nas",
-                "SubmarineScout");
+  var base = "/Submarine_Scout/Systems/scenario-network.nas";
+  foreach (var d; props.globals.getNode("/sim").getChildren("fg-aircraft")) {
+    var file = d.getValue() ~ base;
+    if (io.stat(file) != nil) {
+      io.load_nasal(file, "SubmarineScout");
+      break;
+    }
+  }
   # Use the minimal remote_ground_crew instead of ground_crew.
   SubmarineScout.ground_crew = SubmarineScout.remote_ground_crew;
   # Initialize scenario network as observer.

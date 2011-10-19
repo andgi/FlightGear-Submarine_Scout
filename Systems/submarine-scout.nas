@@ -85,8 +85,7 @@ setlistener("/sim/signals/fdm-initialized", func {
 
 ###############################################################################
 # Initialize scenario network for full participation.
-io.load_nasal(getprop("/sim/fg-root") ~
-              "/Aircraft/Submarine_Scout/Systems/scenario-network.nas",
+io.load_nasal(getprop("/sim/aircraft-dir") ~ "/Systems/scenario-network.nas",
               "SubmarineScout");
 scenario_network_init(1);
 

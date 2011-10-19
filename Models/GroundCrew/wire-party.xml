@@ -1,13 +1,12 @@
-<!-- $Id$ -->
+<?xml version="1.0"?>
 <!--
   Submarine Scout class airship.
 
-  Copyright (C) 2008  Anders Gidenstam  (anders(at)gidenstam.org)
+  Copyright (C) 2008 - 2011  Anders Gidenstam  (anders(at)gidenstam.org)
   This file is licensed under the GPL license version 2 or later.
 -->
 <PropertyList>
 
- <path>../../../../Models/Geometry/null.ac</path>
  <offsets>
   <!-- x/y/z == back/right/up -->
   <x-m> 0.0 </x-m>
