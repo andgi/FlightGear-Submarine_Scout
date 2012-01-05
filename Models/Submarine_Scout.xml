@@ -2,7 +2,7 @@
 <!--
   Submarine Scout class airship.
 
-  Copyright (C) 2007 - 2011  Anders Gidenstam  (anders(at)gidenstam.org)
+  Copyright (C) 2007 - 2012  Anders Gidenstam  (anders(at)gidenstam.org)
   This file is licensed under the GPL license version 2 or later.
 -->
 <PropertyList>
@@ -479,11 +479,17 @@ var bomb2_rp  = "controls/armament/station[1]/present";
 # Load the needed modules if it hasn't been done yet.
 if (!contains(globals, "SubmarineScout")) {
   var base = "/Submarine_Scout/Systems/scenario-network.nas";
-  foreach (var d; props.globals.getNode("/sim").getChildren("fg-aircraft")) {
-    var file = d.getValue() ~ base;
-    if (io.stat(file) != nil) {
+  var file = props.globals.getNode("/sim/fg-root").getValue() ~
+             "/Aircraft" ~ base;
+  if (io.stat(file) != nil) {
       io.load_nasal(file, "SubmarineScout");
-      break;
+  } else {
+    foreach (var d; props.globals.getNode("/sim").getChildren("fg-aircraft")) {
+      var file = d.getValue() ~ base;
+      if (io.stat(file) != nil) {
+        io.load_nasal(file, "SubmarineScout");
+        break;
+      }
     }
   }
   # Use the minimal remote_ground_crew instead of ground_crew.
@@ -507,9 +513,8 @@ rplayer.getNode(bomb2_rp, 1).
 var rplayer = cmdarg();
 print("UNLOAD Submarine_Scout ", rplayer.getPath());
 
-# This is done automatically. However, the the module should be shut down
-# if this was its last user.
-#SubmarineScout.ground_crew.remove_remote_ground_crew(rplayer.getPath());
+# The ground crew is removed automatically. However, the the SubmarineScout
+# module itself should be shut down if this was its last user.
 
 ##############################################################################
   </unload>
