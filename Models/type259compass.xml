@@ -4,6 +4,14 @@
 	<path>type259compass.ac</path>
 	<texture-path>Textures</texture-path>
 
+	<!-- Rembrandt transparency markup. -->
+	<effect>
+		<inherits-from>Effects/model-transparent</inherits-from>
+		<object-name>clear_face</object-name>
+		<object-name>liquid_face</object-name>
+		<object-name>liquid_surface</object-name>
+	</effect>
+
 	<animation> 
 		<type>rotate</type>
 		<object-name>dial</object-name>

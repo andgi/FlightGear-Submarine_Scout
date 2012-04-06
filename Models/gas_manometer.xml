@@ -1,8 +1,8 @@
-<!-- $Id$ -->
+<?xml version="1.0"?>
 <!--
   Submarine Scout class airship.
 
-  Copyright (C) 2007 - 2009  Anders Gidenstam  (anders(at)gidenstam.org)
+  Copyright (C) 2007 - 2012  Anders Gidenstam  (anders(at)gidenstam.org)
   This file is licensed under the GPL license version 2 or later.
 -->
 <PropertyList>
@@ -21,6 +21,14 @@
   <y-m> 0.00 </y-m>
   <z-m> 0.00 </z-m>
  </offsets>
+
+ <!-- Rembrandt transparency markup. -->
+ <effect>
+  <inherits-from>Effects/model-transparent</inherits-from>
+  <object-name>outer_glass_tube</object-name>
+  <object-name>inner_liquid</object-name>
+  <object-name>outer_liquid</object-name>
+ </effect>
 
  <!--
   %% Animation factors.

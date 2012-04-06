@@ -4,6 +4,12 @@
 	<path>markVAaltimeter.ac</path>
 	<texture-path>Textures</texture-path>
 
+	<!-- Rembrandt transparency markup. -->
+	<effect>
+		<inherits-from>Effects/model-transparent</inherits-from>
+		<object-name>glass</object-name>
+	</effect>
+
 	<animation> 
 		<type>rotate</type>
 		<object-name>needle</object-name>

@@ -7,6 +7,12 @@
 <PropertyList> 
  <path>inclinometer.ac</path>
 
+ <!-- Rembrandt transparency markup. -->
+ <effect>
+  <inherits-from>Effects/model-transparent</inherits-from>
+  <object-name>tube</object-name>
+ </effect>
+
  <animation>
   <type>rotate</type>
   <object-name>ball</object-name>

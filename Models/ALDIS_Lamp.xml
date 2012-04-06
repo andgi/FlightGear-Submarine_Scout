@@ -1,8 +1,8 @@
-<!-- $Id$ -->
+<?xml version="1.0"?>
 <!--
   ALDIS signalling lamp.
 
-  Copyright (C) 2008  Anders Gidenstam  (anders(at)gidenstam.org)
+  Copyright (C) 2008 - 2012  Anders Gidenstam  (anders(at)gidenstam.org)
   This file is licensed under the GPL license version 2 or later.
 -->
 <PropertyList>
@@ -15,6 +15,13 @@
   <y-m> 0.00 </y-m>
   <z-m>-0.07 </z-m>
  </offsets>
+
+ <!-- Rembrandt transparency markup. -->
+ <effect>
+  <inherits-from>Effects/model-transparent</inherits-from>
+  <object-name>WhiteFlash</object-name>
+  <object-name>WhiteLight</object-name>
+ </effect>
 
  <!-- animation>
   <name>Lamp</name>
