@@ -2,7 +2,7 @@
 <!--
   Submarine Scout class airship.
 
-  Copyright (C) 2007 - 2009  Anders Gidenstam  (anders(at)gidenstam.org)
+  Copyright (C) 2007 - 2012  Anders Gidenstam  (anders(at)gidenstam.org)
   This file is licensed under the GPL license version 2 or later.
 -->
 <piston_engine name="RR_Hawk">
@@ -32,7 +32,7 @@
      Air Screw 1350 RPM
      Left Hand Tractor
  -->
- <minmp unit="INHG">          6.0 </minmp> <!-- Ignored -->
+ <minmp unit="INHG">         10.0 </minmp>
  <maxmp unit="INHG">         27.9 </maxmp> 
  <displacement unit="IN3"> 452.39 </displacement>
  <!-- bsfc unit="LBS/HP*HR">     0.55 </bsfc--> <!-- According to the above. -->
@@ -42,7 +42,7 @@
  <cylinders>         6.0 </cylinders>
  <compression-ratio> 5.1 </compression-ratio> 
  <cycles>            4.0 </cycles>
- <idlerpm>         400.0 </idlerpm>
+ <idlerpm>         300.0 </idlerpm>
  <maxrpm>         1350.0 </maxrpm>
  <maxthrottle>       1.0 </maxthrottle>
  <minthrottle>       0.1 </minthrottle>
