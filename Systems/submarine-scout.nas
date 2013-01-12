@@ -2,7 +2,7 @@
 ##
 ## Submarine Scout airship
 ##
-##  Copyright (C) 2007 - 2012  Anders Gidenstam  (anders(at)gidenstam.org)
+##  Copyright (C) 2007 - 2013  Anders Gidenstam  (anders(at)gidenstam.org)
 ##  This file is licensed under the GPL license v2 or later.
 ##
 ###############################################################################
@@ -137,10 +137,11 @@ var resolve_impact = func (n) {
                    node.getNode("impact/longitude-deg").getValue(),
                    node.getNode("impact/elevation-m").getValue());
     broadcast.send(message_id["bomb_impact"] ~ Binary.encodeCoord(pos));
-    geo.put_model("Aircraft/Submarine_Scout/Models/flare.osg",
-                  pos.lat(), pos.lon(), pos.alt(),
-                  node.getNode("impact/heading-deg").getValue(),
-                  0, 0);
+# FIXME: Need a new model.
+#    geo.put_model(getprop("/sim/aircraft-dir") ~ "/Models/flare.osg",
+#                  pos.lat(), pos.lon(), pos.alt(),
+#                  node.getNode("impact/heading-deg").getValue(),
+#                  0, 0);
 }
 
 controls.trigger = func(b) {
@@ -230,10 +231,10 @@ var ground_crew = {
         if (me.model.local[0] != nil) me.model.local[0].remove();
         if (me.model.local[1] != nil) me.model.local[1].remove();
         me.model.local[0] = geo.put_model
-            ("Aircraft/Submarine_Scout/Models/GroundCrew/wire-party.xml",
+            (getprop("/sim/aircraft-dir") ~ "/Models/GroundCrew/wire-party.xml",
              me.pos[0], me.heading + 135.0);
         me.model.local[1] = geo.put_model
-            ("Aircraft/Submarine_Scout/Models/GroundCrew/wire-party.xml",
+            (getprop("/sim/aircraft-dir") ~ "/Models/GroundCrew/wire-party.xml",
              me.pos[1], me.heading - 135.0);
         broadcast.send(message_id["place_ground_crew"] ~
                        Binary.encodeCoord(me.pos[0]) ~
@@ -247,10 +248,10 @@ var ground_crew = {
         if (me.model[key][0] != nil) me.model[key][0].remove();
         if (me.model[key][1] != nil) me.model[key][1].remove();
         me.model[key][0] = geo.put_model
-            ("Aircraft/Submarine_Scout/Models/GroundCrew/wire-party.xml",
+            (getprop("/sim/aircraft-dir") ~ "/Models/GroundCrew/wire-party.xml",
              pos1, heading + 135.0);
         me.model[key][1] = geo.put_model
-            ("Aircraft/Submarine_Scout/Models/GroundCrew/wire-party.xml",
+            (getprop("/sim/aircraft-dir") ~ "/Models/GroundCrew/wire-party.xml",
              pos2, heading - 135.0);
     },
     ##################################################
@@ -463,9 +464,9 @@ var dialog = {
         content.set("default-padding", 5);
         props.globals.initNode("sim/about/text",
              "Royal Naval Air Service Submarine Scout Zero airship for FlightGear\n" ~
-             "Copyright (C) 2007 - 2012  Anders Gidenstam\n\n" ~
+             "Copyright (C) 2007 - 2013  Anders Gidenstam\n\n" ~
              "FlightGear flight simulator\n" ~
-             "Copyright (C) 1996 - 2012  http://www.flightgear.org\n\n" ~
+             "Copyright (C) 1996 - 2013  http://www.flightgear.org\n\n" ~
              "This is free software, and you are welcome to\n" ~
              "redistribute it under certain conditions.\n" ~
              "See the GNU GENERAL PUBLIC LICENSE Version 2 for the details.",

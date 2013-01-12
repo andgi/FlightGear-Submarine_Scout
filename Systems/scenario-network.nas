@@ -1,9 +1,8 @@
 ###############################################################################
-## $Id$
 ##
 ## Submarine Scout airship
 ##
-##  Copyright (C) 2007 - 2009  Anders Gidenstam  (anders(at)gidenstam.org)
+##  Copyright (C) 2007 - 2013  Anders Gidenstam  (anders(at)gidenstam.org)
 ##  This file is licensed under the GPL license v2 or later.
 ##
 ###############################################################################
@@ -23,9 +22,10 @@ var handle_message = func (sender, msg) {
 #        print("Submarine_Scout: Bomb impact!");
         var pos = Binary.decodeCoord(substr(msg, 1));
 #        debug.dump(pos);
-        geo.put_model("Aircraft/Submarine_Scout/Models/flare.osg",
-                      pos.lat(), pos.lon(), pos.alt(),
-                      0, 0, 0);
+# FIXME: Need a new model and find the actual path to it.
+#        geo.put_model("Aircraft/Submarine_Scout/Models/flare.osg",
+#                      pos.lat(), pos.lon(), pos.alt(),
+#                      0, 0, 0);
     }
     if (type == message_id["place_ground_crew"][0]) {
 #        print("Submarine_Scout: Ground crew for "~ sender.getPath() ~
@@ -62,6 +62,8 @@ var remote_ground_crew = {
     ##################################################
     init : func {
         me.model = {};
+        me.model_path =
+            me.find_model_path("Submarine_Scout/Models/GroundCrew/wire-party.xml");
     },
     ##################################################
     place_remote_ground_crew : func (key, pos1, pos2, heading) {
@@ -70,10 +72,10 @@ var remote_ground_crew = {
         if (me.model[key][0] != nil) me.model[key][0].remove();
         if (me.model[key][1] != nil) me.model[key][1].remove();
         me.model[key][0] = geo.put_model
-            ("Aircraft/Submarine_Scout/Models/GroundCrew/wire-party.xml",
+            (me.model_path,
              pos1, heading + 135.0);
         me.model[key][1] = geo.put_model
-            ("Aircraft/Submarine_Scout/Models/GroundCrew/wire-party.xml",
+            (me.model_path,
              pos2, heading - 135.0);
     },
     ##################################################
@@ -81,8 +83,25 @@ var remote_ground_crew = {
         if (!contains(me.model, key)) return;
         if (me.model[key][0] != nil) me.model[key][0].remove();
         if (me.model[key][1] != nil) me.model[key][1].remove();
-    }
+    },
     ##################################################
+    # filename should include the aircraft's directory.
+    find_model_path : func (filename) {
+        # FIXME WORKAROUND: Search for the model in all aircraft dirs.
+        var base = "/" ~ filename;
+        var file = props.globals.getNode("/sim/fg-root").getValue() ~
+            "/Aircraft" ~ base;
+        if (io.stat(file) != nil) {
+            return file;
+        }
+        foreach (var d;
+                 props.globals.getNode("/sim").getChildren("fg-aircraft")) {
+            file = d.getValue() ~ base;
+            if (io.stat(file) != nil) {
+                return file;
+            }
+        }
+    }
 };
 remote_ground_crew.init();
 
