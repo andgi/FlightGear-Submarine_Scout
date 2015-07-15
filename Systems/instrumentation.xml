@@ -55,4 +55,10 @@ file, these values will be used (they are hardcoded).
     <number>0</number>
   </slip-skid-ball>
 
+  <!-- Radio set. Not entirely historic. -->
+  <comm-radio>
+    <name>comm</name>
+    <number>0</number>
+  </comm-radio>
+
 </PropertyList>

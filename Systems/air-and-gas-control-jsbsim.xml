@@ -196,11 +196,17 @@
    <function>
     <sum>
      <property>atmosphere/P-psf</property>
-     <property>aero/qbar-psf</property>
-     <quotient>
-      <property>propulsion/engine/thrust-lbs</property>
-      <value>63.62</value> <!-- Propeller disc area ft^2 -->
-     </quotient>
+     <product>
+      <value>0.5</value>
+      <property>atmosphere/rho-slugs_ft3</property>
+      <pow>
+       <sum>
+        <property>velocities/u-aero-fps</property>
+        <property>propulsion/engine[0]/prop-induced-velocity_fps</property>
+       </sum>
+       <value>2.0</value>
+      </pow>
+     </product>
     </sum>
    </function>
   </fcs_function>

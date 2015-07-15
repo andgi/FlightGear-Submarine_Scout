@@ -26,8 +26,8 @@
  <effect>
   <inherits-from>Effects/model-transparent</inherits-from>
   <object-name>outer_glass_tube</object-name>
-  <object-name>inner_liquid</object-name>
-  <object-name>outer_liquid</object-name>
+  <!-- object-name>inner_liquid</object-name>
+  <object-name>outer_liquid</object-name -->
  </effect>
 
  <!--

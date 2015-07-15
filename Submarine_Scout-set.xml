@@ -11,7 +11,7 @@
 
   <description>Royal Naval Air Service Submarine Scout Zero airship</description>
   <author>Anders Gidenstam</author>
-  <aircraft-version>$Id: Submarine_Scout-set.xml,v 1.46 2011-05-26 18:46:09 anders Exp $</aircraft-version>
+  <aircraft-version>$Id: Submarine_Scout-set.xml,v 1.47 2015/07/15 18:08:30 anders Exp $</aircraft-version>
   
   <status type="string">beta</status>
   <rating>
