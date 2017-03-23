@@ -2,7 +2,7 @@
 <!--
   Submarine Scout class airship.
 
-  Copyright (C) 2007 - 2011  Anders Gidenstam  (anders(at)gidenstam.org)
+  Copyright (C) 2007 - 2017  Anders Gidenstam  (anders(at)gidenstam.org)
   This file is licensed under the GPL license version 2 or later.
 -->
 <PropertyList>
@@ -11,8 +11,21 @@
 
   <description>Royal Naval Air Service Submarine Scout Zero airship</description>
   <author>Anders Gidenstam</author>
-  <aircraft-version>$Id: Submarine_Scout-set.xml,v 1.47 2015/07/15 18:08:30 anders Exp $</aircraft-version>
-  
+  <aircraft-version>$Id: Submarine_Scout-set.xml,v 1.48 2017/03/23 21:43:13 anders Exp $</aircraft-version>
+
+  <long-description>
+The Submarine Scout was a fairly small blimp, i.e. non-rigid airship, which was used for maritime patrol and convoy escort by the Royal Naval Air Service (RNAS) during World War I. The type first flew in 1915 and was in service throughout the rest of the war. The early versions had cars made from slightly modified aeroplane fuselages; the final version, Submarine Scout Zero represented here, had a purpose built car.
+  </long-description>
+
+  <tags>
+   <tag>airship</tag>
+   <tag>piston</tag>
+   <tag>1-engine</tag>
+   <tag>fixed-gear</tag>
+   <tag>ww1</tag>
+   <tag>dual-controls</tag>
+  </tags>
+
   <status type="string">beta</status>
   <rating>
    <FDM type="int">2</FDM>
