@@ -19,7 +19,7 @@ kids 4
 OBJECT poly
 name "dial"
 loc 0.00527595 -0.000285545 -3.45511e-009
-texture "Textures/comp.png"
+texture "comp.png"
 crease 45.000000
 numvert 28
 1.21072e-008 0.00434023 0.0281995
@@ -211,7 +211,7 @@ kids 0
 OBJECT poly
 name "dial"
 loc 0.00527595 -0.000285545 -3.45511e-009
-texture "Textures/comp.png"
+texture "comp.png"
 crease 45.000000
 numvert 26
 -0.0279584 0.00434023 -0.00368081
@@ -389,7 +389,7 @@ kids 0
 OBJECT poly
 name "dial"
 loc 0.00527595 -0.000285398 -3.45511e-009
-texture "Textures/comp.png"
+texture "comp.png"
 crease 45.000000
 numvert 24
 0.00368078 0.00434018 0.0279583
@@ -553,7 +553,7 @@ kids 0
 OBJECT poly
 name "dial"
 loc 0.00527595 -0.000285545 -3.45511e-009
-texture "Textures/comp.png"
+texture "comp.png"
 crease 45.000000
 numvert 26
 0.0281995 0.00434023 -3.85619e-008
@@ -735,7 +735,7 @@ kids 4
 OBJECT poly
 name "dial"
 loc 0.00527595 -0.000285283 -3.48271e-009
-texture "Textures/comp.png"
+texture "comp.png"
 crease 45.000000
 numvert 52
 1.11759e-008 -0.00430488 -0.0239949
@@ -1251,7 +1251,7 @@ kids 0
 OBJECT poly
 name "dial"
 loc 0.00527595 -0.000285134 -3.48271e-009
-texture "Textures/comp.png"
+texture "comp.png"
 crease 45.000000
 numvert 48
 0.0239949 -0.00430486 -3.56185e-008
@@ -1727,7 +1727,7 @@ kids 0
 OBJECT poly
 name "dial"
 loc 0.00527595 -0.000285283 -3.48271e-009
-texture "Textures/comp.png"
+texture "comp.png"
 crease 45.000000
 numvert 52
 1.11759e-008 -0.00430488 -0.0239949
@@ -2243,7 +2243,7 @@ kids 0
 OBJECT poly
 name "dial"
 loc 0.00527595 -0.000285283 -3.48271e-009
-texture "Textures/comp.png"
+texture "comp.png"
 crease 45.000000
 numvert 56
 -0.0239948 -0.00430488 -3.35207e-008
@@ -2834,7 +2834,7 @@ kids 0
 OBJECT poly
 name "main_support_ring"
 loc 0.00377771 0 0
-texture "Textures/brushed_brass2.png"
+texture "brushed_brass2.png"
 crease 45.000000
 numvert 192
 -0.00366987 0.0743584 -0.00978945
@@ -4762,7 +4762,7 @@ kids 0
 OBJECT poly
 name "main_housing"
 loc 0.0308949 0 0
-texture "Textures/brushed_brass2.png"
+texture "brushed_brass2.png"
 crease 45.000000
 numvert 337
 -0.00344614 0.0541616 -0.0071305
@@ -8275,7 +8275,7 @@ kids 0
 OBJECT poly
 name "box"
 loc 0.00377771 0.00595792 0
-texture "Textures/brushed_brass2.png"
+texture "brushed_brass2.png"
 crease 45.000000
 numvert 8
 0.00631636 0.0589567 -0.0224129
@@ -8339,7 +8339,7 @@ kids 0
 OBJECT poly
 name "box"
 loc 0.00377771 0.00595793 0
-texture "Textures/brushed_brass2.png"
+texture "brushed_brass2.png"
 crease 45.000000
 numvert 16
 0.00631636 0.0469334 0.0152883
@@ -8459,7 +8459,7 @@ kids 0
 OBJECT poly
 name "cylinder"
 loc -0.0411202 0.00769297 0.004381
-texture "Textures/horsehair.png"
+texture "horsehair.png"
 crease 45.000000
 numvert 48
 0.0538238 -0.0728864 -0.012434
@@ -8983,7 +8983,7 @@ kids 0
 OBJECT poly
 name "cylinder"
 loc -0.0422334 0.00769297 0.00485044
-texture "Textures/brushed_brass2.png"
+texture "brushed_brass2.png"
 crease 45.000000
 numvert 23
 0.0538238 -0.0705905 -0.00182984
@@ -9140,7 +9140,7 @@ kids 0
 OBJECT poly
 name "cylinder"
 loc -0.0465286 0.00769297 0.00485044
-texture "Textures/brushed_brass2.png"
+texture "brushed_brass2.png"
 crease 45.000000
 numvert 23
 0.0564502 0.046055 -0.0078489
@@ -9297,7 +9297,7 @@ kids 0
 OBJECT poly
 name "cylinder"
 loc 0.00446891 -0.0601229 0.00473149
-texture "Textures/brushed_brass.png"
+texture "brushed_brass.png"
 crease 45.000000
 numvert 16
 -3.63998e-005 0.124967 0.00370274
@@ -9405,7 +9405,7 @@ kids 0
 OBJECT poly
 name "cylinder"
 loc 0.00446891 -0.0601229 -0.00488917
-texture "Textures/brushed_brass.png"
+texture "brushed_brass.png"
 crease 45.000000
 numvert 16
 -3.63998e-005 0.124967 -0.00354451
@@ -9513,7 +9513,7 @@ kids 0
 OBJECT poly
 name "cylinder"
 loc -0.0454155 0.00769297 0.004381
-texture "Textures/horsehair.png"
+texture "horsehair.png"
 crease 45.000000
 numvert 48
 0.0564502 0.0461265 -0.00137391
@@ -10037,7 +10037,7 @@ kids 0
 OBJECT poly
 name "cylinder"
 loc 0.00933706 0.00129169 0.057785
-texture "Textures/horsehair.png"
+texture "horsehair.png"
 crease 45.000000
 numvert 102
 0.00720446 0.00106781 -0.126091
@@ -11047,7 +11047,7 @@ kids 0
 OBJECT poly
 name "object"
 loc 0.00446891 -0.0584923 2.76603e-007
-texture "Textures/brushed_brass2.png"
+texture "brushed_brass2.png"
 crease 45.000000
 numvert 34
 -3.63998e-005 -0.0102782 -0.00843398
@@ -11269,7 +11269,7 @@ kids 0
 OBJECT poly
 name "cylinder"
 loc 0.00935594 -0.000430464 0.0591052
-texture "Textures/brushed_brass2.png"
+texture "brushed_brass2.png"
 crease 45.000000
 numvert 68
 -0.00843398 0.00633868 -0.115759
@@ -13525,7 +13525,7 @@ kids 0
 OBJECT poly
 name "inner_front_bezel"
 loc 0.0308949 0 0
-texture "Textures/brushed_brass2.png"
+texture "brushed_brass2.png"
 crease 45.000000
 numvert 96
 0.00344615 0.0413352 1.39699e-008
@@ -14276,7 +14276,7 @@ kids 0
 OBJECT poly
 name "clear_face"
 loc -0.00612764 -8.59607e-010 0.000517598
-texture "Textures/brushed_brass.png"
+texture "brushed_brass.png"
 crease 45.000000
 numvert 4
 0 0.0256832 -0.0445968
@@ -14300,7 +14300,7 @@ kids 0
 OBJECT poly
 name "box"
 loc 0.0148272 0.0106976 0
-texture "Textures/brushed_brass2.png"
+texture "brushed_brass2.png"
 crease 45.000000
 numvert 4
 0 0.0421937 -0.0224129
@@ -14328,7 +14328,7 @@ kids 7
 OBJECT poly
 name "rect"
 loc -0.00651299 0.0359343 -0.0198094
-texture "Textures/screw-brass-csk.png"
+texture "screw-brass-csk.png"
 crease 45.000000
 numvert 4
 0 -0.00577342 0.0376799
@@ -14352,7 +14352,7 @@ kids 0
 OBJECT poly
 name "rect"
 loc -0.00651299 0.0351761 -0.0198094
-texture "Textures/screw-brass-csk.png"
+texture "screw-brass-csk.png"
 crease 45.000000
 numvert 4
 0 0.00367278 -0.0036728
@@ -14376,7 +14376,7 @@ kids 0
 OBJECT poly
 name "rect"
 loc -0.00651299 -0.0575861 -0.00037087
-texture "Textures/screw-brass-csk.png"
+texture "screw-brass-csk.png"
 crease 45.000000
 numvert 4
 0 0.000452701 -0.00517434
@@ -14400,7 +14400,7 @@ kids 0
 OBJECT poly
 name "rect"
 loc -0.00651299 0.0152358 0.0411863
-texture "Textures/screw-brass-csk.png"
+texture "screw-brass-csk.png"
 crease 45.000000
 numvert 4
 0 0.00219512 0.00470746
@@ -14424,7 +14424,7 @@ kids 0
 OBJECT poly
 name "rect"
 loc -0.00651299 0.0158581 -0.0416608
-texture "Textures/screw-brass-csk.png"
+texture "screw-brass-csk.png"
 crease 45.000000
 numvert 4
 0 -0.00367279 -0.00367279
@@ -14448,7 +14448,7 @@ kids 0
 OBJECT poly
 name "rect"
 loc -0.00651299 -0.0389653 0.0376612
-texture "Textures/screw-brass-csk.png"
+texture "screw-brass-csk.png"
 crease 45.000000
 numvert 4
 0 0.00367278 -0.00367279
@@ -14472,7 +14472,7 @@ kids 0
 OBJECT poly
 name "rect"
 loc -0.00651299 -0.0389653 -0.0388821
-texture "Textures/screw-brass-csk.png"
+texture "screw-brass-csk.png"
 crease 45.000000
 numvert 4
 0 -0.00219512 -0.00470747

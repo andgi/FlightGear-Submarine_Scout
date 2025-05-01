@@ -2,7 +2,7 @@
 <!--
   Submarine Scout class airship.
 
-  Copyright (C) 2007 - 2012  Anders Gidenstam  (anders(at)gidenstam.org)
+  Copyright (C) 2007 - 2012, 2025  Anders Gidenstam  (anders(at)gidenstam.org)
   This file is licensed under the GPL license version 2 or later.
 -->
 <PropertyList>
@@ -143,7 +143,7 @@
  <!-- Pilot's instruments -->
  <model>
   <name>Pilot Watch</name>
-  <path>Aircraft/sopwithCamel/Models/MkV30hrWatch.xml</path>
+  <path>Aircraft/Submarine_Scout/Models/Instruments/MkV30hrWatch.xml</path>
   <offsets>
    <!-- x/y/z == back/right/up -->
    <x-m> 2.250 </x-m>
@@ -164,7 +164,7 @@
 
  <model>
   <name>Pilot Airspeed</name>
-  <path>Aircraft/sopwithCamel/Models/asi.xml</path>
+  <path>Aircraft/Submarine_Scout/Models/Instruments/asi.xml</path>
   <offsets>
    <x-m>  2.240 </x-m>
    <y-m> -0.150 </y-m>
@@ -174,7 +174,7 @@
 
  <model>
   <name>Pilot Tacho</name>
-  <path>Aircraft/sopwithCamel/Models/tacho-Y.xml</path>
+  <path>Aircraft/Submarine_Scout/Models/Instruments/tacho-Y.xml</path>
   <offsets>
    <!-- x/y/z == back/right/up -->
    <x-m>  2.240 </x-m>
@@ -185,7 +185,7 @@
 
  <model>
   <name>Pilot Compass</name>
-  <path>Aircraft/Submarine_Scout/Models/type259compass.xml</path>
+  <path>Aircraft/Submarine_Scout/Models/Instruments/type259compass.xml</path>
   <offsets>
    <x-m> 2.260 </x-m>
    <y-m> 0.000 </y-m>
@@ -195,7 +195,7 @@
 
  <model>
   <name>Pilot Inclinometer</name>
-  <path>Aircraft/Submarine_Scout/Models/inclinometer.xml</path>
+  <path>Aircraft/Submarine_Scout/Models/Instruments/inclinometer.xml</path>
   <offsets>
    <heading-deg> -90 </heading-deg>
    <x-m>  2.500 </x-m>
@@ -206,7 +206,7 @@
 
  <model>
   <name>Gas Manometer 1</name>
-  <path>Aircraft/Submarine_Scout/Models/gas_manometer.xml</path>
+  <path>Aircraft/Submarine_Scout/Models/Instruments/gas_manometer.xml</path>
   <offsets>
    <x-m>  2.260 </x-m>
    <y-m>  0.210 </y-m>
@@ -221,7 +221,7 @@
     <pressure-psf>instrumentation/gas-manometer[1]/gas-pressure-psf</pressure-psf>
    </params>
   </overlay>
-  <path>Aircraft/Submarine_Scout/Models/gas_manometer.xml</path>
+  <path>Aircraft/Submarine_Scout/Models/Instruments/gas_manometer.xml</path>
   <offsets>
    <x-m>  2.260 </x-m>
    <y-m>  0.250 </y-m>
@@ -231,7 +231,7 @@
 
  <model>
   <name>Mag1</name>
-  <path>Aircraft/sopwithCamel/Models/mag_switch_1.xml</path>
+  <path>Aircraft/Submarine_Scout/Models/Instruments/mag_switch_1.xml</path>
   <offsets>
    <heading-deg>0</heading-deg>
    <!-- x/y/z == back/right/up -->
@@ -243,7 +243,7 @@
 
  <model>
   <name>Mag2</name>
-  <path>Aircraft/sopwithCamel/Models/mag_switch_2.xml</path>
+  <path>Aircraft/Submarine_Scout/Models/Instruments/mag_switch_2.xml</path>
   <offsets>
    <heading-deg>0</heading-deg>
    <!-- x/y/z == back/right/up -->
