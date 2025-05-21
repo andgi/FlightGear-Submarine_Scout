@@ -69,7 +69,7 @@ The Submarine Scout was a fairly small blimp, i.e. non-rigid airship, which was 
     <x-offset-m type="double"> 0.05 </x-offset-m>
     <y-offset-m type="double"> 0.40 </y-offset-m>
     <z-offset-m type="double"> 1.4 </z-offset-m>
-    <ground-level-nearplane-m type="double"> 0.1f </ground-level-nearplane-m>
+    <ground-level-nearplane-m type="double"> 0.1 </ground-level-nearplane-m>
    </config>
   </view>
 
