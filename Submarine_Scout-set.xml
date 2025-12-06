@@ -2,7 +2,7 @@
 <!--
   Submarine Scout class airship.
 
-  Copyright (C) 2007 - 2017  Anders Gidenstam  (anders(at)gidenstam.org)
+  Copyright (C) 2007 - 2017, 2025  Anders Gidenstam  (anders(at)gidenstam.org)
   This file is licensed under the GPL license version 2 or later.
 -->
 <PropertyList>
@@ -11,10 +11,10 @@
 
   <description>Royal Naval Air Service Submarine Scout Zero airship</description>
   <author>Anders Gidenstam</author>
-  <aircraft-version>$Id: Submarine_Scout-set.xml,v 1.48 2017/03/23 21:43:13 anders Exp $</aircraft-version>
+  <aircraft-version>2025-12-06</aircraft-version>
 
   <long-description>
-The Submarine Scout was a fairly small blimp, i.e. non-rigid airship, which was used for maritime patrol and convoy escort by the Royal Naval Air Service (RNAS) during World War I. The type first flew in 1915 and was in service throughout the rest of the war. The early versions had cars made from slightly modified aeroplane fuselages; the final version, Submarine Scout Zero represented here, had a purpose built car.
+The Submarine Scout was a fairly small blimp, i.e. non-rigid airship, which was used for maritime patrol and convoy escort by the Royal Naval Air Service (RNAS) during World War I. The type first flew in 1915 and was in service throughout the rest of the war. The early versions had cars made from slightly modified aeroplane fuselages; the final version, Submarine Scout Zero as represented here, had a purpose built car.
   </long-description>
 
   <tags>
@@ -61,7 +61,7 @@ The Submarine Scout was a fairly small blimp, i.e. non-rigid airship, which was 
    <internal>true</internal>
    <config>
     <!-- x/y/z == right/up/back -->
-    <x-offset-m type="double"> -0.10 </x-offset-m>
+    <x-offset-m type="double"> -0.05 </x-offset-m>
     <y-offset-m type="double">  0.45 </y-offset-m>
     <z-offset-m type="double">  2.80 </z-offset-m>
     <pitch-offset-deg type="double"> -15 </pitch-offset-deg>
@@ -441,4 +441,15 @@ The Submarine Scout was a fairly small blimp, i.e. non-rigid airship, which was 
   </keyboard>
  </input>
 
+ <crew>
+  <pilot-view>
+   <visible type="bool">1</visible>
+  </pilot-view>
+  <wt-operator-view>
+   <visible type="bool">1</visible>
+  </wt-operator-view>
+  <mechanic-view>
+   <visible type="bool">1</visible>
+  </mechanic-view>
+ </crew>
 </PropertyList>

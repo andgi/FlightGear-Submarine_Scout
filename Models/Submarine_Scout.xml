@@ -283,41 +283,117 @@
  </model>
 
 
- <!-- Crew. The pilot model is borrowed from Vivian Meazza's Spitfire. -->
+ <!-- Crew. The model is from the Aircraft/Generic/Pilot/ directory. -->
 
  <!-- Mechanic -->
  <model>
   <name>Mechanic</name>
-  <path>Aircraft/Submarine_Scout/Models/spitfire-pilot.ac</path>
+  <path>Aircraft/Submarine_Scout/Models/Crew/crew-base.xml</path>
   <offsets>
    <heading-deg>180</heading-deg>
    <!-- x/y/z == back/right/up -->
    <x-m>  3.52 </x-m>
    <y-m>  0.00 </y-m>
-   <z-m> -0.45 </z-m>
+   <z-m> -1.15 </z-m>
   </offsets>
+  <overlay>
+   <params>
+    <view-name type="string">Mechanic</view-name>
+    <visible>crew/mechanic-view/visible</visible>
+    <legs>
+     <left>
+      <upper-animation>
+       <offset-deg type="float">0.00</offset-deg>
+      </upper-animation>
+     </left>
+     <right>
+      <upper-animation>
+       <offset-deg type="float">0.00</offset-deg>
+      </upper-animation>
+     </right>
+    </legs>
+   </params>
+  </overlay>
  </model>
  <!-- Pilot -->
  <model>
   <name>Commander</name>
-  <path>Aircraft/Submarine_Scout/Models/spitfire-pilot.ac</path>
+  <path>Aircraft/Submarine_Scout/Models/Crew/crew-base.xml</path>
   <offsets>
    <!-- x/y/z == back/right/up -->
-   <x-m>  2.66 </x-m>
+   <x-m>  2.60 </x-m>
    <y-m>  0.00 </y-m>
-   <z-m> -0.45 </z-m>
+   <z-m> -1.22 </z-m>
   </offsets>
+  <overlay>
+   <params>
+    <view-name type="string">Pilot</view-name>
+    <visible>crew/pilot-view/visible</visible>
+    <arms>
+     <left>
+      <upper-animation>
+       <offset-deg type="float">-55.0</offset-deg>
+      </upper-animation>
+      <lower-animation>
+       <offset-deg type="float">47.0</offset-deg>
+      </lower-animation>
+     </left>
+    </arms>
+    <legs>
+     <left>
+      <upper-animation>
+       <offset-deg type="float">90.0</offset-deg>
+      </upper-animation>
+      <lower-animation>
+       <offset-deg type="float">-90.0</offset-deg>
+      </lower-animation>
+     </left>
+     <right>
+      <upper-animation>
+       <offset-deg type="float">90.0</offset-deg>
+      </upper-animation>
+      <lower-animation>
+       <offset-deg type="float">-90.0</offset-deg>
+      </lower-animation>
+     </right>
+    </legs>
+   </params>
+  </overlay>
  </model>
  <!-- W/T Operator -->
  <model>
   <name>WTOperator</name>
-  <path>Aircraft/Submarine_Scout/Models/spitfire-pilot.ac</path>
+  <path>Aircraft/Submarine_Scout/Models/Crew/crew-base.xml</path>
   <offsets>
    <!-- x/y/z == back/right/up -->
-   <x-m>  1.37 </x-m>
+   <x-m>  1.30 </x-m>
    <y-m>  0.00 </y-m>
-   <z-m> -0.45 </z-m>
+   <z-m> -1.22 </z-m>
   </offsets>
+  <overlay>
+   <params>
+    <view-name type="string">W/T operator</view-name>
+    <visible>crew/wt-operator-view/visible</visible>
+    <legs>
+     <left>
+      <upper-animation>
+       <offset-deg type="float">90.0</offset-deg>
+      </upper-animation>
+      <lower-animation>
+       <offset-deg type="float">-90.0</offset-deg>
+      </lower-animation>
+     </left>
+     <right>
+      <upper-animation>
+       <offset-deg type="float">90.0</offset-deg>
+      </upper-animation>
+      <lower-animation>
+       <offset-deg type="float">-90.0</offset-deg>
+      </lower-animation>
+     </right>
+    </legs>
+   </params>
+  </overlay>
  </model>
 
  <animation>
